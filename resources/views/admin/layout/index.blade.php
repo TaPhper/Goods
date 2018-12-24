@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,6 +24,18 @@
   </div>
 </div>
 <div class="" style=" padding-top:10px" >
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>{{ session('success') }}</strong> 
+      </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>{{ session('error') }}</strong> 
+      </div>
+    @endif
 
 	<div class="left_slide_nav" style="width:18%">
     <div class="business">
@@ -41,11 +54,20 @@
             <dd><a href="shangpinhuishouzhan.html">商品回收站</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
+
         <dl class="dl_list">
           <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">品牌管理</a ></dt><!--打开状态替换close为open-->
           <dd><a href="/admin/brand/create">添加品牌</a></dd>
          <dd><a href="/admin/brand">品牌列表</a></dd>
       <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
+
+         <dl class="dl_list">
+            <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">类别管理</a></dt><!--打开状态替换close为open-->
+            <dd><a href="/admin/cates/index/create">添加类别</a></dd>
+            <dd><a href="/admin/cates/index" >浏览类别</a></dd>
+            
+            <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
+
         </dl>
     </div>
 	</div>

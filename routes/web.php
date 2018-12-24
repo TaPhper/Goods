@@ -47,3 +47,10 @@ Route::resource('/admin/brand/','Admin\BrandController');
 
 Route::resource('admin/user','Admin\UsersController');
 
+
+
+
+//类别管理
+Route::resource('admin/cates/index','Admin\CatesController');
+Route::get('admin/cates/index/create/{id}','Admin\CatesController@create');
+
