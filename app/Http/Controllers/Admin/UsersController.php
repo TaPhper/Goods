@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\Users;
 class UsersController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index',['title'=>'用户列表']);
+        $data = Users::paginate(10);
+        return view('admin.users.index',['data'=>$data]);
     }
 
     /**
@@ -24,7 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -35,7 +37,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        // dump($data);
+        $users = new Users;
+        $users->user_name = $data['user_name'];
+        $users->user_email = $data['user_email'];
+        $users->user_pwd = $data['user_pwd'];
+        $users->user_status = $data['user_status'];
+        $res = $users->save();
+        if($res){
+            return redirect('admin/user')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
+
     }
 
     /**
@@ -57,7 +72,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Users::where('user_id','=',$id)->first();
+        // dump($data[0]->user_name);
+        return view('admin.users.edit',['data'=>$data,'id'=>$id]);
     }
 
     /**
@@ -69,7 +86,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        // dump($data);
+        $user = Users::where('user_id','=',$id)->first();
+        // dump($user->user_pwd);
+        $user->user_pwd = Hash::make($data['user_pwd']);
+        // dump($user->user_pwd);
+        $res = $user->save();
+        // dump($res);
+        if($res){
+            return redirect('admin/user')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
+
     }
 
     /**
@@ -80,6 +110,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Users::where('user_id','=',$id)->delete();
+        // dump($user);
+        // $res = $user->delete();
+        if($res){
+            return redirect('admin/user')->with('success','添加成功');
+        }else{
+            return back()->with('error','添加失败');
+        }
     }
 }

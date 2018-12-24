@@ -28,8 +28,8 @@
     <div class="business">
         <dl class="dl_list">
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">用户管理</a></dt><!--打开状态替换close为open-->
-            <dd><a href="/admin/user/index" >用户列表</a></dd>
-            <dd><a href="shangpin_list.html" >添加用户</a></dd>
+            <dd><a href="/admin/user" >用户列表</a></dd>
+            <dd><a href="/admin/user/create" >添加用户</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
         <dl class="dl_list">
