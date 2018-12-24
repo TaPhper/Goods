@@ -25,3 +25,10 @@ Route::get('admin/login','Admin\IndexController@login');
 // 后台用户管理
 Route::resource('admin/user/index','Admin\UsersController');
 
+
+
+
+//类别管理
+Route::resource('admin/cates/index','Admin\CatesController');
+Route::get('admin/cates/index/create/{id}','Admin\CatesController@create');
+
