@@ -23,5 +23,21 @@ Route::get('admin/index','Admin\IndexController@index');
 Route::get('admin/login','Admin\IndexController@login');
 
 // 后台用户管理
-Route::resource('admin/user/index','Admin\UsersController');
+Route::resource('/admin/user/index','Admin\UsersController');
 
+
+
+
+
+
+
+
+
+
+
+
+
+ //后台商品管理
+Route::resource('/admin/goods/','Admin\GoodsController');
+//后台品牌管理
+Route::resource('/admin/brand/','Admin\BrandController');

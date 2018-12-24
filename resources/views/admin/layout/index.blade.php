@@ -11,7 +11,7 @@
 <body>
 <div class="wrap">
 	<div class="whole-top">
-    <p class="name"><img src="images/logobig.png" />Goods 后台管理系统</p>
+    <p class="name"><img src="/admin/images/logobig.png" />Goods 后台管理系统</p>
 
     <div class="login">
     <!--登录后 start-->
@@ -34,12 +34,18 @@
         </dl>
         <dl class="dl_list">
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">商品管理</a></dt><!--打开状态替换close为open-->
-            <dd><a href="tianjiashangpin.html" target="rightFrame">添加商品</a></dd>
-            <dd><a href="shangpin_list.html" target="rightFrame">商品列表</a></dd>
-            <dd><a href="shangpinleixing_list.html" target="rightFrame">商品类型</a></dd>
-            <dd><a href="tianjiashuxing.html" target="rightFrame">商品属性</a></dd>
-            <dd><a href="shangpinhuishouzhan.html" target="rightFrame">商品回收站</a></dd>
+            <dd><a href="/admin/goods/create">添加商品</a></dd>
+            <dd><a href="/admin/goods">商品列表</a></dd>
+            <dd><a href="shangpinleixing_list.html">商品类型</a></dd>
+            <dd><a href="tianjiashuxing.html">商品属性</a></dd>
+            <dd><a href="shangpinhuishouzhan.html">商品回收站</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
+        </dl>
+        <dl class="dl_list">
+          <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">品牌管理</a ></dt><!--打开状态替换close为open-->
+          <dd><a href="/admin/brand/create">添加品牌</a></dd>
+         <dd><a href="/admin/brand">品牌列表</a></dd>
+      <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
     </div>
 	</div>
