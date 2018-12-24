@@ -19,7 +19,7 @@
 			        </li>
 			        <li>
 			          <label>邮箱：</label>
-			          <input type="text" name="user_name" class="w200 name" value="">
+			          <input type="text" name="user_email" class="w200 name" value="">
 			        </li>
 				<!--<li>
 			          <label>会员组：</label>

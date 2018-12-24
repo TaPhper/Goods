@@ -8,7 +8,7 @@
    
       <a href="javascript:;" id="xg_btn" class="btn03">添加品牌</a>
       <!--detail start-->
-      <div class="co-detail clearfix" style="width:83%;margin-left:235px;"> 
+      <div class="co-detail clearfix" style="width:100%;"> 
         <table class="tablelist" border="0" cellpadding="0" cellspacing="0">
             <thead>
               <tr>
@@ -19,22 +19,22 @@
                 <th>操作</th>
               </tr>
             </thead>
+            @foreach($brand as $k=>$v)
             <tbody>
+
               <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td> 
+                <td><img src="/uploads/{{$v->brand_logo}}" width="50"></td>
+                <td>{{$v->brand_name}}</td>
+                <td>{{$v->brand_describlle}}</td>
+                <td>
+                	{{$v->brand_status == 0 ? '是' : '否'}}
+
+                </td> 
                 <td class="operation"><a class="edit">确认</a></td>
               </tr>
-              <tr class="odd">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>-</td>
-              </tr>
+             
             </tbody>
+            @endforeach
           </table>
           <p class="cur_num">当前数据中1900条，每页显示<select class="w100">
                   <option>5</option>

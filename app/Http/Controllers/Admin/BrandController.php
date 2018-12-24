@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Admin\Brand;
 class BrandController extends Controller
 {
     /**
@@ -14,8 +14,11 @@ class BrandController extends Controller
      */
     public function index()
     {
+        $data = Brand::all();
+
+        
         //返回品牌列表页面
-        return view('admin.brand.index');
+        return view('admin.brand.index',['brand'=>$data]);
     }
 
     /**
@@ -37,7 +40,24 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        dump($request->all());
+      
+
+        // 检测文件上传
+        if($request->hasFile('blogo')){
+            $profile = $request->file('blogo');
+            $res = $profile->store('images'); //执行上传
+            $brand = new Brand;
+            $data = $request->except(['_token','blogo']);
+            $brand->brand_name = $data['bname'];
+            $brand->brand_is_show = $data['bstatus'];
+            $brand->brand_describlle = $data['bcontent'];
+            $brand->brand_logo =$res;
+            $brand->save();
+
+            return redirect('/admin/brand')->with('success','添加成功');
+         }else{
+            return back()->with('error','请上传文件');
+         }
     }
 
     /**

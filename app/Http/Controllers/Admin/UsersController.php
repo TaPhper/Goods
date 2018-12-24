@@ -38,7 +38,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        // dump($data);
+        // dump($data);die;
         $users = new Users;
         $users->user_name = $data['user_name'];
         $users->user_email = $data['user_email'];
