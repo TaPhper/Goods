@@ -16,3 +16,12 @@ Route::get('/', function () {
 });
 
 
+
+
+// 后台首页
+Route::get('admin/index','Admin\IndexController@index');
+Route::get('admin/login','Admin\IndexController@login');
+
+// 后台用户管理
+Route::resource('admin/user/index','Admin\UsersController');
+
