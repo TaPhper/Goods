@@ -15,8 +15,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = Users::paginate(10);
-        return view('admin.users.index',['data'=>$data]);
+        $data = Users::paginate(5);
+        $count = Users::count();
+        // dump($count);
+        return view('admin.users.index',['data'=>$data,'count'=>$count]);
     }
 
     /**
@@ -42,7 +44,12 @@ class UsersController extends Controller
         $users = new Users;
         $users->user_name = $data['user_name'];
         $users->user_email = $data['user_email'];
-        $users->user_pwd = $data['user_pwd'];
+        $users->user_pwd = Hash::make($data['user_pwd']);
+        $users->true_name = $data['true_name'];
+        $users->user_sex = $data['user_sex'];
+        $users->user_tel = $data['user_tel'];
+        $users->user_address = $data['user_address'];
+        $users->postcode = $data['postcode'];
         $users->user_status = $data['user_status'];
         $res = $users->save();
         if($res){
@@ -59,9 +66,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $name = $request->get('name');
+
+        $data = Users::where('user_name','=',$name)->first();
+        echo $data;
+
     }
 
     /**
@@ -95,9 +106,9 @@ class UsersController extends Controller
         $res = $user->save();
         // dump($res);
         if($res){
-            return redirect('admin/user')->with('success','添加成功');
+            return redirect('admin/user')->with('success','修改密码成功');
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','修改密码失败');
         }
 
     }
@@ -114,9 +125,10 @@ class UsersController extends Controller
         // dump($user);
         // $res = $user->delete();
         if($res){
-            return redirect('admin/user')->with('success','添加成功');
+            return redirect('admin/user')->with('success','删除成功');
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','删除失败');
         }
     }
+
 }
