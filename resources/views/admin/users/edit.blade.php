@@ -3,7 +3,7 @@
 @section('content')
 <div class="chuda_co" id="container">
   <div class="co-box">
-	<div class="title"><h4>会员管理>>添加会员</h4></div>
+	<div class="title"><h4>用户管理>>修改用户</h4></div>
 	<div class="fill-info">		
 		<form action="/admin/user/{{ $id }}" method="post">
 			{{ csrf_field() }}

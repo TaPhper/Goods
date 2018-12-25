@@ -4,9 +4,9 @@
 <div class="chuda_co" id="container">
   <div class="co-box">
     <div class="title">
-      <h4>会员管理>>会员列表</h4>
+      <h4>用户管理>>用户列表</h4>
     </div>
-      <a href="/admin/user/create" id="xg_btn" class="btn03">添加会员</a>
+      <a href="/admin/user/create" id="xg_btn" class="btn03">添加用户</a>
       <!--detail start-->
       <div class="co-detail clearfix"> 
         <table class="tablelist" border="0" cellpadding="0" cellspacing="0">
@@ -19,8 +19,7 @@
                 <th>联系方式</th>
                 <th>用户性别</th>
                 <th>家庭住址</th>                           
-                <th>邮编</th>                           
-                <th>积分</th>                           
+                <th>邮编</th>                                                  
                 <th>用户状态</th>                           
                 <th>操作</th>
               </tr>
@@ -33,10 +32,9 @@
                 <td>{{ $v->user_email }}</td>
                 <td>{{ $v->true_name }}</td>
                 <td>{{ $v->user_tel }}</td>
-                <td>{{ $v->user_sex }}</td> 
+                <td>{{ $v->user_sex == 1 ? '女' : '男' }}</td> 
                 <td>{{ $v->user_address }}</td>
                 <td>{{ $v->postcode }}</td>
-                <td>{{ $v->integral }}</td>
                 @if($v->user_status == 1)
                 <td>正常</td>
                 @elseif($v->user_status == 2)
@@ -54,6 +52,8 @@
             @endforeach
             </tbody>
           </table>
+          <b><p class="cur_num">当前数据中{{$count}}条!</b>
+          
           <!--分页 start-->
           <div class="pages">
             <div class="pages-btn">
