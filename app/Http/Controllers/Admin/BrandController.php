@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Brand;
+
 class BrandController extends Controller
 {
     /**
@@ -14,11 +15,11 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data = Brand::all();
+        $data = Brand::paginate(5);
 
-        
-        //返回品牌列表页面
-        return view('admin.brand.index',['brand'=>$data]);
+        $res = Brand::count();
+               //返回品牌列表页面
+        return view('admin.brand.index',['brand'=>$data,'res'=>$res]);
     }
 
     /**
@@ -78,8 +79,10 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $data = brand::find($id);
+        // dump($data->brand_id);die;
+        return view('admin.brand.edit',['data'=>$data]);
     }
 
     /**
@@ -91,7 +94,25 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except(['_token','_method']);
+        // dump($data);die;
+        $brand =brand::find($id);
+        $brand->brand_name = $data['bname'];
+        $brand->brand_is_show = $data['bstatus'];
+        $brand->brand_describlle = $data['bcontent'];
+        if($request->hasFile('blogo')){
+            $profile = $request->file('blogo');
+            $res = $profile->store('images'); //执行上传
+            $brand->brand_logo = $res;
+        }
+        $res = $brand->save();
+
+        if($res){
+            return back()->with('success','修改成功');
+        }else{
+            return back()->with('error','修改失败');
+        }
+
     }
 
     /**
@@ -102,6 +123,13 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        
+        $data = Brand::destroy($id);
+        if($data){
+            return back()->with('success','删除成功');
+        }else{
+            return back()->with('error','删除失败');
+        }
     }
 }

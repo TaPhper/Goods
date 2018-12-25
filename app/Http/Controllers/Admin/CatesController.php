@@ -108,7 +108,7 @@ class CatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-         dump($id);
+        
          // 检测当前分类 下是否有 子分类
         $child_data = DB::table('type')->where('parent_id',$id)->first();
         if($child_data){
