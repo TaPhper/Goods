@@ -24,8 +24,15 @@ Route::get('admin/login','Admin\IndexController@login');
 
 //后台用户管理   叶尚君25-40
 Route::resource('admin/user','Admin\UsersController');
-
-
+// 后台订单管理
+Route::resource('admin/indent','Admin\IndentsController');
+// 后台单据管理
+Route::get('/admin/Order/take','Admin\OrderController@take');
+Route::get('/admin/Order/sales','Admin\OrderController@sales');
+Route::get('/admin/Order/tuihuo/{id}','Admin\OrderController@tuihuo');
+Route::get('/admin/Order/deliver','Admin\OrderController@deliver');
+Route::get('/admin/Order/single','Admin\OrderController@Single');
+Route::get('/admin/Order/tuikuan/{id}','Admin\OrderController@tuikuan');
 
 
 
