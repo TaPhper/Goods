@@ -69,7 +69,7 @@
             <dd><a href="/admin/goods">商品列表</a></dd>
             <dd><a href="shangpinleixing_list.html">商品类型</a></dd>
             <dd><a href="tianjiashuxing.html">商品属性</a></dd>
-            <dd><a href="shangpinhuishouzhan.html">商品回收站</a></dd>
+            <dd><a href="/admin/goods_show">商品回收站</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
 
