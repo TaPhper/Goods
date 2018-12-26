@@ -17,7 +17,7 @@
         <div class="right container">
             <a href="/admin/cates/index/create" id="xg_btn" class="btn03">添加分类</a>
             <!--detail start-->
-            <div class="co-detail clearfix" style="width:82%;margin-left: 200px">
+            <div class="co-detail clearfix" style="width:85%;margin-left: 205px">
                 <table class="tablelist" border="0" cellpadding="0" cellspacing="0">
                     <thead>
                     <tr>
@@ -34,17 +34,17 @@
                     <tr>
 
                         <td>{{ $v->type_id }}</td>
-                        <td>{{ $v->type_name }}</td>
+                        <td style="text-align: left;">{{ $v->type_name }}</td>
                         <td>{{ $v->parent_id }} </td>
                         <td>{{ $v->p_path }} </td>
                         <td>
                              <form style="display: inline-block;" method="post" action="/admin/cates/index/{{ $v->type_id }}">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <input type="submit" value="删除"  >
+                            <input type="submit" value="删除" class="btn btn-danger"  >
             </form>
-                              <a href="/admin/cates/index/{{$v->type_id}}/edit">修改</a>
-                              <a href="/admin/cates/index/create/{{ $v->type_id}}">添加子分类</a>
+                              <a href="/admin/cates/index/{{$v->type_id}}/edit" class="btn btn-warning">修改</a>
+                              <a href="/admin/cates/index/create/{{ $v->type_id}}" class="btn btn-info">添加子分类</a>
 
                          </td>
                        

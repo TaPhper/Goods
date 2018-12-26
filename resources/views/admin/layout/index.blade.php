@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
   <script type="text/javascript" src="/admin/js/jquery.js"></script>
   <script type="text/javascript" src="/admin/js/js.js"></script>
+  <script type="text/javascript" src="/admin/js/area.js"></script>
+ 
 </head>
 
 <body>
@@ -67,7 +69,11 @@
             <dd><a href="/admin/cates/index" >浏览类别</a></dd>
             
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
-
+        </dl>
+         <dl class="dl_list dl_3">
+          <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">发货地址管理</a></dt><!--打开状态替换close为open-->
+          <dd><a href="/admin/addr/create" >添加发货地址</a></dd>
+          <dd><a href="/admin/addr" >发货地址列表</a></dd>
         </dl>
     </div>
 	</div>

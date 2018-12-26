@@ -15,8 +15,8 @@ class CatesController extends Controller
         $data = DB::table('type')->select('*',DB::raw("concat(p_path,',',type_id) as paths"))->orderBy('paths','asc')->get();
         foreach ($data as $key => $value) {
             // 统计， 出现的次数
-            $n = substr_count($value->p_path, ',');
-            $data[$key]->type_name = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', $n).'|---'.$value->type_name;
+            $n = substr_count($value->p_path,',');
+            $data[$key]->type_name = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$n).'|---'.$value->type_name;
         }
         return $data;
     }

@@ -42,7 +42,8 @@ Route::resource('admin/user','Admin\UsersController');
 Route::resource('/admin/goods','Admin\GoodsController');
 //后台品牌管理
 Route::resource('/admin/brand','Admin\BrandController');
-
+//后台收货地址管理
+Route::resource('/admin/addr','Admin\AddrController');
 
 
 

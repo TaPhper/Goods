@@ -64,9 +64,7 @@
     
   </div>
 </div>
-<div class="hidden">
-                  {{csrf_field()}}
-</div> 
+
 
 
 @endsection
