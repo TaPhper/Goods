@@ -5,8 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Goods后台管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
-  <script type="text/javascript" src="/admin/js/jquery.js"></script>
-  <script type="text/javascript" src="/admin/js/js.js"></script>
+<script type="text/javascript" src="/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/admin/js/js.js"></script>
+<link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/custom.js"></script>
+<script src="/admin/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/admin/js/bootstrap-datetimepicker.zh-CN.js"></script>
+</head>>
 </head>
 
 <body>
@@ -46,6 +52,11 @@
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
         <dl class="dl_list">
+            <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">订单管理</a></dt><!--打开状态替换close为open-->
+            <dd><a href="/admin/indent" >订单列表</a></dd>
+            <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
+        </dl>
+        <dl class="dl_list">
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">商品管理</a></dt><!--打开状态替换close为open-->
             <dd><a href="/admin/goods/create">添加商品</a></dd>
             <dd><a href="/admin/goods">商品列表</a></dd>
@@ -68,6 +79,13 @@
             
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
 
+        </dl>
+        <dl class="dl_list">
+            <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">单据管理</a></dt><!--打开状态替换close为open-->
+            <dd><a href="/admin/Order/take" >收货单</a></dd>
+            <dd><a href="/admin/Order/sales" >退款单</a></dd>
+            <dd><a href="/admin/Order/single" >退款申请列表</a></dd>
+            <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
     </div>
 	</div>

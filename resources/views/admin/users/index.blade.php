@@ -55,12 +55,8 @@
           <b><p class="cur_num">当前数据中{{$count}}条!</b>
           
           <!--分页 start-->
-          <div class="pages">
-            <div class="pages-btn">
-              <div class="num-btn">
-              	{{ $data->links() }}
-              </div>
-            </div>
+          <div class="pages ">
+              {{ $data->links() }}              	
           </div>
           <!--分页 end-->
       </div>
