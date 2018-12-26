@@ -40,6 +40,9 @@ Route::resource('admin/user','Admin\UsersController');
 
 //后台商品管理   王润朗  41-50
 Route::resource('/admin/goods','Admin\GoodsController');
+//商品回收站(软删除)
+Route::get('/admin/goods_show','Admin\GoodsController@goods_show');
+Route::get('/admin/goods/delete/{id}','Admin\GoodsController@delete');
 //后台品牌管理
 Route::resource('/admin/brand','Admin\BrandController');
 

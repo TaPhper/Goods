@@ -4,40 +4,34 @@
   <div class="chuda_co" id="container" >
   <div class="co-box">
     <div class="title">
-      <h4>商品管理>>商品列表</h4>
+      <h4>商品管理>>商品回收站</h4>
     </div>
     <div class="right container" style="width:83%;margin-left:260px;"> 
-    	<form action="/admin/goods" method="get">
+    	
       <div class="custom-info">
           <div class="info-box">
             <ul>
               <li>
                 <label>商品名称：</label>
-                <input type="text" class="w100" name="gname">
+                <input type="text" class="w100">
               </li>
               <li>
                 <label>所属分类：</label>
-                <select class="w100" name="gcates">
+                <select class="w100">
                   <option>请选择</option>
-                  @foreach ($cates as $k=>$v)
-                       <option value="{{$v->type_id}}">{{ $v->type_name }}</option>
-                  @endforeach
                 </select>
               </li>
               <li>
                 <label>商品状态：</label>
-                <select class="w100" name="ground">
+                <select class="w100">
                   <option>请选择</option>
-                  <option value="0">上架</option>
-                  <option value="1">下架</option>
                 </select>
               </li>
               
-              <li><input type="submit"  value="查询" class="btn01"></li>
+              <li><a class="btn01">查询</a></li>
             </ul>
           </div>
       </div>
-        </form>
       <!--detail start-->
       <div class="co-detail clearfix" style=""> 
         <table class="tablelist" border="0" cellpadding="0" cellspacing="0">
@@ -76,24 +70,21 @@
                 <td>{{ $v->is_hot == 0 ? '否' : '是'}}</td>
                 <td>
                      
-                    <form action="/admin/goods/{{$v->goods_id}}" method="post" style="display:inline-block;">
-                   {{csrf_field()}}
-                   {{method_field('DELETE')}}
-                   <button class="btn btn-danger">删除</button> 
+                    <form action="/admin/goods/{{$v->goods_id}}" method="get" style="display:inline-block;">
+                   <button class="btn btn-danger">恢复</button> 
+
+                  <!--  <form action="/admin/goods/delete/{{$v->goods_id}}" method="get" style="display:inline-block;">
+                   <button class="btn btn-danger">永久删除</button> -->
+                   <a href="/admin/goods/delete/{{$v->goods_id}}"  class="btn btn-danger">永久删除</a> 
                </form>
-                      <a href="/admin/goods/{{$v->goods_id}}/edit" class="btn btn-info">修改</a>
+                    
                   
                 </td>
               
               </tr>
              @endforeach
           </table>
-      
-          
-          <!--分页 start-->
-          <div class="pages ">
-              {{ $goods->links() }}                
-          </div>
+            
           <!--分页 end-->
 <!--分页 end-->
 </div>
