@@ -17,7 +17,7 @@
 			        <li>
 			          <label>所属分类：</label>
 
-			          <select class="w100" name="type_id">
+			          <select class="w200" name="type_id">
 			            <option>请选择</option>
 			              @foreach ($goods as $k=>$v)
 			                 <option value="{{ $v->type_id }}">{{ $v->type_name }}</option>

@@ -9,7 +9,7 @@ class Goods extends Model
 {
 	use SoftDeletes;
     protected $table = 'goods';
-    protected $primaryKey = 'goods_id';
+    protected $primaryKey ='goods_id';
 
     public function goodsbrands()
     {

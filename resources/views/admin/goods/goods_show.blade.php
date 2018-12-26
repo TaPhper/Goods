@@ -63,19 +63,26 @@
                 <td>{{$v->goodsbrands->brand_name}}
                 </td>
 
-                 <td><img src="/uploads/{{$v->goods_img }}" width="50"></td>
+                 <td>
+                  <img src="/uploads/{{$v->goods_img }}" width="50" height="60">
+                 </td>
                   <td>{{ $v->market_price }}</td>
                 <td>{{ $v->sales_grice }}</td>
                 <td>{{ $v->is_ground == 0 ? '上架' : '下架'}}</td>
                 <td>{{ $v->is_hot == 0 ? '否' : '是'}}</td>
                 <td>
                      
-                    <form action="/admin/goods/{{$v->goods_id}}" method="get" style="display:inline-block;">
-                   <button class="btn btn-danger">恢复</button> 
+                <form action="/admin/goods/{{$v->goods_id}}" method="get" style="display:inline-block;">
+                   <button class="btn btn-warning">恢复</button> 
 
                   <!--  <form action="/admin/goods/delete/{{$v->goods_id}}" method="get" style="display:inline-block;">
                    <button class="btn btn-danger">永久删除</button> -->
-                   <a href="/admin/goods/delete/{{$v->goods_id}}"  class="btn btn-danger">永久删除</a> 
+               </form>
+               <form action="/admin/goods/delete/{{$v->goods_id}}" method="post" style="display: inline-block;">
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
+                  <input type="submit" name="" value="永久刪除" class="btn btn-danger">
+
                </form>
                     
                   

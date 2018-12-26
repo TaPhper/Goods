@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Brand;
 use App\Http\Controllers\Admin\CatesController;
 use  App\Models\Admin\Goods;
+use  App\Models\Admin\Cates;
 use DB;
 class GoodsController extends Controller
 {
@@ -42,8 +43,8 @@ class GoodsController extends Controller
     public function create()
     {     
         $data=Brand::all();
-
-            return view('admin.goods.create',['data'=>$data,'goods'=>CatesController::getCates()]);
+        $goods =Cates::where('parent_id',0)->get();
+        return view('admin.goods.create',['data'=>$data,'goods'=>$goods]);
     }
 
     /**
@@ -94,7 +95,7 @@ class GoodsController extends Controller
         ->restore();
 
          if($res){
-            return redirect('/admin/goods')->with('success','恢复成功');
+            return back()->with('success','恢复成功');
          }else{
             return back()->with('error','恢复失败');
          }
@@ -111,7 +112,8 @@ class GoodsController extends Controller
     {
            $data=Brand::all();
           $datas=Goods::find($id);
-        return view('admin.goods.edit',['data'=>$data,'datas'=>$datas,'goods'=>CatesController::getCates()]);
+          $goods =Cates::where('parent_id',0)->get();
+        return view('admin.goods.edit',['data'=>$data,'datas'=>$datas,'goods'=>$goods]);
     }
 
     /**
@@ -124,12 +126,8 @@ class GoodsController extends Controller
     public function update(Request $request, $id)
     {
          $data=$request->except(['_method','_token']);
-            if($request->hasFile('profile')){
-            $profile = $request->file('profile');
-            $res = $profile->store('images'); 
-           }
 
-          $goods = Goods::find($id);
+            $goods = Goods::find($id);
             $goods->gname = $data['gname'];
             $goods->type_id = $data['type_id'];
             $goods->brand_id = $data['brand_id'];
@@ -138,7 +136,13 @@ class GoodsController extends Controller
             $goods->is_ground = $data['gstatus'];
             $goods->is_hot = $data['ghot'];
             $goods->is_new = $data['gspecial'];
-            $goods->goods_img = $res;
+
+            if($request->hasFile('profile')){
+                $profile = $request->file('profile');
+                $path = $profile->store('images'); 
+                $goods->goods_img = $path;
+            }
+            
             $res = $goods->save();
 
          if($res){
@@ -181,10 +185,16 @@ class GoodsController extends Controller
 
     public function delete($id)
     {
-         // dump($id);
-        $res= Goods::destroy($id);
-        // dump($res);die;
-        // dump($res->forceDelete());
+    
+       $data = Goods::onlyTrashed()->find($id);
+       
+       $res=$data->forceDelete();
+       if($res){
+        return back()->with('success','刪除成功');
+       }else{
+        return back()->with('error','刪除失敗');
+       }
+
     }
 
 }

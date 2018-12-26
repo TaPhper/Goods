@@ -1,5 +1,4 @@
-
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,7 +17,7 @@
 <script src="/admin/js/custom.js"></script>
 <script src="/admin/js/bootstrap-datetimepicker.min.js"></script>
 <script src="/admin/js/bootstrap-datetimepicker.zh-CN.js"></script>
-</head>>
+</head>
 
 </head>
 
@@ -67,8 +66,7 @@
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">商品管理</a></dt><!--打开状态替换close为open-->
             <dd><a href="/admin/goods/create">添加商品</a></dd>
             <dd><a href="/admin/goods">商品列表</a></dd>
-            <dd><a href="shangpinleixing_list.html">商品类型</a></dd>
-            <dd><a href="tianjiashuxing.html">商品属性</a></dd>
+           
             <dd><a href="/admin/goods_show">商品回收站</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
