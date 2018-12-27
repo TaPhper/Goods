@@ -4,15 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Goods后台管理</title>
 <link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
-
-  <script type="text/javascript" src="/admin/js/jquery.js"></script>
-  <script type="text/javascript" src="/admin/js/js.js"></script>
-  <script type="text/javascript" src="/admin/js/area.js"></script>
- 
-
 <script type="text/javascript" src="/admin/js/jquery.js"></script>
 <script type="text/javascript" src="/admin/js/js.js"></script>
-<link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
+<script type="text/javascript" src="/admin/js/area.js"></script>
 <script src="/admin/js/bootstrap.min.js"></script>
 <script src="/admin/js/custom.js"></script>
 <script src="/admin/js/bootstrap-datetimepicker.min.js"></script>
@@ -32,6 +26,32 @@
       <span class="txt">欢迎admin登录，当前身份：超级管理员</span>
       <a class="exit">退出</a>      
     </div>
+    <p class="time"><b id="time"></b></p>
+      <script type="text/javascript">
+    
+    function run(){
+      var d = new Date;
+      var n = d.getFullYear();
+      var y = d.getMonth()+1;
+      var r = d.getDate();
+      var s = d.getHours();
+      var f = d.getMinutes();
+      var m = d.getSeconds();
+      if(m < 10){
+        m = '0'+m;
+      }
+      if(s < 10){
+        s = '0'+s;
+      }
+      var str = n+'-'+y+'-'+r+'&nbsp;&nbsp;'+s+':'+f+':'+m;
+      var content = document.getElementById('time');
+      content.innerHTML = str;
+    }
+    run();
+
+    setInterval("run()",1000);
+    
+  </script>
   </div>
   </div>
 </div>
@@ -96,6 +116,7 @@
             <dd><a href="/admin/Order/single" >退款申请列表</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
+
     </div>
 	</div>
 	<div style="float:right; width:82%; height:1000px;" >

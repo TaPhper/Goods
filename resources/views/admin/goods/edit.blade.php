@@ -27,8 +27,8 @@
 			        </li>
 			        <li>
 			          <label>是否上架：</label>  
-			          <input type="radio" name="gstatus" value="0" {{$datas->is_ground == 0 ? 'checked' : ''}}>上架
-			          <input type="radio" name="gstatus" value="1" {{$datas->is_ground == 1 ? 'checked' : ''}}>下架
+			          &nbsp;&nbsp;&nbsp;<input type="radio" name="gstatus" value="0" {{$datas->is_ground == 0 ? 'checked' : ''}}>上架
+			          &nbsp;&nbsp; <input type="radio" name="gstatus" value="1" {{$datas->is_ground == 1 ? 'checked' : ''}}>下架
 			        </li>
 			        <li>
 			          <label>是否热卖商品：</label>
