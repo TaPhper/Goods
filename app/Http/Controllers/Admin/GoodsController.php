@@ -25,23 +25,24 @@ class GoodsController extends Controller
            $ground = $request->input('ground') =='请选择'? '' : $request->input('ground');
 
            if($request->input('gcates') =='请选择'){
-               $data = Goods::where('gname','like','%'.$gname.'%')->where('is_ground','like','%'.$ground.'%')->paginate();
+
+                $data = Goods::where('gname','like','%'.$gname.'%')
+                       ->where('is_ground','like','%'.$ground.'%')
+                       ->paginate();
                 $cates = DB::table('type')->where('parent_id','=','0')->get();
 
-
-
-           
-                 return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
+                return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
            }else{
-                 $data = Goods::where('gname','like','%'.$gname.'%')->Where('type_id',$gcates)->Where('is_ground','like','%'.$ground.'%')->paginate(3);
-         $cates = DB::table('type')->where('parent_id','=','0')->get();
+                $data = Goods::where('gname','like','%'.$gname.'%')
+                             ->Where('type_id',$gcates)
+                             ->Where('is_ground','like','%'.$ground.'%')
+                             ->paginate(5);
 
-
-
-           
-        return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
+                $cates = DB::table('type')->where('parent_id','=','0')->get();  
+                return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
            }
-
+            $cates = DB::table('type')->where('parent_id','=','0')->get();
+            return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
 
            // $ground = $request->input('ground','');
 
