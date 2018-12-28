@@ -13,7 +13,7 @@
             <ul>
               <li>
                 <label>商品名称：</label>
-                <input type="text" class="w100">
+                <input type="text" class="w100" >
               </li>
               <li>
                 <label>所属分类：</label>

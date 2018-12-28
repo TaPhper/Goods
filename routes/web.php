@@ -47,6 +47,7 @@ Route::get('/admin/Order/tuikuan/{id}','Admin\OrderController@tuikuan');
 
 //后台商品管理   王润朗  41-50
 Route::resource('/admin/goods','Admin\GoodsController');
+Route::resource('/admin/net','Admin\NetController');
 //商品回收站(软删除)
 Route::get('/admin/goods_show','Admin\GoodsController@goods_show');
 Route::delete('/admin/goods/delete/{id}','Admin\GoodsController@delete');

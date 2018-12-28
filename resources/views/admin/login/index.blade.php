@@ -16,15 +16,15 @@
 		<div class="login_padding">
 			<h2>用户名</h2>
 			<label>
-				<input type="text" id="username" class="txt_input txt_input2" value="">
+				<input type="text" id="username" class="txt_input txt_input2" value="" autocomplete="off">
 			</label>
 			<h2>密码</h2>
 			<label>
-				<input type="password" name="textfield2" id="userpwd" class="txt_input" >
+				<input type="password" name="textfield2" id="userpwd" class="txt_input" autocomplete="off">
 			</label>
             <h2>验证码</h2>
 			<label>
-				<input type="text" id="yzm" class="txt_input3" onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}" value="******"><img src="images/YZM.png" width="100" height="30" style=" vertical-align:middle" />
+				<input type="text" id="yzm" class="txt_input3" onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}"><img src="images/YZM.png" width="100" height="30" style=" vertical-align:middle" autocomplete="off"/>
 			</label>
 			<div class="rem_sub">
 				

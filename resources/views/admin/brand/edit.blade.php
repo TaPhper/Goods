@@ -16,7 +16,7 @@
       <ul>
         <li>
           <label>品牌名称：</label>
-          <input type="text" name="bname" class="w200 name" value="{{$data->brand_name}}">
+          <input type="text" name="bname" class="w200 name" value="{{$data->brand_name}}" autocomplete="off">
         </li>
        
         <li>

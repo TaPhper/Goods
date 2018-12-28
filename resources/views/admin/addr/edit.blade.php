@@ -11,11 +11,11 @@
     		<ul>
         		<li>
           			<label>发货地点名称：</label>
-          			<input type="text" name="ship_addr" class="w200 name" value="{{$data->ship_addr}}">
+          			<input type="text" name="ship_addr" class="w200 name" value="{{$data->ship_addr}}" autocomplete="off">
         		</li>   
 		        <li>
 		          <label>发货人姓名：</label>
-		          <input type="text" name="ship_name" class="w200 name" value="{{$data->ship_name}}">
+		          <input type="text" name="ship_name" class="w200 name" value="{{$data->ship_name}}" autocomplete="off">
 		        </li>
 		        <li>
 		          <label>性别：</label>
@@ -39,16 +39,16 @@
 		        </li>
 		        <li>
 		          <label>详细地址：</label>
-		          <input type="text" name="detailed" class="w200 name" value="{{$data->detailed}}">
+		          <input type="text" name="detailed" class="w200 name" value="{{$data->detailed}}" autocomplete="off"> 
 		        </li>
 		        <li>
 		          <label>邮箱：</label>
-		          <input type="text" name="email" class="w200 name" value="{{$data->email}}">
+		          <input type="text" name="email" class="w200 name" value="{{$data->email}}"autocomplete="off">
 		        </li>
 		        
 		        <li>
 		          <label>手机号：</label>
-		          <input type="text" name="phone" class="w200 name" value="{{$data->phone}}">
+		          <input type="text" name="phone" class="w200 name" value="{{$data->phone}}"autocomplete="off">
 		        </li>		             
 		        <li>
 		          <label>设为默认地址：</label>

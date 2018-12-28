@@ -17,7 +17,7 @@
       <ul>
         <li>
           <label>分类名称：</label>
-          <input type="text" name="type_name" class="w200 name" value="{{ $data->type_name}}">
+          <input type="text" name="type_name" class="w200 name" value="{{ $data->type_name}}" autocomplete="off">
         </li>
         <li>
           <label>所属分类：</label>

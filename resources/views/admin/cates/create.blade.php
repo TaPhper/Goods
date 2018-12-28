@@ -15,7 +15,7 @@
       <ul>
         <li>
           <label>分类名称：</label>
-          <input type="text" name="type_name" class="w200 name" value="">
+          <input type="text" name="type_name" class="w200 name" value="" autocomplete="off">
         </li>
         <li>
           <label>所属分类：</label>
