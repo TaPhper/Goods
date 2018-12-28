@@ -65,4 +65,7 @@ Route::resource('/admin/addr','Admin\AddrController');
 //类别管理   厉常建 51-60
 Route::resource('admin/cates/index','Admin\CatesController');
 Route::get('admin/cates/index/create/{id}','Admin\CatesController@create');
+//信息管理
+Route::resource('/admin/comment','Admin\CommentController');
+
 
