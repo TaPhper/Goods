@@ -11,36 +11,36 @@
 	    		<ul>
 	        		<li>
 	          			<label>用户名：</label>
-	          			<input type="text" name="user_name" class="w200 name" value=""><span></span>
+	          			<input type="text" name="user_name" class="w200 name" autocomplete=off value=""><span></span>
 	        		</li>   
 			        <li>
 			          <label>密码：</label>
-			          <input type="text" name="user_pwd" class="w200 name" value="">
+			          <input type="text" name="user_pwd" class="w200 name" autocomplete=off value="">
 			        </li>
 			        <li>
 			          <label>邮箱：</label>
-			          <input type="text" name="user_email" class="w200 name" value="">
+			          <input type="text" name="user_email" class="w200 name" autocomplete=off value="">
 			        </li>
 					<li>
 			          <label>真实姓名：</label>
-			          <input type="text" name="true_name" class="w200 name" value="">
+			          <input type="text" name="true_name" class="w200 name" autocomplete=off value="">
 			        </li>
 			        <li>
 			          <label>性别：</label>
-			          <input type="radio" name="user_sex" value="2" checked="checked">男   
+			          <input type="radio" name="user_sex" value="2" autocomplete=off checked="checked">男   
 			          <input type="radio" name="user_sex" value="1">女
 			        </li>	
 			        <li>
 			          <label>联系电话：</label>
-			          <input type="text" name="user_tel" class="w200 name" value="">
+			          <input type="text" name="user_tel" class="w200 name" autocomplete=off value="">
 			        </li>	
 			        <li>
 			          <label>家庭住址：</label>
-			          <input type="text" name="user_address" class="w200 name" value="">
+			          <input type="text" name="user_address" class="w200 name" autocomplete=off value="">
 			        </li> 
 			        <li>
 			          <label>邮编：</label>
-			          <input type="text" name="postcode" class="w200 name" value="">
+			          <input type="text" name="postcode" class="w200 name" autocomplete=off value="">
 			        </li> 
 			        <li>
 			          <label>状态：</label>
@@ -60,12 +60,15 @@
     	<script type="text/javascript">
        		$('.info-box ul li input').eq(0).blur(function(){
     			var name = $('.info-box ul li input').eq(0).val();
-    			// alert(name);
+    			
     			$.get('/admin/user/index',{'name':name},function(msg){
-    				if(msg){
-    					$('.info-box ul li input').next().html('<font style="color:red">用户名已经存在</font>');
-    				}else{
+    				// alert(msg);
+    				if(msg == 'success'){
+    					$('.info-box ul li input').next().html('<font style="color:red">用户名已经存在</font>');    					
+    				}else if(msg == 'error'){
     					$('.info-box ul li input').next().html('<font style="color:green">用户名可用</font>');
+    				}else{
+    					$('.info-box ul li input').next().html('<font style="color:red">用户名不能为空</font>');
     				}
     			},'html')
     		})

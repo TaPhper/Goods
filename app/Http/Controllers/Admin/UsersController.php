@@ -68,10 +68,16 @@ class UsersController extends Controller
      */
     public function show(Request $request)
     {
-        $name = $request->get('name');
-
-        $data = Users::where('user_name','=',$name)->first();
-        echo $data;
+        $name = $request->get('name');  
+        if(empty($name)){
+            echo '';
+        }else if(empty($data = Users::where('user_name','=',$name)->first())){
+            echo 'error';
+        }else{
+            echo 'success';
+        }
+        
+        
 
     }
 
