@@ -33,8 +33,10 @@ Route::get('/admin/Order/tuihuo/{id}','Admin\OrderController@tuihuo');
 Route::get('/admin/Order/deliver','Admin\OrderController@deliver');
 Route::get('/admin/Order/single','Admin\OrderController@Single');
 Route::get('/admin/Order/tuikuan/{id}','Admin\OrderController@tuikuan');
-
-
+// 后台员工管理
+Route::resource('admin/admins','Admin\AdminController');
+// 后台职位管理
+Route::resource('admin/character','Admin\CharacterController');
 
 
 
