@@ -116,7 +116,7 @@
             <dd><a href="/admin/Order/single" >退款申请列表</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
-<<<<<<< HEAD
+
         <dl class="dl_list">
 
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">网站管理</a></dt><!--打开状态替换close为open-->
@@ -133,13 +133,13 @@
             <dd><a href="/admin/character/create" >添加职位</a></dd>
             <dd><a href="/admin/character" >职位列表</a></dd>
 
-=======
+
 
          <dl class="dl_list">
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">信息管理</a></dt><!--打开状态替换close为open-->
             <dd><a href="/admin/comment">评价列表</a></dd>
            
->>>>>>> laravel/jian
+
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
     </div>
