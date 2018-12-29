@@ -13,18 +13,18 @@
         		</li>
         		<li>
 		            <label>职位权限：</label>
-		            <input type="checkbox" value="1" class="checkbtn"> 用户添加  
-		            <input type="checkbox" value="1" class="checkbtn"> 用户列表  
-		            <input type="checkbox" value="1" class="checkbtn"> 订单添加  
-		            <input type="checkbox" value="1" class="checkbtn"> 订单列表 
-		            <input type="checkbox" value="1" class="checkbtn"> 商品添加 
-		            <input type="checkbox" value="2" class="checkbtn"> 商品列表  
-		            <input type="checkbox" value="3" class="checkbtn"> 添加品牌  
-		            <input type="checkbox" value="4" class="checkbtn"> 品牌列表  
-		            <input type="checkbox" value="5" class="checkbtn"> 品牌删除  
-		            <input type="checkbox" value="6" class="checkbtn"> 添加分类  
-		            <input type="checkbox" value="7" class="checkbtn"> 分类列表  
-		            <input type="checkbox" value="8" class="checkbtn"> 分类删除
+		            <input type="checkbox" value="1" class="checkbtn" name="check"> 用户添加  
+		            <input type="checkbox" value="1" class="checkbtn" name="check"> 用户列表  
+		            <input type="checkbox" value="1" class="checkbtn" name="check"> 订单添加  
+		            <input type="checkbox" value="1" class="checkbtn" name="check"> 订单列表 
+		            <input type="checkbox" value="1" class="checkbtn" name="check"> 商品添加 
+		            <input type="checkbox" value="2" class="checkbtn" name="check"> 商品列表  
+		            <input type="checkbox" value="3" class="checkbtn" name="check"> 添加品牌  
+		            <input type="checkbox" value="4" class="checkbtn" name="check"> 品牌列表  
+		            <input type="checkbox" value="5" class="checkbtn" name="check"> 品牌删除  
+		            <input type="checkbox" value="6" class="checkbtn" name="check"> 添加分类  
+		            <input type="checkbox" value="7" class="checkbtn" name="check"> 分类列表  
+		            <input type="checkbox" value="8" class="checkbtn" name="check"> 分类删除
 		        </li>
 		        <li>
 		        	<label>职位描述：</label>
