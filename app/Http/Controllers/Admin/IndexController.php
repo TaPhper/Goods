@@ -13,10 +13,10 @@ class IndexController extends Controller
     	$data = Net::first();
     	return $data;
     }
+
     public function index()
     {
-    	
-    	return view('admin.index.index');
+        return view('admin.index.index');
     }
 
 
@@ -24,6 +24,8 @@ class IndexController extends Controller
     {
     	return view('admin.login.index');
     }
+
+
 
 
 }

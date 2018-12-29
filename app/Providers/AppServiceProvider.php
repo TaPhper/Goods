@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public static function boot()
     {
         View::share('common_data',IndexController::config());
     }

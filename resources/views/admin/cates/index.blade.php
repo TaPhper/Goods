@@ -14,10 +14,10 @@
         <div class="title">
             <h4>分类管理>>分类列表</h4>
         </div>
-        <div class="right container">
+
             <a href="/admin/cates/index/create" id="xg_btn" class="btn03">添加分类</a>
             <!--detail start-->
-            <div class="co-detail clearfix" style="width:85%;margin-left: 205px">
+            <div class="co-detail clearfix" style="width:100%;">
                 <table class="tablelist" border="0" cellpadding="0" cellspacing="0">
                     <thead>
                     <tr>
@@ -60,7 +60,6 @@
                
      </div>
     
-        </div>
     </div>
 </div>
 

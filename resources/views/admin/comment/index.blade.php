@@ -6,10 +6,10 @@
     <div class="title">
       <h4>信息管理>>评价列表</h4>
     </div>
-    <div class="right container">
+ 
       
       <!--detail start-->
-      <div class="co-detail clearfix" style="margin-left: 190px"> 
+      <div class="co-detail clearfix" style=""> 
         <table class="tablelist" border="0" cellpadding="0" cellspacing="0">
             <thead>
               <tr>
@@ -61,7 +61,7 @@
           <!--分页 end-->
       </div>
       <!--detail end--> 
-    </div>
+  
   </div>
 </div>
 

@@ -99,7 +99,7 @@ class NetController extends Controller
         }
         $res = $net->save();
         if($res){
-            return redirect('/admin/net')->with('success','修改成功','title','');
+            return redirect('/admin/net')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');
         }
@@ -114,6 +114,15 @@ class NetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Net::destroy($id);
+        if($res){
+            return back()->with('success','删除成功');
+        }else{
+            return back()->with('error','删除失败');
+        }
     }
+
+    
+
+   
 }

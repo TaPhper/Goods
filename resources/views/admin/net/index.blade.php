@@ -12,6 +12,7 @@
         <table class="tablelist" border="0" cellpadding="0" cellspacing="0">
             <thead>
               <tr>
+                <th>选择</th>
               	<th>网站ID</th>
               	<th>网站名称</th>
                 <th>网站标题</th>            
@@ -24,6 +25,7 @@
             	
             @foreach($data as $k=>$v)
               <tr>
+                <td><input type="radio" name="id" onclick="func({{$v->net_id}})"></td>
                 <td>{{$v->net_id}}</td>
                 <td>{{$v->net_name}}</td>
                 <td>{{$v->net_key}}</td>
@@ -41,15 +43,8 @@
                 </td>
               </tr>
             @endforeach
-             
             </tbody>
-            
           </table>
-         
-  
-          
-               
-
           <!--分页 start--> 
           <div class="pages" >
           </div>
@@ -58,4 +53,16 @@
       <!--detail end--> 
   </div>
 </div>
+<script type="text/javascript">
+  function func(id)
+  {
+     $.get('/admin/index/ajax/'+id,{},function(msg){
+        if(msg){
+          alert('设置成功')
+        }else{
+          alert('设置失败')
+        }
+     },'html')
+  }
+</script>
 @endsection
