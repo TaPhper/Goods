@@ -98,7 +98,7 @@
 <!--分页 end-->
 </div>
 <!--detail end-->
-</div>
+
 </div>
 </div>
 @endsection

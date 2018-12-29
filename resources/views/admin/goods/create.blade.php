@@ -12,7 +12,7 @@
 	      		<ul>
 	        		<li>
 	          			<label>商品名称：</label>
-	          			<input type="text" name="gname" class="w200 name" value="">
+	          			<input type="text" name="gname" class="w200 name" value="" autocomplete="off">
 	        		</li>
 			        <li>
 			          <label>所属分类：</label>
@@ -26,8 +26,8 @@
 			        </li>
 			        <li>
 			          <label>是否上架：</label>  
-			          <input type="radio" name="gstatus" value="0" checked="checked">上架
-			          <input type="radio" name="gstatus" value="1">下架
+			          &nbsp;&nbsp;&nbsp;<input type="radio" name="gstatus" value="0" checked="checked">上架
+			          &nbsp;&nbsp; <input type="radio" name="gstatus" value="1">下架
 			        </li>
 			        <li>
 			          <label>是否热卖商品：</label>
@@ -42,11 +42,11 @@
                    
                     <li>
                         <label>商品原价：</label>
-                        <input type="text" name="gprice" class="w200 name" value="">
+                        <input type="text" name="gprice" class="w200 name" value="" autocomplete="off">
                     </li>
                     <li>
                         <label>注销价格：</label>
-                        <input type="text" name="gprice_money" class="w200 name" value="">
+                        <input type="text" name="gprice_money" class="w200 name" value="" autocomplete="off">
                     </li>
 			        <li>
 			          <label>商品品牌：</label>

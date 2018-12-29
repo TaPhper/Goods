@@ -17,22 +17,41 @@ class GoodsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-          // dump($request->all());
-           $gname = $request->input('gname','');
+    {  
+              //多条件搜索查询
+        
+           $gname = empty($request->input('gname')) ? '' : $request->input('gname');
+           $gcates = $request->input('gcates') =='请选择' ? '' : $request->input('gcates');
+           $ground = $request->input('ground') =='请选择'? '' : $request->input('ground');
+
+           if($request->input('gcates') =='请选择'){
+
+                $data = Goods::where('gname','like','%'.$gname.'%')
+                       ->where('is_ground','like','%'.$ground.'%')
+                       ->paginate();
+                $cates = DB::table('type')->where('parent_id','=','0')->get();
+
+                return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
+           }else{
+                $data = Goods::where('gname','like','%'.$gname.'%')
+                             ->Where('type_id',$gcates)
+                             ->Where('is_ground','like','%'.$ground.'%')
+                             ->paginate(5);
+
+                $cates = DB::table('type')->where('parent_id','=','0')->get();  
+                return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
+           }
+            $cates = DB::table('type')->where('parent_id','=','0')->get();
+            return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
+
            // $ground = $request->input('ground','');
 
 
 
-        $data = Goods::where('gname','like','%'.$gname.'%')->paginate(3);
+          // $data = Goods::where('gname','like','%'.$gname.'%')->where('type_id','like','%'.$gcates.'%')->where('is_ground','like','%'.$ground.'%')->paginate();
 
          // $cates = DB::table('type')->get(); 
-          $cates = DB::table('type')->where('parent_id','=','0')->get();
-
-
-
-           
-        return view('admin.goods.index',['goods'=>$data,'cates'=>$cates]);
+          
     }
 
     /**
@@ -83,7 +102,7 @@ class GoodsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 回收站数据恢复
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -173,7 +192,10 @@ class GoodsController extends Controller
 
 
     }
-
+     /**
+      * 回收站
+      *
+      */
     public function goods_show()
     {
 
@@ -182,7 +204,9 @@ class GoodsController extends Controller
         $goods=Goods::onlyTrashed()->get();
         return view ('admin.goods.goods_show',['goods'=>$goods,'cates'=>$cates]);
     }
-
+     /**
+      *  回收站永久删除
+      */
     public function delete($id)
     {
     

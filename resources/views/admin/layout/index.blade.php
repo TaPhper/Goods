@@ -2,17 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Goods后台管理</title>
+<title>{{$common_data['net_key'] or 'lamp'}}</title>
 <link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
-
-  <script type="text/javascript" src="/admin/js/jquery.js"></script>
-  <script type="text/javascript" src="/admin/js/js.js"></script>
-  <script type="text/javascript" src="/admin/js/area.js"></script>
- 
-
 <script type="text/javascript" src="/admin/js/jquery.js"></script>
 <script type="text/javascript" src="/admin/js/js.js"></script>
-<link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
+<script type="text/javascript" src="/admin/js/area.js"></script>
 <script src="/admin/js/bootstrap.min.js"></script>
 <script src="/admin/js/custom.js"></script>
 <script src="/admin/js/bootstrap-datetimepicker.min.js"></script>
@@ -23,8 +17,8 @@
 
 <body>
 <div class="wrap">
-	<div class="whole-top">
-    <p class="name"><img src="/admin/images/logobig.png" />Goods 后台管理系统</p>
+	<div class="whole-top">  
+    <p class="name"><img src="/uploads/{{$common_data['net_logo']}}" style="margin-top:-10px;border-radius:20px 200px;" width="235" height="90" onerror="this.src='/admin/images/logobig.png'" />{{$common_data['net_name']}}后台管理系统</p>
 
     <div class="login">
     <!--登录后 start-->
@@ -32,6 +26,32 @@
       <span class="txt">欢迎admin登录，当前身份：超级管理员</span>
       <a class="exit">退出</a>      
     </div>
+    <p class="time"><b id="time"></b></p>
+      <script type="text/javascript">
+    
+    function run(){
+      var d = new Date;
+      var n = d.getFullYear();
+      var y = d.getMonth()+1;
+      var r = d.getDate();
+      var s = d.getHours();
+      var f = d.getMinutes();
+      var m = d.getSeconds();
+      if(m < 10){
+        m = '0'+m;
+      }
+      if(s < 10){
+        s = '0'+s;
+      }
+      var str = n+'-'+y+'-'+r+'&nbsp;&nbsp;'+s+':'+f+':'+m;
+      var content = document.getElementById('time');
+      content.innerHTML = str;
+    }
+    run();
+
+    setInterval("run()",1000);
+    
+  </script>
   </div>
   </div>
 </div>
@@ -96,7 +116,13 @@
             <dd><a href="/admin/Order/single" >退款申请列表</a></dd>
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
+
         <dl class="dl_list">
+
+            <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">网站管理</a></dt><!--打开状态替换close为open-->
+            <dd><a href="/admin/net" >网站配置</a></dd>
+           
+
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">员工管理</a></dt><!--打开状态替换close为open-->
             <dd><a href="/admin/admins/create" >添加员工</a></dd>
             <dd><a href="/admin/admins" >员工列表</a></dd>
@@ -106,6 +132,14 @@
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">职位管理</a></dt><!--打开状态替换close为open-->
             <dd><a href="/admin/character/create" >添加职位</a></dd>
             <dd><a href="/admin/character" >职位列表</a></dd>
+
+
+
+         <dl class="dl_list">
+            <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">信息管理</a></dt><!--打开状态替换close为open-->
+            <dd><a href="/admin/comment">评价列表</a></dd>
+           
+
             <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
         </dl>
     </div>

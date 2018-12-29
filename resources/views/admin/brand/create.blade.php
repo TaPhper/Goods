@@ -13,7 +13,7 @@
       <ul>
         <li>
           <label>品牌名称：</label>
-          <input type="text" name="bname" class="w200 name" value="">
+          <input type="text" name="bname" class="w200 name" value="" autocomplete="off">
         </li>
        
         <li>
@@ -28,7 +28,7 @@
         </li>
         <li>
           <label>品牌描述：</label>
-          <textarea name="bcontent"></textarea>
+          <textarea name="bcontent" ></textarea>
         </li>
       </ul>
     </div>

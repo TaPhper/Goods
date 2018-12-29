@@ -49,6 +49,9 @@ Route::resource('admin/character','Admin\CharacterController');
 
 //后台商品管理   王润朗  41-50
 Route::resource('/admin/goods','Admin\GoodsController');
+//网站配置
+Route::resource('/admin/net','Admin\NetController');
+Route::get('/admin/index/ajax/{id}','Admin\IndexController@ajax');
 //商品回收站(软删除)
 Route::get('/admin/goods_show','Admin\GoodsController@goods_show');
 Route::delete('/admin/goods/delete/{id}','Admin\GoodsController@delete');
@@ -64,4 +67,7 @@ Route::resource('/admin/addr','Admin\AddrController');
 //类别管理   厉常建 51-60
 Route::resource('admin/cates/index','Admin\CatesController');
 Route::get('admin/cates/index/create/{id}','Admin\CatesController@create');
+//信息管理
+Route::resource('/admin/comment','Admin\CommentController');
+
 
