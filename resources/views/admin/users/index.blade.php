@@ -41,12 +41,12 @@
                 <td>冻结</td>
                 @endif
                 <td style="width:13%">
-					<a class="btn btn-warning" href="/admin/user/{{ $v->user_id }}/edit">修改密码</a>
-					<form action="/admin/user/{{ $v->user_id }}" method="post" style="display: inline-block;">
-						{{ csrf_field() }}
-						{{ method_field('DELETE') }}
-						<button class="btn btn-danger" >删除</button>
-					</form>
+        					<a class="btn btn-warning" href="/admin/user/{{ $v->user_id }}/edit">修改密码</a>
+        					<form action="/admin/user/{{ $v->user_id }}" method="post" style="display: inline-block;">
+        						{{ csrf_field() }}
+        						{{ method_field('DELETE') }}
+        						<button class="btn btn-danger" >删除</button>
+        					</form>
                 </td>
               </tr>
             @endforeach

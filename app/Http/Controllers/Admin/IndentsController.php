@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Indents;
 use App\Models\Users;
+use App\Models\Admin\Admins;
 class IndentsController extends Controller
 {
     /**
@@ -32,7 +33,13 @@ class IndentsController extends Controller
      */
     public function create()
     {
-        //
+        $admin = Admins::where('admin_id','=',4)->get();
+        session(['admin_login' => $admin]);
+
+        Config::set('app.title','hello');
+        // dd(date('Y-m-d H:i:s',time()));  
+        // 加载模版
+        return view('welcome');
     }
 
     /**

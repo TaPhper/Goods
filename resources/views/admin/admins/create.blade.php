@@ -47,10 +47,9 @@
               <label>员工职位：</label>
               <select class="w100" name="admin_post">
                 <option >请选择</option>
-                <option value="3">订单管理员</option>
-                <option value="2">仓库管理员</option>
-                <option value="1">发货员</option>
-                <option value="0">超级管理员</option>
+                @foreach($power as $k=>$v)
+                <option value="{{ $v->power_id }}" >{{ $v->power_name }}</option>
+                @endforeach
               </select>
             </li>         
           </ul>

@@ -92,7 +92,7 @@
           
           <!--分页 start-->
           <div class="pages ">
-              {{ $goods->links() }}                
+              {{ $goods->appends(['gcates' => $gcates])->links() }}               
           </div>
           <!--分页 end-->
 <!--分页 end-->
