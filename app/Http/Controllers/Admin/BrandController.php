@@ -41,7 +41,6 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-      
 
         // 检测文件上传
         if($request->hasFile('blogo')){
@@ -57,7 +56,7 @@ class BrandController extends Controller
 
             return redirect('/admin/brand')->with('success','添加成功');
          }else{
-            return back()->with('error','请上传文件');
+            return back()->with('error','文件上传失败或文件太大');
          }
     }
 
@@ -94,6 +93,7 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dump($request->file('blogo'));die;
         $data = $request->except(['_token','_method']);
         // dump($data);die;
         $brand =brand::find($id);

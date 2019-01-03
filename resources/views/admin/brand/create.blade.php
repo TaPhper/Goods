@@ -24,7 +24,7 @@
       
         <li>
           <label>品牌Logo：</label>
-          <input type="file" class="filebtn" name="blogo" value="" style="width:200px;">
+          <input type="file"  name="blogo" value="" style="width:200px;">
         </li>
         <li>
           <label>品牌描述：</label>
