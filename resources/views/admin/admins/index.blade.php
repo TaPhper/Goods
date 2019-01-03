@@ -28,7 +28,7 @@
                 {{ $v->admin_sex == 1 ? '女' : '男' }}
                 </td>
                 <td>
-                {{ $v->admin_post  }}
+                {{ $v->adminpower->power_name  }}
                 </td>
                 <td>{{ $v->admin_phone }}</td>
                 <td>{{ $v->admin_status == 1 ? '正常' : '冻结' }}</td>

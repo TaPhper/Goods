@@ -4,6 +4,7 @@
   <div class="chuda_co" id="container">
 	    	<div class="title">
 	      		<h4>首页</h4>
+	      		<!-- {{session()->get('login_admin')}} -->
 	    	</div>
 	        <div class="right">
 			<div class="welinfo">
