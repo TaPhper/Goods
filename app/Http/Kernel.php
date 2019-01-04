@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'addr' => \App\Http\Middleware\addr::class,
         'net' => \App\Http\Middleware\Net::class,
         'login' => \App\Http\Middleware\login::class,
+        'slide' => \App\Http\Middleware\Slide::class,
     ];
 }

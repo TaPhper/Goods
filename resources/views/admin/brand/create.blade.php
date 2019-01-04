@@ -34,7 +34,7 @@
     </div>
     <div class="preview">
     	<input type="submit" name=""  value="确定" class="preview-btn btn01">
-    	<input type="reset" name="" value="取消" class="preview-btn btn01">
+    	<a href="/admin/brand" class="preview-btn btn01">取消</a>
     </div>
   </div>
 </form>

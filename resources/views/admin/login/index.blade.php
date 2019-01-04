@@ -25,7 +25,17 @@
 			</label>
             <h2>验证码</h2>
 			<label>
-				<input type="text" id="yzm" class="txt_input3" onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}"><img src="images/YZM.png" width="100" height="30" style=" vertical-align:middle" autocomplete="off"/>
+				<input type="text" id="yzm" class="txt_input3" autocomplete=off class="form-control {{$errors->has('captcha')?'parsley-error':''}}" name="captcha" >
+				<img src="{{captcha_src()}}"  onclick="this.src='{{captcha_src()}}'+Math.random()" style=" vertical-align:middle">
+			    @if($errors->has('captcha'))
+			        <div class="col-md-12">
+			            <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
+			        </div>
+			    @endif
+			    @if (session('error'))
+			        <p class="text-danger text-left"><strong>{{ session('error') }}</strong></p>
+
+			    @endif
 			</label>
 			<div class="rem_sub">
 				<label>

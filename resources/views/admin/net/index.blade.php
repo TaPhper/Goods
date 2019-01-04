@@ -47,6 +47,7 @@
           </table>
           <!--分页 start--> 
           <div class="pages" >
+              {{ $data->links() }}               
           </div>
           <!--分页 end-->
       </div>

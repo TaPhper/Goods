@@ -64,7 +64,7 @@
 	      		</ul>
 	      		<p class="preview">
 	      			<input type="submit" value="确定" class="preview-btn btn01">
-	      			<input type="reset" value="取消" class="cancel-btn btn01"> </p>
+	      			<a href="/admin/goods" class="preview-btn btn01">取消</a>
       		</div>    	  
 
       		<!-- 添加商品详情相册 -->
