@@ -26,8 +26,9 @@
 				<ul class="message-l">
 					<div class="topMessage">
 						<div class="menu-hd">
-							<a href="login.html" target="_top" class="h" style="color:red;">亲，请登录</a>
-							<a href="register.html" target="_top">免费注册</a>
+
+							<a href="login.html" target="_top" class="h">亲，请登录</a>
+							<a href="/home/register" target="_top">免费注册</a>
 						</div>
 					</div>
 				</ul>

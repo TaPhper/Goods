@@ -100,9 +100,9 @@ class IndentsController extends Controller
         // 执行删除
         $res = $indents->delete();
         if($res){
-            return redirect('admin/indent')->with('success','添加成功');
+            return redirect('admin/indent')->with('success','删除成功');
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','删除失败');
         }
     }
 }

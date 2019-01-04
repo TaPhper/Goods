@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Powers;
+use App\Models\Admin\Admins;
 use Illuminate\Support\Facades\Hash;
 class PowerController extends Controller
 {
@@ -64,29 +65,35 @@ class PowerController extends Controller
         $data['power_usable'] = implode("", $arr);
 
         if($data['power_name'] == '经理'){
-            $data['power_usable'] = '0,1,2,3,4,5,6,7,8,9';
+            $data['power_usable'] = $data['power_usable'];
         }else if($data['power_name'] == '客服'){
-            $data['power_usable'] = '0';
+            $data['power_usable'] = $data['power_usable'];
         }else if($data['power_name'] == '订单'){
-            $data['power_usable'] = '1,2';
+            $data['power_usable'] = $data['power_usable'];
         }else if($data['power_name'] == '商品'){
-            $data['power_usable'] = '3,4,5';
+            $data['power_usable'] = $data['power_usable'];
         }else if($data['power_name'] == '自定义'){
             return back()->with('error','职位不能为自定义');
 
         }
+        // 验证
+        $power = Powers::where('power_name','=',$data['power_name'])->first();
 
-        // 执行添加
-        $power = new Powers;
-        $power->power_name = $data['power_name'];
-        $power->power_describe = $data['power_describe'];
-        $power->power_usable = $data['power_usable'];
-        $res = $power->save();
+        if(!$power){
+            // 执行添加
+            $power = new Powers;
+            $power->power_name = $data['power_name'];
+            $power->power_describe = $data['power_describe'];
+            $power->power_usable = $data['power_usable'];
+            $res = $power->save();
 
-        if($res){
-            return redirect('/admin/power')->with('success','添加成功');
+            if($res){
+                return redirect('/admin/power')->with('success','添加成功');
+            }else{
+                return back()->with('error','添加失败');
+            }
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','已拥有此权限');
         }
     }
 
@@ -132,13 +139,19 @@ class PowerController extends Controller
      */
     public function destroy($id)
     {
-        $data = Powers::find($id);
-        // dump($user);
-        $res = $data->delete();
-        if($res){
-            return redirect('admin/power')->with('success','删除成功');
+        $admin = Admins::where('admin_post','=',$id)->first();
+        if(!$admin){
+            $data = Powers::find($id);
+            // dump($user);
+            $res = $data->delete();
+            if($res){
+                return redirect('admin/power')->with('success','删除成功');
+            }else{
+                return back()->with('error','删除失败');
+            }
         }else{
-            return back()->with('error','删除失败');
+            return back()->with('error','有用户使用此权限');
         }
+        
     }
 }

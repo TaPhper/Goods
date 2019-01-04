@@ -22,10 +22,11 @@ class Users
             foreach($array as $k=>$v){
                 if($v == '0'){
                     return $next($request);
-                }
+                }    
             }
-        }
-
-        return redirect('/admin/index')->with('error','权限不够');    
+            return redirect('/admin/index')->with('error','权限不够');
+        }else{
+            return redirect('/admin/login')->with('error','请登录');
+        }   
     }
 }

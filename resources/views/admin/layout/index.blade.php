@@ -23,7 +23,7 @@
     <div class="login">
     <!--登录后 start-->
     <div class="login-after">
-      <span class="txt">欢迎admin登录，当前身份：超级管理员</span>
+      <span class="txt">欢迎 {{session()->get('login_admin')['admin_name']}} 登录，当前身份：{{session()->get('login_admin')->adminpower['power_name']}}</span>
       <a class="exit" href="/admin/loginout">退出</a>      
     </div>
     <p class="time"><b id="time"></b></p>
@@ -121,7 +121,13 @@
 
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">网站管理</a></dt><!--打开状态替换close为open-->
             <dd><a href="/admin/net" >网站配置</a></dd>
-           
+        </dl>
+        <dl class="dl_list">
+            <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">轮播图管理</a></dt><!--打开状态替换close为open-->
+            <dd><a href="/admin/slide/create" >添加轮播图</a></dd>
+            <dd><a href="/admin/slide" >轮播图列表</a></dd>
+            <!--当前页面导航条dl添加class为dl_height,dt添加class为dl_open,dd添加class为dd_current-->
+        </dl> 
         <dl class="dl_list">
             <dt class="dl_open"><span class="expend_icon"></span><a href="javascript:;">员工管理</a></dt><!--打开状态替换close为open-->
             <dd><a href="/admin/admins/create" >添加员工</a></dd>

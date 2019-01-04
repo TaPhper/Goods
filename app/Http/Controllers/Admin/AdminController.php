@@ -16,10 +16,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data = Admins::paginate();
+
         
+
+        $data = Admins::paginate(5);
+
         $count = Admins::count();
-        // dump($data);
         return view('admin.admins.index',['data'=>$data,'count'=>$count]);
     }
 
@@ -62,20 +64,27 @@ class AdminController extends Controller
 
         // dump($request->except(['_token']));
         $data = $request->except(['_token']);
-        $admin = new Admins;
-        $admin->admin_name = $data['admin_name'];
-        $admin->admin_pwd = Hash::make($data['admin_pwd']);
-        $admin->admin_sex = $data['admin_sex'];
-        $admin->admin_email = $data['admin_email'];
-        $admin->admin_phone = $data['admin_phone'];
-        $admin->admin_post = $data['admin_post'];
-        $admin->admin_status = 1;
-        $res = $admin->save();
-        if($res){
-            return redirect('admin/admins')->with('success','添加成功');
+
+        $admin = Admins::where('admin_name','=',$data['admin_name'])->first();
+        if(!$admin){
+            $admin = new Admins;
+            $admin->admin_name = $data['admin_name'];
+            $admin->admin_pwd = Hash::make($data['admin_pwd']);
+            $admin->admin_sex = $data['admin_sex'];
+            $admin->admin_email = $data['admin_email'];
+            $admin->admin_phone = $data['admin_phone'];
+            $admin->admin_post = $data['admin_post'];
+            $admin->admin_status = 1;
+            $res = $admin->save();
+            if($res){
+                return redirect('admin/admins')->with('success','添加成功');
+            }else{
+                return back()->with('error','添加失败');
+            }
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','已拥有此用户');
         }
+        
 
 
     }
@@ -108,7 +117,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -134,9 +143,9 @@ class AdminController extends Controller
         $admin = Admins::find($id);
         $res = $admin->delete();
         if($res){
-            return redirect('admin/admins')->with('success','添加成功');
+            return redirect('admin/admins')->with('success','删除成功');
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','删除失败');
         }
 
     }

@@ -22,10 +22,11 @@ class Order
             foreach($array as $k=>$v){
                 if($v == '2'){
                     return $next($request);
-                }
+                }    
             }
+            return redirect('/admin/index')->with('error','权限不够');
+        }else{
+            return redirect('/admin/login')->with('error','请登录');
         }
-
-        return redirect('/admin/index')->with('error','权限不够');
     }
 }

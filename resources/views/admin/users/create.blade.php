@@ -50,7 +50,7 @@
 		      	</ul>
 		      	<p class="preview"> 
 			      	<button class="preview-btn btn01" type="submit">确定</button> 
-			      	<button class="cancel-btn btn01" type="submit">取消</button> 
+			      	<a href="/admin/user" class="cancel-btn btn01" type="submit">取消</a> 
 		      	</p>
 	    	</div>
     	</form>

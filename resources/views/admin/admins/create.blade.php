@@ -20,16 +20,16 @@
         <ul>
             <li>
                 <label>员工姓名：</label>
-                <input type="text" name="admin_name" class="w200 name" value="">
+                <input type="text" name="admin_name" autocomplete=off class="w200 name" value="">
             </li>   
             <li>
               <label>员工密码：</label>
-              <input type="password" name="admin_pwd" class="w200 name" value="">
+              <input type="password" name="admin_pwd" autocomplete=off class="w200 name" value="">
             </li>
             <span style="font-size:10px;margin-left:100px;">请输入6-18位数字字母下划线</span>
             <li>
               <label>确认密码：</label>
-              <input type="password" name="admin_repwd" class="w200 name" value="">
+              <input type="password" name="admin_repwd" autocomplete=off class="w200 name" value="">
             </li>
             <li>
               <label>员工性别：</label>
@@ -38,11 +38,11 @@
             </li>
             <li>
               <label>邮箱：</label>
-              <input type="text" name="admin_email" class="w200 name" value="">
+              <input type="text" name="admin_email" autocomplete=off class="w200 name" value="">
             </li>
             <li>
               <label>联系电话：</label>
-              <input type="text" name="admin_phone" class="w200 name" value="">
+              <input type="text" name="admin_phone" autocomplete=off class="w200 name" value="">
             </li>
             <li>
               <label>员工职位：</label>
@@ -56,7 +56,7 @@
           </ul>
           <p class="preview"> 
             <button class="preview-btn btn01">确定</button>
-            <button class="cancel-btn btn01">取消</button> 
+            <a class="cancel-btn btn01" href="/admin/admins">取消</a> 
           </p>
           </form>
       </div>

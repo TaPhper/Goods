@@ -45,18 +45,10 @@
             </tbody>
             @endforeach
           </table>
-         
           <b><p class="cur_num">当前数据有{{$res}}条!</p></b>
-          
-               
-
           <!--分页 start--> 
           <div class="pages" >
-            
-              
-               {{$brand->links()}}
-          
-          
+            {{$brand->links()}}
           </div>
           <!--分页 end-->
       </div>
