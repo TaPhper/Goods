@@ -76,3 +76,4 @@ Route::get('/','Home\IndexController@index');
 // 前台商品列表页
 
 Route::get('home/index/search/{id}','Home\SearchController@sear');
+Route::get('home/index/introduction/{id}','Home\SearchController@introduction');

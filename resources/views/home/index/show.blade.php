@@ -163,7 +163,9 @@
 
 								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 									@foreach($goods as $k=>$v)
+									
 									<li>
+										<a href="{{url('home/index/introduction',['id'=>$v->goods_id])}}">
 										<div class="i-pic limit">
 											<img src="/uploads/{{$v->goods_img}}" width="218" height="218" />											
 											<p class="title fl">{{$v->gname}}</p>
@@ -175,7 +177,9 @@
 												销量<span>1110</span>
 											</p>
 										</div>
+										</a>
 									</li>
+									
 									@endforeach
 								</ul>
 

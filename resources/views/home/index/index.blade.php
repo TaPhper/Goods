@@ -120,7 +120,7 @@
               </dt> 
               	@foreach($vv->sub as $kkk=>$vvv)
               <dd>
-               <a href="{{url('home/index/search',['id'=>$vvv->type_id])}}" title="{{$vvv->type_name}}"><span>{{$vvv->type_name}}</span></a>
+               <a href="home/index/search/{{$vvv->type_id}}" title="{{$vvv->type_name}}"><span>{{$vvv->type_name}}</span></a>
               </dd> 
                 @endforeach
              </dl> 
