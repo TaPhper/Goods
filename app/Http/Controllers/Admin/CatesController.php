@@ -8,7 +8,7 @@ use DB;
 
 class CatesController extends Controller
 {
-      public static function getCates()
+    public static function getCates()
     {
         // $data = DB::table('cates')->get();
         // $data = DB::select("select *,concat(path,',',id) as paths from cates order by paths asc");
@@ -19,6 +19,20 @@ class CatesController extends Controller
             $data[$key]->type_name = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$n).'|---'.$value->type_name;
         }
         return $data;
+    }
+    public static function getCname($cates=[],$id=0)
+    {
+        if(empty($cates)){
+            $cates = DB::table('type')->get();
+        }
+        $new_cates = [];
+        foreach ($cates as $k => $v) {
+            if($v->parent_id == $id) {
+                $v->sub = self::getCname($cates,$v->type_id);
+                $new_cates[] = $v;
+            }
+        }
+        return $new_cates;
     }
 
     /**

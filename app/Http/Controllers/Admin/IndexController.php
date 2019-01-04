@@ -9,7 +9,7 @@ use App\Models\Admin\Admins;
 use Illuminate\Support\Facades\Hash;
 class IndexController extends Controller
 {
-    
+
     public static function config()
     {
     	$data = Net::first();
@@ -46,6 +46,8 @@ class IndexController extends Controller
         }
        
     }
+
+
 
 
 }

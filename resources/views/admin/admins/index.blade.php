@@ -52,7 +52,7 @@
           
           <!--分页 start-->
           <div class="pages ">
-              {{ $data->links() }}                
+              <!-- {{ $data->links() }}                 -->
           </div>
           <!--分页 end-->
           <!--分页 end-->

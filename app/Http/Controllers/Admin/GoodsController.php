@@ -4,13 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Brand;
 use App\Http\Controllers\Admin\CatesController;
-use  App\Models\Admin\Goods;
-use  App\Models\Admin\Cates;
+use App\Models\Admin\Brand;
+use App\Models\Admin\Goods;
+use App\Models\Admin\Cates;
 use DB;
 class GoodsController extends Controller
 {
+    // static public function goods()
+    // {
+    //     $goods = DB::
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -30,17 +34,17 @@ class GoodsController extends Controller
                         ->Where('type_id','like','%'.$gcates.'%')
                         ->where('is_ground','like','%'.$ground.'%')
                         ->paginate(5);
-                $cates = DB::table('type')->where('parent_id','=','0')->get();
+                $cates = DB::table('type')->get();
 
-                return view('admin.goods.index',['goods'=>$data,'cates'=>$cates,'gcates'=>$gcates]);
+                return view('admin.goods.index',['goods'=>$data,'gcates'=>$gcates,'cates'=>$cates]);
            }else if($gcates){
                 $data = Goods::where('gname','like','%'.$gname.'%')
                              ->Where('type_id',$gcates)
                              ->Where('is_ground','like','%'.$ground.'%')
                              ->paginate(5);
 
-                $cates = DB::table('type')->where('parent_id','=','0')->get();  
-                return view('admin.goods.index',['goods'=>$data,'cates'=>$cates,'gcates'=>$gcates]);
+               $cates = DB::table('type')->get(); 
+                return view('admin.goods.index',['goods'=>$data,'gcates'=>$gcates,'cates'=>$cates]);
            }else{
                 $data = Goods::paginate(5);
                 return view('admin.goods.index',['goods'=>$data]);
@@ -62,11 +66,10 @@ class GoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id = 0)
     {     
         $data=Brand::all();
-        $goods =Cates::where('parent_id',0)->get();
-        return view('admin.goods.create',['data'=>$data,'goods'=>$goods]);
+        return view('admin.goods.create',['data'=>$data,'id'=>$id,'cates'=>CatesController::getCates()]);
     }
 
     /**
@@ -79,10 +82,7 @@ class GoodsController extends Controller
     {
           $data=$request->except(['_token','profile']);
            // dd($data);
-                if($request->hasFile('profile')){
-            $profile = $request->file('profile');
-            $res = $profile->store('images'); 
-    }
+
 
                 $goods = new Goods;
                 $goods->gname = $data['gname'];
@@ -93,7 +93,11 @@ class GoodsController extends Controller
                 $goods->is_ground = $data['gstatus'];
                 $goods->is_hot = $data['ghot'];
                 $goods->is_new = $data['gspecial'];
-                $goods->goods_img = $res;
+                if($request->hasFile('profile')){
+                    $profile = $request->file('profile');
+                    $res = $profile->store('images'); 
+                    $goods->goods_img = $res;
+                }
                 $res = $goods->save();
         if($res){
             return redirect('/admin/goods')->with('success','添加成功');
@@ -132,10 +136,10 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
-           $data=Brand::all();
-          $datas=Goods::find($id);
-          $goods =Cates::where('parent_id',0)->get();
-        return view('admin.goods.edit',['data'=>$data,'datas'=>$datas,'goods'=>$goods]);
+        $data=Brand::all();
+        $datas=Goods::find($id); 
+        // dump(CatesController::getCates());die;
+        return view('admin.goods.edit',['data'=>$data,'datas'=>$datas,'id'=>$datas['type_id'],'cates'=>CatesController::getCates()]);
     }
 
     /**
@@ -203,7 +207,8 @@ class GoodsController extends Controller
     {
 
 
-         $cates = DB::table('type')->get(); 
+        $cates = DB::table('type')->get(); 
+        // dump($cates);die;
         $goods=Goods::onlyTrashed()->get();
         return view ('admin.goods.goods_show',['goods'=>$goods,'cates'=>$cates]);
     }

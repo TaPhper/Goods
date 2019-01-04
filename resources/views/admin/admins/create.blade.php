@@ -26,6 +26,7 @@
               <label>员工密码：</label>
               <input type="password" name="admin_pwd" class="w200 name" value="">
             </li>
+            <span style="font-size:10px;margin-left:100px;">请输入6-18位数字字母下划线</span>
             <li>
               <label>确认密码：</label>
               <input type="password" name="admin_repwd" class="w200 name" value="">

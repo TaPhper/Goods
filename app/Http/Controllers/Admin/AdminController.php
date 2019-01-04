@@ -17,6 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         $data = Admins::paginate();
+        
         $count = Admins::count();
         // dump($data);
         return view('admin.admins.index',['data'=>$data,'count'=>$count]);

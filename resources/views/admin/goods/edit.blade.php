@@ -20,9 +20,9 @@
 
 			          <select class="w100" name="type_id">
 			            <option>请选择</option>
-			              @foreach ($goods as $k=>$v)
-				<option value="{{ $v->type_id }}" {{ $datas->type_id == $v->type_id ? 'selected' : ''}}> {{$v->type_name }}</option>
-			              @endforeach
+			               @foreach($cates as $k=>$v)
+				            <option value="{{$v->type_id}}" {{ $id == $v->type_id ? 'selected' : ''}}>{{ $v->type_name}}</option>
+				          @endforeach
 			          </select>
 			        </li>
 			        <li>

@@ -26,7 +26,7 @@
 				<ul class="message-l">
 					<div class="topMessage">
 						<div class="menu-hd">
-							<a href="login.html" target="_top" class="h">亲，请登录</a>
+							<a href="login.html" target="_top" class="h" style="color:red;">亲，请登录</a>
 							<a href="register.html" target="_top">免费注册</a>
 						</div>
 					</div>
@@ -48,9 +48,9 @@
 				<!--悬浮搜索框-->
 
 				<div class="nav white">
-					<div class="logo"><img src="images/logo.png" /></div>
+					<div class="logo"><img src="/home/images/logo.png" /></div>
 					<div class="logoBig">
-						<li><img src="images/logobig.png" /></li>
+						<li><img src="/home/images/logobig.png" /></li>
 					</div>
 
 					<div class="search-bar pr">
@@ -96,72 +96,73 @@
 						</div>					
 		        				
 						<!--侧边导航 -->
-						<div id="nav" class="navfull">
-							<div class="area clearfix">
-								<div class="category-content" id="guide_2">
-									
-									<div class="category">
-										<ul class="category-list" id="js_climit_li">
-											<li class="appliance js_toggle relative first">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/cake.png"></i><a class="ml-22" title="点心" href="introduction.html">点心/蛋糕</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="蛋糕">蛋糕</span></dt>
-																		<dd><a href="introduction.html" title="蒸蛋糕" href="#"><span>蒸蛋糕</span></a></dd>
-																		<dd><a title="脱水蛋糕" href="introduction.html"><span>脱水蛋糕</span></a></dd>
-																		<dd><a title="瑞士卷" href="introduction.html"><span>瑞士卷</span></a></dd>
-																		<dd><a title="软面包" href="introduction.html"><span>软面包</span></a></dd>
-																		<dd><a title="马卡龙" href="introduction.html"><span>马卡龙</span></a></dd>
-																		<dd><a title="千层饼" href="#"><span>千层饼</span></a></dd>
-																		<dd><a title="甜甜圈" href="introduction.html"><span>甜甜圈</span></a></dd>
-																		<dd><a title="蒸三明治" href="introduction.html"><span>蒸三明治</span></a></dd>
-																		<dd><a title="铜锣烧" href="introduction.html"><span>铜锣烧</span></a></dd>
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="蛋糕">点心</span></dt>
-																		<dd><a title="蒸蛋糕" href="introduction.html"><span>蒸蛋糕</span></a></dd>
-																		<dd><a title="脱水蛋糕" href="#"><span>脱水蛋糕</span></a></dd>
-																		<dd><a title="瑞士卷" href="#"><span>瑞士卷</span></a></dd>
-																		<dd><a title="软面包" href="#"><span>软面包</span></a></dd>
-																		<dd><a title="马卡龙" href="#"><span>马卡龙</span></a></dd>
-																		<dd><a title="千层饼" href="#"><span>千层饼</span></a></dd>
-																		<dd><a title="甜甜圈" href="#"><span>甜甜圈</span></a></dd>
-																		<dd><a title="蒸三明治" href="#"><span>蒸三明治</span></a></dd>
-																		<dd><a title="铜锣烧" href="#"><span>铜锣烧</span></a></dd>
-																	</dl>
+ <div id="nav" class="navfull"> 
+   <div class="area clearfix"> 
+    <div class="category-content" id="guide_2"> 
+     <div class="category"> 
+      <ul class="category-list" id="js_climit_li">
 
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="呵官方旗舰店" target="_blank" href="introduction.html" rel="nofollow"><span  class="red" >呵官方旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="格瑞旗舰店" target="_blank" href="introduction.html" rel="nofollow"><span >格瑞旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="飞彦大厂直供" target="_blank" href="introduction.html" rel="nofollow"><span  class="red" >飞彦大厂直供</span></a></dd>
-																		<dd><a rel="nofollow" title="红e·艾菲妮" target="_blank" href="#" rel="nofollow"><span >红e·艾菲妮</span></a></dd>
-																		<dd><a rel="nofollow" title="本真旗舰店" target="_blank" href="introduction.html" rel="nofollow"><span  class="red" >本真旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="杭派女装批发网" target="_blank" href="#" rel="nofollow"><span  class="red" >杭派女装批发网</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											<b class="arrow"></b>	
-											</li>
-
-										</ul>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						
-						
+      	@foreach($cates as $k=>$v)
+       <li class="appliance js_toggle relative first"> 
+        <div class="category-info"> 
+         <h3 class="category-name b-category-name"><i><img src="/home/images/cake.png" /></i><a class="ml-22" title="点心" href="">{{$v->type_name}}</a></h3> 
+         <em>&gt;</em>
+        </div> 
+        <div class="menu-item menu-in top"> 
+         <div class="area-in"> 
+          <div class="area-bg"> 
+           <div class="menu-srot"> 
+            <div class="sort-side"> 
+            @foreach($v->sub as $kk=>$vv)
+             <dl class="dl-sort"> 
+              <dt>
+               <span title="蛋糕">{{$vv->type_name}}</span>
+              </dt> 
+              	@foreach($vv->sub as $kkk=>$vvv)
+              <dd>
+               <a href="{{url('home/index/search',['id'=>$vvv->type_id])}}" title="{{$vvv->type_name}}"><span>{{$vvv->type_name}}</span></a>
+              </dd> 
+                @endforeach
+             </dl> 
+            @endforeach
+            </div> 
+            <div class="brand-side"> 
+             <dl class="dl-sort">
+              <dt>
+               <span>实力商家</span>
+              </dt> 
+              <dd>
+               <a rel="nofollow" title="呵官方旗舰店" target="_blank" href="introduction.html"><span class="red">呵官方旗舰店</span></a>
+              </dd> 
+              <dd>
+               <a rel="nofollow" title="格瑞旗舰店" target="_blank" href="introduction.html"><span>格瑞旗舰店</span></a>
+              </dd> 
+              <dd>
+               <a rel="nofollow" title="飞彦大厂直供" target="_blank" href="introduction.html"><span class="red">飞彦大厂直供</span></a>
+              </dd> 
+              <dd>
+               <a rel="nofollow" title="红e&middot;艾菲妮" target="_blank" href="#"><span>红e&middot;艾菲妮</span></a>
+              </dd> 
+              <dd>
+               <a rel="nofollow" title="本真旗舰店" target="_blank" href="introduction.html"><span class="red">本真旗舰店</span></a>
+              </dd> 
+              <dd>
+               <a rel="nofollow" title="杭派女装批发网" target="_blank" href="#"><span class="red">杭派女装批发网</span></a>
+              </dd> 
+             </dl> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> <b class="arrow"></b>
+    	</li>
+       @endforeach
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </div>
+ 
 						<!--轮播-->
 						
 						<script type="text/javascript">
@@ -186,22 +187,22 @@
 					<!--小导航 -->
 					<div class="am-g am-g-fixed smallnav">
 						<div class="am-u-sm-3">
-							<a href="sort.html"><img src="images/navsmall.jpg" />
+							<a href="sort.html"><img src="/home/images/navsmall.jpg" />
 								<div class="title">商品分类</div>
 							</a>
 						</div>
 						<div class="am-u-sm-3">
-							<a href="#"><img src="images/huismall.jpg" />
+							<a href="#"><img src="/home/images/huismall.jpg" />
 								<div class="title">大聚惠</div>
 							</a>
 						</div>
 						<div class="am-u-sm-3">
-							<a href="my.html"><img src="images/mansmall.jpg" />
+							<a href="my.html"><img src="/home/images/mansmall.jpg" />
 								<div class="title">个人中心</div>
 							</a>
 						</div>
 						<div class="am-u-sm-3">
-							<a href="#"><img src="images/moneysmall.jpg" />
+							<a href="#"><img src="/home/images/moneysmall.jpg" />
 								<div class="title">投资理财</div>
 							</a>
 						</div>
@@ -215,19 +216,19 @@
 
 							<ul>
 								<li class="title-first"><a target="_blank" href="search.html">
-									<img src="images/TJ2.jpg"></img>
+									<img src="/home/images/TJ2.jpg"></img>
 									<span>[特惠]</span>商城爆品1分秒								
 								</a></li>
 								<li class="title-first"><a target="_blank" href="#">
 									<span>[公告]</span>商城与广州市签署战略合作协议
-								     <img src="images/TJ.jpg"></img>
+								     <img src="/home/images/TJ.jpg"></img>
 								     <p>XXXXXXXXXXXXXXXXXX</p>
 							    </a></li>
 							    
 						<div class="mod-vip">
 							<div class="m-baseinfo">
 								<a href="person/index.html">
-									<img src="images/getAvatar.do.jpg">
+									<img src="/home/images/getAvatar.do.jpg">
 								</a>
 								<em>
 									Hi,<span class="s-name">小叮当</span>
@@ -252,7 +253,7 @@
 								<li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
 								
 							</ul>
-                        <div class="advTip"><img src="images/advTip.jpg"/></div>
+                        <div class="advTip"><img src="/home/images/advTip.jpg"/></div>
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -281,7 +282,7 @@
 
 					<div class="am-g am-g-fixed recommendation">
 						<div class="clock am-u-sm-3" ">
-							<img src="images/2016.png "></img>
+							<img src="/home/images/2016.png "></img>
 							<p>今日<br>推荐</p>
 						</div>
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -290,7 +291,7 @@
 								<h4>开年福利篇</h4>
 							</div>
 							<div class="recommendationMain one">
-								<a href="introduction.html"><img src="images/tj.png "></img></a>
+								<a href="introduction.html"><img src="/home/images/tj.png "></img></a>
 							</div>
 						</div>						
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -299,7 +300,7 @@
 								<h4>让爱早回家</h4>
 							</div>
 							<div class="recommendationMain two">
-								<img src="images/tj1.png "></img>
+								<img src="/home/images/tj1.png "></img>
 							</div>
 						</div>
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -308,7 +309,7 @@
 								<h4>甜甜蜜蜜</h4>
 							</div>
 							<div class="recommendationMain three">
-								<img src="images/tj2.png "></img>
+								<img src="/home/images/tj2.png "></img>
 							</div>
 						</div>
 
@@ -329,7 +330,7 @@
 							<div class="icon-sale one "></div>	
 								<h4>秒杀</h4>							
 							<div class="activityMain ">
-								<img src="images/activity1.jpg "></img>
+								<img src="/home/images/activity1.jpg "></img>
 							</div>
 							<div class="info ">
 								<h3>春节送礼优选</h3>
@@ -340,7 +341,7 @@
 						  <div class="icon-sale two "></div>	
 							<h4>特惠</h4>
 							<div class="activityMain ">
-								<img src="images/activity2.jpg "></img>
+								<img src="/home/images/activity2.jpg "></img>
 							</div>
 							<div class="info ">
 								<h3>春节送礼优选</h3>								
@@ -351,7 +352,7 @@
 							<div class="icon-sale three "></div>
 							<h4>团购</h4>
 							<div class="activityMain ">
-								<img src="images/activity3.jpg "></img>
+								<img src="/home/images/activity3.jpg "></img>
 							</div>
 							<div class="info ">
 								<h3>春节送礼优选</h3>
@@ -362,7 +363,7 @@
 							<div class="icon-sale "></div>
 							<h4>超值</h4>
 							<div class="activityMain ">
-								<img src="images/activity.jpg "></img>
+								<img src="/home/images/activity.jpg "></img>
 							</div>
 							<div class="info ">
 								<h3>春节送礼优选</h3>
@@ -414,7 +415,7 @@
 										零食大礼包
 									</div>									
 								</div>
-                                  <img src="images/act1.png " />								
+                                  <img src="/home/images/act1.png " />								
 							</a>
 							<div class="triangle-topright"></div>						
 						</div>
@@ -429,7 +430,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/2.jpg" /></a>
+								<a href="# "><img src="/home/images/2.jpg" /></a>
 							</div>
 
 							<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -442,7 +443,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/1.jpg" /></a>
+								<a href="# "><img src="/home/images/1.jpg" /></a>
 							</div>
 
 
@@ -456,7 +457,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three sug">
@@ -469,7 +470,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/3.jpg" /></a>
+							<a href="# "><img src="/home/images/3.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three ">
@@ -482,7 +483,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/4.jpg" /></a>
+							<a href="# "><img src="/home/images/4.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
@@ -495,7 +496,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 					</div>
@@ -533,7 +534,7 @@
 								<a class="outer" href="#"><span class="inner"><b class="text">核桃</b></span></a>									
 							</div>
 							<a href="# ">
-								<img src="images/act1.png " />
+								<img src="/home/images/act1.png " />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -544,7 +545,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four">
 							<a href="# ">
-								<img src="images/6.jpg" />
+								<img src="/home/images/6.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -558,7 +559,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four sug">
 							<a href="# ">
-								<img src="images/7.jpg" />
+								<img src="/home/images/7.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -573,7 +574,7 @@
 						
 						<div class="am-u-sm-6 am-u-md-3 text-five big ">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -587,7 +588,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five ">
 							<a href="# ">
-								<img src="images/8.jpg" />
+								<img src="/home/images/8.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -601,7 +602,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five sug">
 							<a href="# ">
-								<img src="images/9.jpg" />
+								<img src="/home/images/9.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -615,7 +616,7 @@
 						</div>
 						<div class="am-u-sm-6 am-u-md-3 text-five big">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -674,7 +675,7 @@
 										零食大礼包
 									</div>									
 								</div>
-                                  <img src="images/act1.png " />								
+                                  <img src="/home/images/act1.png " />								
 							</a>
 							<div class="triangle-topright"></div>						
 						</div>
@@ -689,7 +690,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/2.jpg" /></a>
+								<a href="# "><img src="/home/images/2.jpg" /></a>
 							</div>
 
 							<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -702,7 +703,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/1.jpg" /></a>
+								<a href="# "><img src="/home/images/1.jpg" /></a>
 							</div>
 
 
@@ -716,7 +717,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three sug">
@@ -729,7 +730,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/3.jpg" /></a>
+							<a href="# "><img src="/home/images/3.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three ">
@@ -742,7 +743,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/4.jpg" /></a>
+							<a href="# "><img src="/home/images/4.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
@@ -755,7 +756,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 					</div>
@@ -793,7 +794,7 @@
 								<a class="outer" href="#"><span class="inner"><b class="text">核桃</b></span></a>									
 							</div>
 							<a href="# ">
-								<img src="images/act1.png " />
+								<img src="/home/images/act1.png " />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -804,7 +805,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four">
 							<a href="# ">
-								<img src="images/6.jpg" />
+								<img src="/home/images/6.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -818,7 +819,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four sug">
 							<a href="# ">
-								<img src="images/7.jpg" />
+								<img src="/home/images/7.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -833,7 +834,7 @@
 						
 						<div class="am-u-sm-6 am-u-md-3 text-five big ">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -847,7 +848,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five ">
 							<a href="# ">
-								<img src="images/8.jpg" />
+								<img src="/home/images/8.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -861,7 +862,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five sug">
 							<a href="# ">
-								<img src="images/9.jpg" />
+								<img src="/home/images/9.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -875,7 +876,7 @@
 						</div>
 						<div class="am-u-sm-6 am-u-md-3 text-five big">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -934,7 +935,7 @@
 										零食大礼包
 									</div>									
 								</div>
-                                  <img src="images/act1.png " />								
+                                  <img src="/home/images/act1.png " />								
 							</a>
 							<div class="triangle-topright"></div>						
 						</div>
@@ -949,7 +950,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/2.jpg" /></a>
+								<a href="# "><img src="/home/images/2.jpg" /></a>
 							</div>
 
 							<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -962,7 +963,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/1.jpg" /></a>
+								<a href="# "><img src="/home/images/1.jpg" /></a>
 							</div>
 
 
@@ -976,7 +977,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three sug">
@@ -989,7 +990,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/3.jpg" /></a>
+							<a href="# "><img src="/home/images/3.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three ">
@@ -1002,7 +1003,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/4.jpg" /></a>
+							<a href="# "><img src="/home/images/4.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
@@ -1015,7 +1016,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 					</div>
@@ -1053,7 +1054,7 @@
 								<a class="outer" href="#"><span class="inner"><b class="text">核桃</b></span></a>									
 							</div>
 							<a href="# ">
-								<img src="images/act1.png " />
+								<img src="/home/images/act1.png " />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1064,7 +1065,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four">
 							<a href="# ">
-								<img src="images/6.jpg" />
+								<img src="/home/images/6.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1078,7 +1079,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four sug">
 							<a href="# ">
-								<img src="images/7.jpg" />
+								<img src="/home/images/7.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1093,7 +1094,7 @@
 						
 						<div class="am-u-sm-6 am-u-md-3 text-five big ">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1107,7 +1108,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five ">
 							<a href="# ">
-								<img src="images/8.jpg" />
+								<img src="/home/images/8.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1121,7 +1122,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five sug">
 							<a href="# ">
-								<img src="images/9.jpg" />
+								<img src="/home/images/9.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1135,7 +1136,7 @@
 						</div>
 						<div class="am-u-sm-6 am-u-md-3 text-five big">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1195,7 +1196,7 @@
 										零食大礼包
 									</div>									
 								</div>
-                                  <img src="images/act1.png " />								
+                                  <img src="/home/images/act1.png " />								
 							</a>
 							<div class="triangle-topright"></div>						
 						</div>
@@ -1210,7 +1211,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/2.jpg" /></a>
+								<a href="# "><img src="/home/images/2.jpg" /></a>
 							</div>
 
 							<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -1223,7 +1224,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/1.jpg" /></a>
+								<a href="# "><img src="/home/images/1.jpg" /></a>
 							</div>
 
 
@@ -1237,7 +1238,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three sug">
@@ -1250,7 +1251,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/3.jpg" /></a>
+							<a href="# "><img src="/home/images/3.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three ">
@@ -1263,7 +1264,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/4.jpg" /></a>
+							<a href="# "><img src="/home/images/4.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
@@ -1276,7 +1277,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 					</div>
@@ -1313,7 +1314,7 @@
 								<a class="outer" href="#"><span class="inner"><b class="text">核桃</b></span></a>									
 							</div>
 							<a href="# ">
-								<img src="images/act1.png " />
+								<img src="/home/images/act1.png " />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1324,7 +1325,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four">
 							<a href="# ">
-								<img src="images/6.jpg" />
+								<img src="/home/images/6.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1338,7 +1339,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four sug">
 							<a href="# ">
-								<img src="images/7.jpg" />
+								<img src="/home/images/7.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1353,7 +1354,7 @@
 						
 						<div class="am-u-sm-6 am-u-md-3 text-five big ">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1367,7 +1368,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five ">
 							<a href="# ">
-								<img src="images/8.jpg" />
+								<img src="/home/images/8.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1381,7 +1382,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five sug">
 							<a href="# ">
-								<img src="images/9.jpg" />
+								<img src="/home/images/9.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1395,7 +1396,7 @@
 						</div>
 						<div class="am-u-sm-6 am-u-md-3 text-five big">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1453,7 +1454,7 @@
 										零食大礼包
 									</div>									
 								</div>
-                                  <img src="images/act1.png " />								
+                                  <img src="/home/images/act1.png " />								
 							</a>
 							<div class="triangle-topright"></div>						
 						</div>
@@ -1468,7 +1469,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/2.jpg" /></a>
+								<a href="# "><img src="/home/images/2.jpg" /></a>
 							</div>
 
 							<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -1481,7 +1482,7 @@
 									</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
-								<a href="# "><img src="images/1.jpg" /></a>
+								<a href="# "><img src="/home/images/1.jpg" /></a>
 							</div>
 
 
@@ -1495,7 +1496,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three sug">
@@ -1508,7 +1509,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/3.jpg" /></a>
+							<a href="# "><img src="/home/images/3.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three ">
@@ -1521,7 +1522,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/4.jpg" /></a>
+							<a href="# "><img src="/home/images/4.jpg" /></a>
 						</div>
 
 						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
@@ -1534,7 +1535,7 @@
 								</div>
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
-							<a href="# "><img src="images/5.jpg" /></a>
+							<a href="# "><img src="/home/images/5.jpg" /></a>
 						</div>
 
 					</div>
@@ -1572,7 +1573,7 @@
 								<a class="outer" href="#"><span class="inner"><b class="text">核桃</b></span></a>									
 							</div>
 							<a href="# ">
-								<img src="images/act1.png " />
+								<img src="/home/images/act1.png " />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1583,7 +1584,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four">
 							<a href="# ">
-								<img src="images/6.jpg" />
+								<img src="/home/images/6.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1597,7 +1598,7 @@
 						</div>
 						<div class="am-u-sm-4 text-four sug">
 							<a href="# ">
-								<img src="images/7.jpg" />
+								<img src="/home/images/7.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1612,7 +1613,7 @@
 						
 						<div class="am-u-sm-6 am-u-md-3 text-five big ">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1626,7 +1627,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five ">
 							<a href="# ">
-								<img src="images/8.jpg" />
+								<img src="/home/images/8.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1640,7 +1641,7 @@
 						</div>						
 						<div class="am-u-sm-6 am-u-md-3 text-five sug">
 							<a href="# ">
-								<img src="images/9.jpg" />
+								<img src="/home/images/9.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1654,7 +1655,7 @@
 						</div>
 						<div class="am-u-sm-6 am-u-md-3 text-five big">
 							<a href="# ">
-								<img src="images/10.jpg" />
+								<img src="/home/images/10.jpg" />
 								<div class="outer-con ">
 									<div class="title ">
 										雪之恋和风大福
@@ -1718,7 +1719,7 @@
 						</a>
 						<div class="ibar_login_box status_login ">
 							<div class="avatar_box ">
-								<p class="avatar_imgbox "><img src="images/no-img_mid_.jpg " /></p>
+								<p class="avatar_imgbox "><img src="/home/images/no-img_mid_.jpg " /></p>
 								<ul class="user_info ">
 									<li>用户名sl1903</li>
 									<li>级&nbsp;别普通会员</li>
@@ -1763,7 +1764,7 @@
 
 					<div id="brand " class="item ">
 						<a href="#">
-							<span class="wdsc "><img src="images/wdsc.png " /></span>
+							<span class="wdsc "><img src="/home/images/wdsc.png " /></span>
 						</a>
 						<div class="mp_tooltip ">
 							我的收藏
@@ -1773,7 +1774,7 @@
 
 					<!--<div id="broadcast " class="item ">-->
 						<!--<a href="# ">-->
-							<!--<span class="chongzhi "><img src="images/chongzhi.png " /></span>-->
+							<!--<span class="chongzhi "><img src="/home/images/chongzhi.png " /></span>-->
 						<!--</a>-->
 						<!--<div class="mp_tooltip ">-->
 							<!--我要充值-->
@@ -1789,7 +1790,7 @@
 						<!--二维码 -->
 						<li class="qtitem ">
 							<a href="#none "><span class="mpbtn_qrcode "></span></a>
-							<div class="mp_qrcode " style="display:none; "><img src="images/weixin_code_145.png " /><i class="icon_arrow_white "></i></div>
+							<div class="mp_qrcode " style="display:none; "><img src="/home/images/weixin_code_145.png " /><i class="icon_arrow_white "></i></div>
 						</li>
 						<li class="qtitem ">
 							<a href="#top " class="return_top "><span class="top "></span></a>

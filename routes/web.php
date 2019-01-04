@@ -50,7 +50,7 @@ Route::resource('admin/power','Admin\PowerController')->middleware('power');
 Route::resource('/admin/goods','Admin\GoodsController')->middleware('goods');
 //网站配置
 Route::resource('/admin/net','Admin\NetController')->middleware('net');
-Route::get('/admin/index/ajax/{id}','Admin\IndexController@ajax');
+Route::get('/admin/index/ajax/{id}','Admin\IndexController@config');
 //商品回收站(软删除)
 Route::get('/admin/goods_show','Admin\GoodsController@goods_show')->middleware('goods');
 Route::delete('/admin/goods/delete/{id}','Admin\GoodsController@delete')->middleware('goods');
@@ -73,3 +73,6 @@ Route::resource('/admin/comment','Admin\CommentController');
 
 // 前台首页
 Route::get('/','Home\IndexController@index');
+// 前台商品列表页
+
+Route::get('home/index/search/{id}','Home\SearchController@sear');
