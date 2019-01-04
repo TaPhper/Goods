@@ -58,8 +58,12 @@
 			            @endforeach
 			          </select>
 			        </li>
+			          <li>
+			          <label>商品原封面：</label>
+			           <img src="/uploads/{{$datas->goods_img}}" width="50">
+			        </li>
 			         <li>
-			          <label>商品封面：</label>
+			          <label>修改商品封面：</label>
 			          <input type="file" name="profile" class="filebtn" value="" style="width:300px;">
 			        </li>
 	      		</ul>

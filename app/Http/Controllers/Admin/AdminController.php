@@ -39,6 +39,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
         'admin_name' => 'required',
         'admin_pwd' => 'required|regex:/^[\w]{6,18}$/',
