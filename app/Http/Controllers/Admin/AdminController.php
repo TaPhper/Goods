@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Admins;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Admin\Powers;
 class AdminController extends Controller
 {
     /**
@@ -16,6 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         $data = Admins::paginate();
+        
         $count = Admins::count();
         // dump($data);
         return view('admin.admins.index',['data'=>$data,'count'=>$count]);
@@ -28,7 +30,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.admins.create');
+        $power = Powers::all();
+        return view('admin.admins.create',['power'=>$power]);
     }
 
     /**
