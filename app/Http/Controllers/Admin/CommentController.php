@@ -91,9 +91,9 @@ class CommentController extends Controller
          $res = Comment::destroy($id);
 
         if($res){
-            return back()->with('success','添加成功');
+            return back()->with('success','删除成功');
         }else{
-            return back()->with('error','添加失败');
+            return back()->with('error','删除失败');
         }
     
 }

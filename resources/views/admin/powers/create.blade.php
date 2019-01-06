@@ -45,7 +45,7 @@
 	      	</ul>
 	      	<p class="preview"> 
 	      	<button class="preview-btn btn01">确定</button> 
-	      	<button class="cancel-btn btn01">取消</button>
+	      	<a class="cancel-btn btn01" href="/admin/power">取消</a>
 	      	</form>
     	</div>
   	</div>

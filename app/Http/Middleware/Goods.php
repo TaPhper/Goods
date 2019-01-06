@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use App\Models\Admin\Admins;
 class Goods
 {
     /**
@@ -22,10 +22,11 @@ class Goods
             foreach($array as $k=>$v){
                 if($v == '3'){
                     return $next($request);
-                }
+                }    
             }
+            return redirect('/admin/index')->with('error','权限不够');
+        }else{
+            return redirect('/admin/login')->with('error','请登录');
         }
-
-        return redirect('/admin/index')->with('error','权限不够');
     }
 }

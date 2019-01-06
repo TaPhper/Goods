@@ -34,10 +34,11 @@ Route::get('/admin/Order/deliver','Admin\OrderController@deliver')->middleware('
 Route::get('/admin/Order/single','Admin\OrderController@Single')->middleware('order');
 Route::get('/admin/Order/tuikuan/{id}','Admin\OrderController@tuikuan')->middleware('order');
 // 后台员工管理
-Route::resource('admin/admins','Admin\AdminController')->middleware('admins');
+Route::resource('/admin/admins','Admin\AdminController')->middleware('admins');
 // 权限管理
-Route::resource('admin/power','Admin\PowerController')->middleware('power');
-
+Route::resource('/admin/power','Admin\PowerController')->middleware('power');
+// 轮播图管理
+Route::resource('/admin/slide','Admin\SlideController')->middleware('slide');
 
 
 
@@ -64,8 +65,8 @@ Route::resource('/admin/addr','Admin\AddrController')->middleware('addr');
 
 
 //类别管理   厉常建 51-60
-Route::resource('admin/cates/index','Admin\CatesController')->middleware('cates');
-Route::get('admin/cates/index/create/{id}','Admin\CatesController@create')->middleware('cates');
+Route::resource('/admin/cates/index','Admin\CatesController')->middleware('cates');
+Route::get('/admin/cates/index/create/{id}','Admin\CatesController@create')->middleware('cates');
 //信息管理
 Route::resource('/admin/comment','Admin\CommentController');
 
@@ -73,6 +74,7 @@ Route::resource('/admin/comment','Admin\CommentController');
 
 // 前台首页
 Route::get('/','Home\IndexController@index');
+
 // 前台商品列表页
 
 Route::get('home/index/search/{id}','Home\SearchController@sear');
@@ -90,5 +92,18 @@ Route::get('home/index/search/{id}','Home\SearchController@sear');
 
 
 
+
 //个人中心
-Route::get('home/info','Home\InfoController@info');
+Route::get('home/userinfo','Home\InfoController@userinfo');
+
+Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
+
+// 前台注册
+Route::get('/home/register','Home\LoginController@register');
+// 邮箱注册
+Route::post('/home/registering','Home\LoginController@registering');
+// 激活
+Route::get('/home/registering/setstatus/{id}/{token}','Home\LoginController@setstatus');
+// 手机号注册
+Route::post('/home/insert','Home\LoginController@insert');
+

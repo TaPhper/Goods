@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\Admin\Admins;
-class Indents
+
+class Slide
 {
     /**
      * Handle an incoming request.
@@ -24,7 +24,7 @@ class Indents
                     return $next($request);
                 }    
             }
-            return redirect('/admin/index')->with('error','权限不够'); 
+            return redirect('/admin/index')->with('error','权限不够');
         }else{
             return redirect('/admin/login')->with('error','请登录');
         }

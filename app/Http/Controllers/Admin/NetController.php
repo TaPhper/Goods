@@ -14,8 +14,7 @@ class NetController extends Controller
      */
     public function index()
     {   
-        $data = Net::all();
-
+        $data = Net::paginate(5);
         return view('admin.net.index',['data'=>$data]);
     }
 

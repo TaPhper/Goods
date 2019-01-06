@@ -1,13 +1,8 @@
 @extends('admin.layout.index')
 
 @section('content')
-
-
     <title>分类列表</title>
     <link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
-
-
-
 <body>
 <div class="chuda_co" id="container">
     <div class="co-box">
@@ -42,7 +37,7 @@
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <input type="submit" value="删除" class="btn btn-danger"  >
-            </form>
+                            </form>
                               <a href="/admin/cates/index/{{$v->type_id}}/edit" class="btn btn-warning">修改</a>
                               <a href="/admin/cates/index/create/{{ $v->type_id}}" class="btn btn-info">添加子分类</a>
 

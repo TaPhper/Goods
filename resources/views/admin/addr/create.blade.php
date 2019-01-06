@@ -58,7 +58,7 @@
 	      	</ul>
 	      	<p class="preview">
 	      		<input type="submit" class="preview-btn btn01" value="确定">
-	      		<input type="reset" class="cancel-btn btn01" value="取消">
+	      		<a href="/admin/addr" class="cancel-btn btn01" >取消</a>
 	      	</p>
     	</div>
   	</div>

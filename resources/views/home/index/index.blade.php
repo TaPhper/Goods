@@ -26,8 +26,9 @@
 				<ul class="message-l">
 					<div class="topMessage">
 						<div class="menu-hd">
-							<a href="login.html" target="_top" class="h" style="color:red;">亲，请登录</a>
-							<a href="register.html" target="_top">免费注册</a>
+
+							<a href="login.html" target="_top" class="h">亲，请登录</a>
+							<a href="/home/register" target="_top">免费注册</a>
 						</div>
 					</div>
 				</ul>
@@ -36,7 +37,7 @@
 						<div class="menu-hd"><a href="index.html" target="_top" class="h">商城首页</a></div>
 					</div>
 					<div class="topMessage my-shangcheng">
-						<div class="menu-hd MyShangcheng"><a href="my.html" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+						<div class="menu-hd MyShangcheng"><a href="/home/userinfo" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 					</div>
 					<div class="topMessage mini-cart">
 						<div class="menu-hd"><a id="mc-menu-hd" href="shopcart.html" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
@@ -120,7 +121,7 @@
               </dt> 
               	@foreach($vv->sub as $kkk=>$vvv)
               <dd>
-               <a href="{{url('home/index/search',['id'=>$vvv->type_id])}}" title="{{$vvv->type_name}}"><span>{{$vvv->type_name}}</span></a>
+               <a href="home/index/search/{{$vvv->type_id}}" title="{{$vvv->type_name}}"><span>{{$vvv->type_name}}</span></a>
               </dd> 
                 @endforeach
              </dl> 
