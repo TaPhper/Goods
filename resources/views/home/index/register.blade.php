@@ -9,10 +9,10 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-		<link rel="stylesheet" href="AmazeUI-2.4.2/assets/css/amazeui.min.css" />
+		<link rel="stylesheet" href="/home/AmazeUI-2.4.2/assets/css/amazeui.min.css" />
 		<link href="css/dlstyle.css" rel="stylesheet" type="text/css">
-		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
 	</head>
 	<body>
 
