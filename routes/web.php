@@ -90,3 +90,7 @@ Route::get('/home/registering/setstatus/{id}/{token}','Home\LoginController@sets
 // 手机号注册
 Route::post('/home/insert','Home\LoginController@insert');
 
+
+
+Route::get('/home/insert/sendMobileCode','Home\LoginController@sendMobileCode');
+
