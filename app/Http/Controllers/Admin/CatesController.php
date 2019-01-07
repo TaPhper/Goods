@@ -161,7 +161,12 @@ class CatesController extends Controller
      */
     public function destroy($id)
     {
-         $child_data = DB::table('type')->where('parent_id',$id)->first();
+
+        if($goods = DB::table('goods')->where('type_id',$id)->first()){
+            return back()->with('error','当前分类下有商品，不允许删除');
+            exit;
+        }
+        $child_data = DB::table('type')->where('parent_id',$id)->first();
         if($child_data){
             return back()->with('error','当前分类下有子分类，不允许删除');
             exit;
