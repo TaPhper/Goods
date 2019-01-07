@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-
+    	// dump(session()->get('login_user')['user_tel']);
     	return view('home.index.index');
     }
 }
