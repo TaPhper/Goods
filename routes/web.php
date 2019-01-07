@@ -79,7 +79,8 @@ Route::get('/','Home\IndexController@index');
 
 Route::get('home/index/search/{id}','Home\SearchController@sear');
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
-
+//商品列表页搜索
+Route::get('home/index/sear','Home\SearchController@search');
 // 前台注册
 Route::get('/home/register','Home\LoginController@register');
 // 邮箱注册
