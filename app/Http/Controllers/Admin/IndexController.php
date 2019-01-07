@@ -19,16 +19,7 @@ class IndexController extends Controller
 
     public function index()
     {   
-        $admin = session()->get('login_admin');
-            $data = $admin->adminpower['power_usable'];
-            $array = explode(",", $data);
-            foreach($array as $k=>$v){
-                if($v == '1'){
-                    echo "1";
-                }else{
-                    echo "2";
-                }
-            }
+        
         // dd(date('Y-m-d H:i:s',time()));  
         return view('admin.index.index');
     }

@@ -54,6 +54,15 @@
 						    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
 						    <input type="password" name="user_repwd" id="passwordRepeat" autocomplete=off placeholder="确认密码">
 			            </div>	
+			            @if($errors->has('captcha'))
+					        <div class="col-md-12">
+					            <p class="text-danger text-left"><strong>{{$errors->first('captcha')}}</strong></p>
+					        </div>
+					    @endif
+					    @if (session('error'))
+					        <p class="text-danger text-left"><strong>{{ session('error') }}</strong></p>
+
+					    @endif
 						<div class="am-cf">
 							<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
 						</div>
@@ -72,25 +81,61 @@
 					{{ csrf_field() }}
 			            <div class="user-phone">
 						    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
-						    <input type="tel" name="user_phone" id="phone" placeholder="请输入手机号">
+						    <input type="text" name="user_phone" id="phone" placeholder="请输入手机号">
 			            </div>																			
 						<div class="verification">
 							<label for="code"><i class="am-icon-code-fork"></i></label>
-							<input type="tel" name="phone_code" id="code" placeholder="请输入验证码">
+							<input type="text" name="phone_code" id="code" placeholder="请输入验证码">
 							<a class="btn" href="javascript:void(0);" onClick="sendMobileCode();" id="sendMobileCode">
 							<span id="dyMobileButton">获取</span></a>
 						</div>
 			            <div class="user-pass">
 						    <label for="password"><i class="am-icon-lock"></i></label>
-						    <input type="password" name="user_pwd" id="password" placeholder="设置密码">
+						    <input type="password" name="user_pwd" id="user_pwd" placeholder="设置密码">
 			            </div>										
 			            <div class="user-pass">
 						    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-						    <input type="password" name="user_repwd" id="passwordRepeat" placeholder="确认密码">
+						    <input type="password" name="user_repwd" id="user_repwd" placeholder="确认密码">
 			            </div>
 			            <div class="am-cf">
-							<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+							<input type="submit" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
 						</div>
+						<script type="text/javascript">
+							// 发送验证码
+							function sendMobileCode()
+							{
+								// 获取
+								var phone = $('#phone').val();
+								// 验证
+								var phone_preg = /^1{1}[3-9]{1}[\d]{9}$/;
+								if(!phone_preg.test(phone)){
+									alert('手机格式不正确');
+								}
+								// alert(phone);
+								$.get('/home/insert/sendMobileCode',{'phone':phone},function(data){
+									console.log(data);
+									if(data == false){
+										alert('手机号已经注册');
+									}
+									if(data.code == 2){
+										alert('短信发送成功');
+									}
+									
+								},'json')
+
+							}
+							// 验证密码
+							$('#user_pwd').blur(function(){
+								var user_pwd = $('#user_pwd').val();
+								// 验证
+								var user_pwd_preg = /^[\w]{6,18}$/;
+								if(!user_pwd_preg.test(user_pwd)){
+									alert('请输入6-18位的数字字母组合');
+								}
+							});
+							// 重复密码验证
+
+						</script>
 					</form>
 					 	<div class="login-links">
 							<label for="reader-me">
