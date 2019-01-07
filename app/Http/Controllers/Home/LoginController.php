@@ -9,11 +9,7 @@ use App\Models\Users;
 use Mail;
 class LoginController extends Controller
 {
-    public function login()
-    {
-
-    }
-
+    // 注册首页
     public function register()
     {
     	return view('home.index.register');
@@ -119,5 +115,35 @@ class LoginController extends Controller
         curl_close($ch);
         
         echo $res;
+    }
+
+    // 登录
+    public function login()
+    {
+        return view('home.index.login'); 
+    }
+    // 登录验证
+    public function implement(Request $request)
+    {
+        $data = $request->except('_token');
+        $user_email = Users::where('user_email','=',$data['user_name'])->first();
+        $user_phone = Users::where('user_tel','=',$data['user_name'])->first();
+        $user_name = Users::where('user_name','=',$data['user_name'])->first();
+        if($user_email){
+            if(Hash::check($data['user_pwd'], $user_emai['user_pwd'])){
+                    session()->put('login_user',$user_email);
+            }
+            return redirect('/')->with('success','登陆成功');
+        }else if($user_phone){
+            if(Hash::check($data['user_pwd'], $user_phone['user_pwd'])){
+                    session()->put('login_user',$user_phone);
+            }
+            return redirect('/')->with('success','登陆成功');
+        }elseif($user_name){
+            if(Hash::check($data['user_pwd'], $user_name['user_pwd'])){
+                    session()->put('login_user',$user_name);
+            }
+            return redirect('/')->with('success','登陆成功');
+        }
     }
 }
