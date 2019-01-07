@@ -46,9 +46,17 @@
             <div class="login-links">
                 <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
 								<a href="#" class="am-fr">忘记密码</a>
-								<a href="register.html" class="zcnext am-fr am-btn-default">注册</a>
+								<a href="/home/register" class="zcnext am-fr am-btn-default">注册</a>
 								<br />
             </div>
+            @if (session('success'))
+		        <p class="text-danger text-left"><strong>{{ session('success') }}</strong></p>
+
+		    @endif
+            @if (session('error'))
+		        <p class="text-danger text-left"><strong>{{ session('error') }}</strong></p>
+
+		    @endif
 								<div class="am-cf">
 									<input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
 								</div>
