@@ -55,10 +55,11 @@
 
 				<div class="search-bar pr">
 					<a name="index_none_header_sysc" href="#"></a>
-					<form>
-						<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+					<form action="{{url('home/index/sear')}}" method="get">
+						<input id="searchInput" name="search" type="text" placeholder="搜索" autocomplete="off">
 						<input id="ai-topsearch" class="submit am-btn"  value="搜索" index="1" type="submit">
 					</form>
+
 				</div>
 			</div>
 
@@ -96,11 +97,11 @@
 							</div>
 							<ul class="select">
 								<p class="title font-normal">
-									<span class="fl">松子</span>
-									<span class="total fl">搜索到<strong class="num">997</strong>件相关商品</span>
-								</p>
+									<span class="fl">{{$data or $data_name[0]->type_name}}</span>
+									<span class="total fl">搜索到<strong class="num">{{$count or $goods_count}}</strong>件相关商品</span>
+								</p> 
 								<div class="clear"></div>
-								<li class="select-result">
+								<li class="select-result">                 
 									<dl>
 										<dt>已选</dt>
 										<dd class="select-no"></dd>
@@ -174,7 +175,7 @@
 												<strong>{{$v->market_price}}</strong>
 											</p>
 											<p class="number fl">
-												销量<span>1110</span>
+												销量<span></span>
 											</p>
 										</div>
 										</a>
@@ -203,32 +204,7 @@
 										</p>
 									</div>
 								</li>
-								<li>
-									<div class="i-pic check">
-										<img src="/home/images/cp2.jpg" />
-										<p class="check-title">ZEK 原味海苔</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>8.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
-									</div>
-								</li>
-								<li>
-									<div class="i-pic check">
-										<img src="/home/images/cp.jpg" />
-										<p class="check-title">萨拉米 1+1小鸡腿</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>29.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
-									</div>
-								</li>
+								
 
 							</div>
 							<div class="clear"></div>

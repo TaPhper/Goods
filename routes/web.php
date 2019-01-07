@@ -98,7 +98,8 @@ Route::get('home/userinfo','Home\InfoController@userinfo');
 Route::get('home/uploads','Home\InfoController@uploads');
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
-
+//商品列表页搜索
+Route::get('home/index/sear','Home\SearchController@search');
 // 前台注册
 Route::get('/home/register','Home\LoginController@register');
 // 邮箱注册
@@ -107,4 +108,8 @@ Route::post('/home/registering','Home\LoginController@registering');
 Route::get('/home/registering/setstatus/{id}/{token}','Home\LoginController@setstatus');
 // 手机号注册
 Route::post('/home/insert','Home\LoginController@insert');
+
+
+
+Route::get('/home/insert/sendMobileCode','Home\LoginController@sendMobileCode');
 

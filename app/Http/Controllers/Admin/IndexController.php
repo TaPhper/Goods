@@ -19,8 +19,9 @@ class IndexController extends Controller
 
     public function index()
     {   
+
         $admin = session()->get('login_admin');
-            
+
         // dd(date('Y-m-d H:i:s',time()));  
         return view('admin.index.index');
     }
