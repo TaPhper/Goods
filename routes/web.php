@@ -95,6 +95,7 @@ Route::get('home/index/search/{id}','Home\SearchController@sear');
 
 //个人中心
 Route::get('home/userinfo','Home\InfoController@userinfo');
+Route::get('home/uploads','Home\InfoController@uploads');
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 
