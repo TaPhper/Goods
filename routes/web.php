@@ -102,5 +102,5 @@ Route::post('/home/implement','Home\LoginController@implement');
 // 退出
 Route::get('/home/logout','Home\LoginController@logout');
 
-// 购物车
+// 购物车首页
 Route::get('/home/shopcart','Home\ShopController@shopcart');
