@@ -23,7 +23,7 @@ Route::post('admin/logining','Admin\IndexController@logining');
 
 
 //后台用户管理   叶尚君25-40
-Route::resource('admin/user','Admin\UsersController')->middleware('user');
+Route::resource('admin/user','Admin\UsersController');
 // 后台订单管理
 Route::resource('admin/indent','Admin\IndentsController')->middleware('indent');
 // 后台单据管理
