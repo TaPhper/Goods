@@ -96,9 +96,11 @@ Route::post('/home/insert','Home\LoginController@insert');
 Route::get('/home/insert/sendMobileCode','Home\LoginController@sendMobileCode');
 
 
-Route::get('/home/insert/sendMobileCode','Home\LoginController@sendMobileCode');
 // 登陆
 Route::get('/home/login','Home\LoginController@login');
 Route::post('/home/implement','Home\LoginController@implement');
 // 退出
 Route::get('/home/logout','Home\LoginController@logout');
+
+// 购物车
+Route::get('/home/shopcart','Home\ShopController@shopcart');
