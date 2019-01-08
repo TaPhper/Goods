@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-    	$slide = Slide::get();
+    	$slide = Slide::where('slide_status','=','1')->get();
     	// dump(session()->get('login_user')['user_tel']);
     	return view('home.index.index',['slide'=>$slide]);
     }
