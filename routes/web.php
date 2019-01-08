@@ -18,7 +18,7 @@ Route::get('admin/index','Admin\IndexController@index')->middleware('login');
 Route::get('admin/login','Admin\IndexController@login');
 Route::get('admin/loginout','Admin\IndexController@loginout');
 Route::post('admin/logining','Admin\IndexController@logining');
-
+// d
 
 
 
