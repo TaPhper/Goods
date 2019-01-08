@@ -50,6 +50,7 @@ class PowerController extends Controller
             'power_describe.required' => '职位描述必填',
         ]);
         $data = $request->except('_token');
+
         $arr = array(
             '0' => empty($data['power_usable0']) ? '' : '0,',
             '1' => empty($data['power_usable1']) ? '' : '1,',
