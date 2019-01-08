@@ -138,7 +138,7 @@
 					     	
 							<div class="filePic">
 								<input type="file" name="profile" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-								<img class="am-circle am-img-thumbnail" style="width:100px;height:104;" id="touxiang" src="images/getAvatar.do.jpg" alt="" />
+								<img class="am-circle am-img-thumbnail" style="width:100px;height:110px;" id="touxiang" src="/uploads/{{$user->uface}}" alt="" />
 							</div>
 						</form>   
 						 
@@ -146,7 +146,7 @@
 							<p class="am-form-help">头像</p>
 
 							<div class="info-m">
-								<div><b>用户名：<i>小叮当</i></b></div>
+								<div><b>用户名：<i>{{$user->user_name}}</i></b></div>
 								<div class="u-level">
 									<span class="rank r2">
 							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
@@ -170,7 +170,7 @@
 								<div class="am-form-group">
 									<label for="user-name2" class="am-form-label">昵称</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="nickname" name="user_name">
+										<input type="text" id="user-name2" placeholder="nickname" name="user_name" value="{{$user->user_name}}">
 
 									</div>
 								</div>
@@ -178,7 +178,7 @@
 								<div class="am-form-group">
 									<label for="user-name" class="am-form-label">姓名</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="" value="{{$user->user_name}}" name="true_name">
+										<input type="text" id="user-name2" placeholder="" value="{{$user->true_name}}" name="true_name">
 
 									</div>
 								</div>
@@ -202,7 +202,7 @@
 								<div class="am-form-group">
 									<label for="user-phone" class="am-form-label">电话</label>
 									<div class="am-form-content">
-										<input id="user-phone" placeholder="" type="text" value="{{$user->user_tel@if($user->user_sex==1)checked @endif }}" name="user_tel">
+										<input id="user-phone" placeholder="" type="text" value="{{$user->user_tel}}" name="user_tel">
 
 									</div>
 								</div>
