@@ -115,40 +115,21 @@
 									
 										 <div class="dd-conent">										
 											<dd class="select-all selected"><a href="#">全部</a></dd>
-											<dd><a href="#">百草味</a></dd>
-											<dd><a href="#">良品铺子</a></dd>
-											<dd><a href="#">新农哥</a></dd>
-											<dd><a href="#">楼兰蜜语</a></dd>
-											<dd><a href="#">口水娃</a></dd>
-											<dd><a href="#">考拉兄弟</a></dd>
+											@foreach($brand as $k=>$v)
+											<dd><a href="#" onclick="func({{$v->brand_id}})">{{$v->brand_name}}</a></dd>
+											@endforeach
 										 </div>
-						
+										<script type="text/javascript">
+											function func(id)
+											{
+												$.get('/home/index/brand/'+id,{'id':id},function(msg){
+														console.log(msg);
+												},'json')
+											}
+										</script>
 									</dl>
 								</li>
-								<li class="select-list">
-									<dl id="select2">
-										<dt class="am-badge am-round">种类</dt>
-										<div class="dd-conent">
-											<dd class="select-all selected"><a href="#">全部</a></dd>
-											<dd><a href="#">东北松子</a></dd>
-											<dd><a href="#">巴西松子</a></dd>
-											<dd><a href="#">夏威夷果</a></dd>
-											<dd><a href="#">松子</a></dd>
-										</div>
-									</dl>
-								</li>
-								<li class="select-list">
-									<dl id="select3">
-										<dt class="am-badge am-round">选购热点</dt>
-										<div class="dd-conent">
-											<dd class="select-all selected"><a href="#">全部</a></dd>
-											<dd><a href="#">手剥松子</a></dd>
-											<dd><a href="#">薄壳松子</a></dd>
-											<dd><a href="#">进口零食</a></dd>
-											<dd><a href="#">有机零食</a></dd>
-										</div>
-									</dl>
-								</li>
+								
 					        
 							</ul>
 							<div class="clear"></div>
