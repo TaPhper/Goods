@@ -95,7 +95,8 @@ Route::get('home/index/search/{id}','Home\SearchController@sear');
 
 //个人中心
 Route::get('home/userinfo','Home\InfoController@userinfo');
-Route::get('home/uploads','Home\InfoController@uploads');
+Route::post('/home/uploads','Home\InfoController@uploads');
+Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 //商品列表页搜索

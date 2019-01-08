@@ -3,6 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
 		<title>个人资料</title>
@@ -18,19 +19,26 @@
 	</head>
 	<script>
 	$(function(){
+		$.ajaxSetup({
+			    headers: {
+			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			    }
+			});
 
-		$('form:first input:file').eq(0).change(function(){
+		$('#forms input:file').eq(0).change(function(){
+			// alert($);
 			$.ajax({
 				url:'/home/uploads',
-				type:'get',
-				data:new FormData($('#info_file')[0]), //创建表单数据
+				type:'post',
+				data:new FormData($('#forms')[0]), //创建表单数据
 				processData:false, //不限定格式
 				contentType:false, //不进行特定格式编码
-				dataType:'json',
-				success:function(obj){
-					// console.log(obj);
-					if(obj.msg == 'success'){
-						$('form:first img:eq(0)').attr('src','/uploads/images'+obj.path);
+				dataType:'html',
+				success:function(msg){
+
+					// console.log(msg);
+					if(msg){
+						$('#touxiang').attr('src','/uploads/'+msg);
 					}else{
 						alert('头像修改失败');
 					}
@@ -126,11 +134,11 @@
 
 						<!--头像 -->
 						<div class="user-infoPic">
-					     <form action="/home/uploads"  enctype="multipart/form-data" method="get">
-
+					     <form action="/home/uploads" id="forms" enctype="multipart/form-data" method="post">
+					     	
 							<div class="filePic">
-								<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-								<img class="am-circle am-img-thumbnail" src="images/getAvatar.do.jpg" alt="" />
+								<input type="file" name="profile" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+								<img class="am-circle am-img-thumbnail" style="width:100px;height:104;" id="touxiang" src="images/getAvatar.do.jpg" alt="" />
 							</div>
 						</form>   
 						 
@@ -156,12 +164,13 @@
 
 						<!--个人信息 -->
 						<div class="info-main">
-							<form class="am-form am-form-horizontal">
+							<form class="am-form am-form-horizontal" method="post" action="/home/saveinfo/{{$user->user_id}}">
+								{{csrf_field()}}
 
 								<div class="am-form-group">
 									<label for="user-name2" class="am-form-label">昵称</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="nickname">
+										<input type="text" id="user-name2" placeholder="nickname" name="user_name">
 
 									</div>
 								</div>
@@ -169,7 +178,7 @@
 								<div class="am-form-group">
 									<label for="user-name" class="am-form-label">姓名</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="name">
+										<input type="text" id="user-name2" placeholder="" value="{{$user->user_name}}" name="true_name">
 
 									</div>
 								</div>
@@ -178,53 +187,29 @@
 									<label class="am-form-label">性别</label>
 									<div class="am-form-content sex">
 										<label class="am-radio-inline">
-											<input type="radio" name="radio10" value="male" data-am-ucheck> 男
+											<input type="radio" @if($user->user_sex == 2)checked @endif name="sex" value="2" data-am-ucheck > 男
 										</label>
 										<label class="am-radio-inline">
-											<input type="radio" name="radio10" value="female" data-am-ucheck> 女
+											<input type="radio" @if($user->user_sex == 1)checked @endif name="sex" value="1" data-am-ucheck> 女
 										</label>
 										<label class="am-radio-inline">
-											<input type="radio" name="radio10" value="secret" data-am-ucheck> 保密
+											<input type="radio" @if($user->user_sex == 0)checked @endif name="sex" value="0" data-am-ucheck> 保密
 										</label>
 									</div>
 								</div>
 
-								<div class="am-form-group">
-									<label for="user-birth" class="am-form-label">生日</label>
-									<div class="am-form-content birth">
-										<div class="birth-select">
-											<select data-am-selected>
-												<option value="a">2015</option>
-												<option value="b">1987</option>
-											</select>
-											<em>年</em>
-										</div>
-										<div class="birth-select2">
-											<select data-am-selected>
-												<option value="a">12</option>
-												<option value="b">8</option>
-											</select>
-											<em>月</em></div>
-										<div class="birth-select2">
-											<select data-am-selected>
-												<option value="a">21</option>
-												<option value="b">23</option>
-											</select>
-											<em>日</em></div>
-									</div>
 							
-								</div>
 								<div class="am-form-group">
 									<label for="user-phone" class="am-form-label">电话</label>
 									<div class="am-form-content">
-										<input id="user-phone" placeholder="telephonenumber" type="tel">
+										<input id="user-phone" placeholder="" type="text" value="{{$user->user_tel@if($user->user_sex==1)checked @endif }}" name="user_tel">
 
 									</div>
 								</div>
 								<div class="am-form-group">
 									<label for="user-email" class="am-form-label">电子邮件</label>
 									<div class="am-form-content">
-										<input id="user-email" placeholder="Email" type="email">
+										<input id="user-email" placeholder="Email" type="email" name="email"value="{{$user->user_email}}">
 
 									</div>
 								</div>
@@ -255,8 +240,11 @@
 									</div>
 								</div>
 								<div class="info-btn">
-									<div class="am-btn am-btn-danger">保存修改</div>
-								</div>
+									<!-- <div class="am-btn am-btn-danger"> -->
+										<input type="submit" value="修改" class="am-btn am-btn-danger">
+
+								   <!-- </div> -->
+								   </div>
 
 							</form>
 						</div>
