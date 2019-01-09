@@ -89,6 +89,7 @@ class GoodsController extends Controller
                 $goods->type_id = $data['type_id'];
                 $goods->brand_id = $data['brand_id'];
                 $goods->market_price = $data['gprice'];
+                $goods->stock = $data['stock'];
                 $goods->sales_grice = $data['gprice_money'];
                 $goods->is_ground = $data['gstatus'];
                 $goods->is_hot = $data['ghot'];

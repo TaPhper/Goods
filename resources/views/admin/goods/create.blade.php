@@ -48,6 +48,10 @@
                         <label>注销价格：</label>
                         <input type="text" name="gprice_money" class="w200 name" value="" autocomplete="off">
                     </li>
+                    <li>
+                        <label>商品库存：</label>
+                        <input type="text" name="stock" class="w200 name" value="" autocomplete="off">
+                    </li>
 			        <li>
 			          <label>商品品牌：</label>
 			          <select class="w100" name="brand_id">

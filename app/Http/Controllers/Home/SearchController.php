@@ -22,6 +22,7 @@ class SearchController extends Controller
     public function introduction($id)
     {
     	$goods_one =DB::table('goods')->where('goods_id',$id)->get();
+        
     	return view('home.goodsinfo.introduction',['goods_one'=>$goods_one]);
     }
 

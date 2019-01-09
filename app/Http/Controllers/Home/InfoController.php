@@ -41,13 +41,18 @@ class InfoController extends Controller
          $user = Users::find($id);
          // dump($user);
         $data = $request->except('_token');
-        dump($data);
+        
          $user->user_name = $data['user_name'];
          $user->user_email = $data['email'];
          $user->true_name = $data['true_name'];
          $user->user_sex = $data['sex'];
-         $user->save();
-
+         $user->user_tel = $data['user_tel'];
+         $res = $user->save();
+         if($res){
+          return back()->with('success','修改成功');
+         }else{
+          return back()->with('error','修改失败');
+         }
    }
 
 
