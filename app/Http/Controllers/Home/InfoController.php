@@ -69,7 +69,7 @@ class InfoController extends Controller
         $data=Addr::where('user_id',$id)->get();
         // dump($data);
           
-          return view('home.userinfo.address',['data'=>$data]);
+          return view('home.userinfo.user.addr',['data'=>$data]);
 
    }
       //收货地址提交

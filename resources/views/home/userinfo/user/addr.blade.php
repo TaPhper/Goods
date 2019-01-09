@@ -95,7 +95,7 @@
 											<label for="user-intro" class="am-form-label">详细地址</label>
 											<div class="am-form-content">
 												<textarea class="" rows="3" id="user-intro" placeholder="输入详细地址" name="detail"></textarea>
-												<small>100字以内写出你的详细地址...</small>
+												
 											</div>
 										</div>
 

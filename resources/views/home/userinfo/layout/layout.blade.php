@@ -26,6 +26,13 @@
 
 		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+		<link href="css/personal.css" rel="stylesheet" type="text/css">
+		<link href="css/addstyle.css" rel="stylesheet" type="text/css">
+		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+		<script src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 			
 
@@ -114,6 +121,7 @@
 			<div class="col-main">
 				<div class="main-wrap">
 					@section('content')
+					
 					@show
 				</div>
 				<!--底部-->
