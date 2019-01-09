@@ -104,7 +104,23 @@ class InfoController extends Controller
             if($res){
                 return  back()->with('success');
             }
+
    }
+
+    public function edit(Request $request,$id)
+    {
+       // echo $id;
+         return view('home.userinfo.user.addr_edit');
+    }
+
+     public function delete(Request $request,$id)
+    {
+         Addr::destroy($id);
+         return  back()->with('success','删除成功');
+    }
+       
+
+       
 
 
 }

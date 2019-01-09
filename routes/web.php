@@ -72,6 +72,8 @@ Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
 Route::get('home/addr','Home\InfoController@addr');
 //保存提交收货地址
 Route::post('home/saveaddr','Home\InfoController@saveaddr');
+ //删除收货地址
+Route::get('user_addr/delete/{id}','Home\InfoController@delete');
 
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
