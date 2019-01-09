@@ -8,11 +8,14 @@ use App\Models\Users;
 class InfoController extends Controller
 {
    public function userinfo()
-   {
+   {  
+      
          $user=session()->get('login_user');
+
             $id=$user->user_id;
          $user=Users::find($id);
-        
+    
+
    	  return view('home.userinfo.information',['user'=>$user]);
    }
 
@@ -41,12 +44,19 @@ class InfoController extends Controller
          $user = Users::find($id);
          // dump($user);
         $data = $request->except('_token');
-        dump($data);
+        // dump($data);
          $user->user_name = $data['user_name'];
          $user->user_email = $data['email'];
          $user->true_name = $data['true_name'];
+         $user->user_tel = $data['user_tel'];
          $user->user_sex = $data['sex'];
-         $user->save();
+           $res = $user->save();
+
+           if($res){
+               return back()->with('success','修改成功');
+           }
+
+
 
    }
 

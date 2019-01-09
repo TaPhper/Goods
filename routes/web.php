@@ -95,7 +95,9 @@ Route::get('home/index/search/{id}','Home\SearchController@sear');
 
 //个人中心
 Route::get('home/userinfo','Home\InfoController@userinfo');
+//ajax头像上传
 Route::post('/home/uploads','Home\InfoController@uploads');
+//个人信息修改
 Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
@@ -126,3 +128,4 @@ Route::get('/home/logout','Home\LoginController@logout');
 
 // 购物车首页
 Route::get('/home/shopcart','Home\ShopController@shopcart');
+Route::post('/home/cart/{id}','Home\ShopController@save');

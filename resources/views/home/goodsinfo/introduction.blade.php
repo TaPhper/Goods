@@ -241,7 +241,8 @@
 											<a href="javascript:;" title="关闭" class="close">×</a>
 										</div>
 										<div class="theme-popbod dform">
-											<form class="theme-signin" name="loginform" action="" method="post">
+											<form class="theme-signin" name="loginform" action="/home/cart/{{$goods_one[0]->goods_id}}" method="post">
+												{{csrf_field()}}
 
 												<div class="theme-signin-left">
 
@@ -266,7 +267,7 @@
 														<div class="cart-title number">数量</div>
 														<dd>
 															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="text_box" name="cnt" type="text" value="1" style="width:30px;" />
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 															<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
 														</dd>
@@ -289,7 +290,7 @@
 													</div>
 												</div>
 
-											</form>
+											
 										</div>
 									</div>
 
@@ -297,7 +298,7 @@
 							</dl>
 							<div class="clear"></div>
 							<!--活动	-->
-							<div class="shopPromotion gold">
+							<!-- <div class="shopPromotion gold">
 								<div class="hot">
 									<dt class="tb-metatit">店铺优惠</dt>
 									<div class="gold-list">
@@ -315,7 +316,7 @@
 										</ul>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 
 						<div class="pay">
@@ -331,10 +332,11 @@
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" href="shopcart.html"><i></i>加入购物车</a>
+								    <input type="submit"value="加入购物车" id="LikBuy" >
 								</div>
 							</li>
 						</div>
+			</form>
 
 					</div>
 

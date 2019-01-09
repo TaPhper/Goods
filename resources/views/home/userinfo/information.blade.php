@@ -146,7 +146,7 @@
 							<p class="am-form-help">头像</p>
 
 							<div class="info-m">
-								<div><b>用户名：<i>{{$user->user_name}}</i></b></div>
+								<div><b>用户名：<i>{{$user->user_name }}</i></b></div>
 								<div class="u-level">
 									<span class="rank r2">
 							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
@@ -170,7 +170,7 @@
 								<div class="am-form-group">
 									<label for="user-name2" class="am-form-label">昵称</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="nickname" name="user_name" value="{{$user->user_name}}">
+										<input type="text" id="user-name2" placeholder="nickname" name="user_name" value="{{$user->user_name }}">
 
 									</div>
 								</div>
@@ -178,7 +178,7 @@
 								<div class="am-form-group">
 									<label for="user-name" class="am-form-label">姓名</label>
 									<div class="am-form-content">
-										<input type="text" id="user-name2" placeholder="" value="{{$user->true_name}}" name="true_name">
+										<input type="text" id="user-name2" placeholder="" value="{{$user->true_name }}" name="true_name">
 
 									</div>
 								</div>
@@ -209,7 +209,7 @@
 								<div class="am-form-group">
 									<label for="user-email" class="am-form-label">电子邮件</label>
 									<div class="am-form-content">
-										<input id="user-email" placeholder="Email" type="email" name="email"value="{{$user->user_email}}">
+										<input id="user-email" placeholder="Email" type="email" name="email"value="{{$user->user_email }}">
 
 									</div>
 								</div>
@@ -285,7 +285,7 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-							<li class="active"> <a href="information.html">个人信息</a></li>
+							<li class="active"> <a href="/home/userinfo">个人信息</a></li>
 							<li> <a href="safety.html">安全设置</a></li>
 							<li> <a href="address.html">收货地址</a></li>
 						</ul>
