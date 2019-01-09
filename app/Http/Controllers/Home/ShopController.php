@@ -31,6 +31,7 @@ class ShopController extends Controller
     		                     'sum' =>$sum
 
               ]);
+    	dump();
     }
 
      public function save(Request $request,$id)
