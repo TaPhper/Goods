@@ -7,13 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Users;
 class InfoController extends Controller
 {
+   public function info()
+   {
+      return view('home.userinfo.user_center');
+   }
    public function userinfo()
    {
          $user=session()->get('login_user');
             $id=$user->user_id;
          $user=Users::find($id);
         
-   	  return view('home.userinfo.information',['user'=>$user]);
+   	  return view('home.userinfo.user.information',['user'=>$user]);
    }
 
    public function uploads(Request $request)

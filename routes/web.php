@@ -59,14 +59,13 @@ Route::resource('/admin/comment','Admin\CommentController');
 Route::get('/','Home\IndexController@index');
 // 前台商品列表页
 Route::get('home/index/search/{id}','Home\SearchController@sear');
-//个人中心
-Route::get('home/userinfo','Home\InfoController@userinfo');
-Route::post('/home/uploads','Home\InfoController@uploads');
-Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
+
 //商品
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 //商品列表页搜索
 Route::get('home/index/sear','Home\SearchController@search');
+//主页搜索
+Route::get('home/index/seek','Home\SearchCOntroller@seek');
 //商品品牌页
 Route::get('home/index/brand/{id}','Home\SearchController@brand');
 // 前台注册
@@ -86,3 +85,21 @@ Route::post('/home/implement','Home\LoginController@implement');
 Route::get('/home/logout','Home\LoginController@logout');
 // 购物车首页
 Route::get('/home/shopcart','Home\ShopController@shopcart');
+
+//个人中心
+Route::get('home/info','Home\InfoController@info');
+Route::get('home/userinfo','Home\InfoController@userinfo');
+Route::post('home/uploads','Home\InfoController@uploads');
+Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
+//个人中心安全设置 
+Route::get('/home/safety','Home\UserInfoController@index');
+//修改登录密码
+Route::get('/home/password','Home\UserInfoController@pass');
+//绑定邮箱验证
+Route::get('/home/email','Home\UserInfoController@email');
+//手机号换绑
+Route::get('/home/phone','Home\UserInfoController@phone');
+
+//前台个人中心 我的交易
+Route::get('/home/order','Home\DealController@order');
+

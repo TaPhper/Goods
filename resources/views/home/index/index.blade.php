@@ -47,7 +47,7 @@
 						<div class="menu-hd"><a href="index.html" target="_top" class="h">商城首页</a></div>
 					</div>
 					<div class="topMessage my-shangcheng">
-						<div class="menu-hd MyShangcheng"><a href="/home/userinfo" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+						<div class="menu-hd MyShangcheng"><a href="/home/info" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 					</div>
 					<div class="topMessage mini-cart">
 						<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
@@ -66,9 +66,9 @@
 
 					<div class="search-bar pr">
 						
-						<form>
-							<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-							<a href="search.html"><input id="ai-topsearch" class="submit am-btn" value="搜索" index="1"></a>
+						<form action="home/index/sear">
+							<input id="searchInput" name="search" type="text" placeholder="搜索" autocomplete="off">
+							<input type="submit" id="ai-topsearch" class="submit am-btn" value="搜索" index="1">
 						</form>
 					</div>
 				</div>
