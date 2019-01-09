@@ -3,7 +3,7 @@
 <div class="user-info">
 						<!--标题 -->
 						<div class="am-cf am-padding">
-							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人信息</strong> / <small>Personal&nbsp;information</small></div>
 						</div>
 						<hr/>
 
@@ -18,7 +18,7 @@
 						</form>   
 						 
 
-							<p class="am-form-help">头像</p>
+							
 
 							<div class="info-m">
 								<div><b>用户名：<i>{{$user->user_name }}</i></b></div>
