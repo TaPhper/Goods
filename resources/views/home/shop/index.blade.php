@@ -95,6 +95,7 @@
 						<div class="bundle  bundle-last ">
 							<div class="clear"></div>
 							<div class="bundle-main">
+								@foreach($carts as $k=>$v)
 								<ul class="item-content clearfix">
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
@@ -104,12 +105,12 @@
 									</li>
 									<li class="td td-item">
 										<div class="item-pic">
-											<a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+											<a href="#" target="_blank" data-title="{{$v['gname']}}" class="J_MakePoint" data-point="tbcart.8.12">
+												<img src="/uploads/{{$v[goods_img]}}"width="80px" hieght="80px" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11"></a>
 											</div>
 										</div>
 									</li>
@@ -128,7 +129,7 @@
 													<em class="price-original">78.00</em>
 												</div>
 												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0">39.00</em>
+													<em class="J_Price price-now" tabindex="0"></em>
 												</div>
 											</div>
 										</div>
@@ -155,7 +156,8 @@
 											<a href="javascript:;" data-point-url="#" class="delete">删除</a>
 										</div>
 									</li>
-								</ul>					
+								</ul>
+								@endforeach					
 				<div class="clear"></div>
 
 				<div class="float-bar-wrapper">

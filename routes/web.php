@@ -60,7 +60,20 @@ Route::get('/','Home\IndexController@index');
 // 前台商品列表页
 Route::get('home/index/search/{id}','Home\SearchController@sear');
 
-//商品
+
+
+//个人中心
+Route::get('home/userinfo','Home\InfoController@userinfo');
+//ajax头像上传
+Route::post('/home/uploads','Home\InfoController@uploads');
+//个人信息修改
+Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
+//收货地址
+Route::get('home/addr','Home\InfoController@addr');
+//保存提交收货地址
+Route::post('home/saveaddr','Home\InfoController@saveaddr');
+
+
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 //商品列表页搜索
 Route::get('home/index/sear','Home\SearchController@search');
