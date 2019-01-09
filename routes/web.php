@@ -99,6 +99,10 @@ Route::get('home/userinfo','Home\InfoController@userinfo');
 Route::post('/home/uploads','Home\InfoController@uploads');
 //个人信息修改
 Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
+//收货地址
+Route::get('home/addr','Home\InfoController@addr');
+//保存提交收货地址
+Route::post('home/saveaddr','Home\InfoController@saveaddr');
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 //商品列表页搜索
@@ -128,4 +132,3 @@ Route::get('/home/logout','Home\LoginController@logout');
 
 // 购物车首页
 Route::get('/home/shopcart','Home\ShopController@shopcart');
-Route::post('/home/cart/{id}','Home\ShopController@save');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Users;
+use App\Models\Home\Addr;
+
 class InfoController extends Controller
 {
    public function userinfo()
@@ -59,7 +61,52 @@ class InfoController extends Controller
 
 
    }
+      //加载收货地址模板
+   public function addr()
+   {
+        $id = session()->get('login_user')['user_id'];
+        $data=Addr::where('user_id',$id)->get();
+        // dump($data);
+          
+          return view('home.userinfo.address',['data'=>$data]);
 
+   }
+      //收货地址提交
+   public function saveaddr(Request $request)
+   {
+      $data = $request->except('_token');
+        $user_addr = new Addr;
+        $user_addr->order_name = $data['order_name'];
+        $user_addr->tel = $data['tel'];
+        $user_addr->detail = $data['detail'];
+          $id = session()->get('login_user')['user_id'];
+          $user_addr->user_id = $id;
+
+          if($data['province'] == '省份'){
+                $user_addr->addr = $user_addr->addr;
+            }else{
+               $user_addr->addr = $data['province'];
+                if($data['city'] == '地级市')
+                {
+                    $user_addr->addr = $user_addr->addr;
+                }else{
+                   $user_addr->addr = $data['province'].$data['city'];
+                    if($data['county'] == '市、县级市'){
+                         $user_addr->addr = $user_addr->addr;
+                    }else{
+                        $user_addr->addr = $data['province'].$data['city'].$data['county'];
+                    }
+                }
+            }
+            $res = $user_addr->save();
+
+            if($res){
+                return  back()->with('success');
+            }
+
+   }
+
+  
 
 
 }

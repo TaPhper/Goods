@@ -241,8 +241,8 @@
 											<a href="javascript:;" title="关闭" class="close">×</a>
 										</div>
 										<div class="theme-popbod dform">
-											<form class="theme-signin" name="loginform" action="/home/cart/{{$goods_one[0]->goods_id}}" method="post">
-												{{csrf_field()}}
+											<form class="theme-signin" name="loginform" action="" method="post">
+												
 
 												<div class="theme-signin-left">
 
@@ -290,7 +290,7 @@
 													</div>
 												</div>
 
-											
+												</form>
 										</div>
 									</div>
 
@@ -332,11 +332,10 @@
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-								    <input type="submit"value="加入购物车" id="LikBuy" >
-								</div>
+								<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="pay.html">加入购物车</a>								</div>
 							</li>
 						</div>
-			</form>
+		
 
 					</div>
 
