@@ -77,7 +77,7 @@ Route::post('/home/registering','Home\LoginController@registering');
 Route::get('/home/registering/setstatus/{id}/{token}','Home\LoginController@setstatus');
 // 手机号注册
 Route::post('/home/insert','Home\LoginController@insert');
-//验证码
+// 发送手机短信
 Route::get('/home/insert/sendMobileCode','Home\LoginController@sendMobileCode');
 // 登陆
 Route::get('/home/login','Home\LoginController@login');
@@ -86,3 +86,7 @@ Route::post('/home/implement','Home\LoginController@implement');
 Route::get('/home/logout','Home\LoginController@logout');
 // 购物车首页
 Route::get('/home/shopcart','Home\ShopController@shopcart');
+Route::get('/home/shopcart/down','Home\ShopController@down');
+Route::get('/home/shopcart/up','Home\ShopController@up');
+// 删除购物车商品
+Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
