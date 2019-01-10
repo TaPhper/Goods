@@ -15,24 +15,35 @@
 		<link href="/home/css/stepstyle.css" rel="stylesheet" type="text/css">
 
 		<link href="/home/css/infstyle.css" rel="stylesheet" type="text/css">
-		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
-		<script src="AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script> 
-		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script> 
+		<script type="text/javascript" src="/home/js/jquery-1.7.2.min.js"></script>
 		<link href="/home/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
 		<link href="/home/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
 
-		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 		<link href="/home/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
 		<link href="/home/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/home/css/addstyle.css" rel="stylesheet" type="text/css">
-		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
-		<script src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+
+
+	
+		<link href="css/orstyle.css" rel="stylesheet" type="text/css">
+
+		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+
+
+		
+		<link href="css/addstyle.css" rel="stylesheet" type="text/css">
+		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 			
 
@@ -83,7 +94,7 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="images/logobig.png" /></li>
+								<li><img src="/home/images/logobig.png" /></li>
 							</div>
 
 							<div class="search-bar pr">

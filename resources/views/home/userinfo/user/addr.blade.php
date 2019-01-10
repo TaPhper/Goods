@@ -22,9 +22,9 @@
 										<span class="street">{{$v->detail}}</span></p>
 								</div>
 								<div class="new-addr-btn">
-									<a href="#"><i class="am-icon-edit"></i>编辑</a>
+									<a href="/home/edit/{{$v->id}}"><i class="am-icon-edit"></i>编辑</a>
 									<span class="new-addr-bar">|</span>
-									<a href="" onClick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
+									<a href="/user_addr/delete/{{$v->id}}" onClick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
 								</div>
 							</li>
 							@endforeach

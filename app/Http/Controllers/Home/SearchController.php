@@ -50,6 +50,12 @@ class SearchController extends Controller
         }
         return json_decode($goods);
     }
+    //销量排序
+    public function sales()
+    {
+        $goods = DB::table('goods')->orderBy('sales','desc')->get();
+        dump($goods);die;
+    }
 
 
 }

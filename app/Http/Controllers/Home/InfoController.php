@@ -102,9 +102,59 @@ class InfoController extends Controller
             $res = $user_addr->save();
 
             if($res){
-                return  back()->with('success');
+              return  back()->with('success');
             }
+
    }
+
+    public function edit(Request $request,$id)
+    {
+      $addr = Addr::find($id);
+      return view('home.userinfo.user.addr_edit',['addr'=>$addr]);
+    }
+
+    public function update(Request $request,$id)
+    {
+      $user_addr = Addr::find($id);
+      $data = $request;
+      $user_addr['order_name'] = $data['order_name'];
+      $user_addr['tel']        = $data['tel'];
+      $user_addr['detail']     = $data['detail'];
+    
+      if($data['province'] == '省份'){
+                $user_addr->addr = $user_addr->addr;
+            }else{
+               $user_addr->addr = $data['province'];
+                if($data['city'] == '地级市')
+                {
+                    $user_addr->addr = $user_addr->addr;
+                }else{
+                   $user_addr->addr = $data['province'].$data['city'];
+                    if($data['county'] == '市、县级市'){
+                         $user_addr->addr = $user_addr->addr;
+                    }else{
+                        $user_addr->addr = $data['province'].$data['city'].$data['county'];
+                    }
+                }
+        }
+      $res = $user_addr->save();
+      if($res){
+        return redirect('/home/addr');
+      }else{
+        return back();
+      }
+        
+    }
+    public function delete(Request $request,$id)
+    {
+         
+      Addr::destroy($id);
+      return  back()->with('success','删除成功');
+    }
+      
+       
+
+       
 
 
 }

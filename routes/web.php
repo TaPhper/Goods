@@ -72,11 +72,19 @@ Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
 Route::get('home/addr','Home\InfoController@addr');
 //保存提交收货地址
 Route::post('home/saveaddr','Home\InfoController@saveaddr');
+ //删除收货地址
+Route::get('user_addr/delete/{id}','Home\InfoController@delete');
+//修改收货地址
+Route::get('home/edit/{id}','Home\InfoController@edit');
+//提交修改
+Route::get('home/update/{id}','Home\InfoController@update');
 
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 //商品列表页搜索
 Route::get('home/index/sear','Home\SearchController@search');
+//商品列表按销量搜索
+Route::get('home/index/sales','Home\SearchController@sales');
 //主页搜索
 Route::get('home/index/seek','Home\SearchCOntroller@seek');
 //商品品牌页
