@@ -44,17 +44,31 @@ class SearchController extends Controller
     public function brand($id)
     {
         $goods = DB::table('goods')->where('brand_id',$id)->get();
-        dump($goods);die;
-        foreach ($goods as $key => $value) {
-            
-        }
         return json_decode($goods);
     }
     //销量排序
-    public function sales()
-    {
-        $goods = DB::table('goods')->orderBy('sales','desc')->get();
-        dump($goods);die;
+    public function sales($id)
+    {   
+        if($id == 0)
+        {
+            $brand = DB::table('brand')->get();
+            $goods = DB::table('goods')->get();
+            $count = count($goods);
+            return view('home.index.show',['goods'=>$goods,'count'=>$count,'brand'=>$brand]);  
+        }
+        if($id == 1){
+            $brand = DB::table('brand')->get();
+            $goods = DB::table('goods')->orderBy('sales','desc')->get();
+            $count = count($goods);
+            return view('home.index.show',['goods'=>$goods,'count'=>$count,'brand'=>$brand]);
+        }
+        if($id == 2)
+        {
+            $brand = DB::table('brand')->get();
+            $goods = DB::table('goods')->orderBy('market_price','asc')->get();
+            $count = count($goods);
+            return view('home.index.show',['goods'=>$goods,'count'=>$count,'brand'=>$brand]); 
+        }
     }
 
 

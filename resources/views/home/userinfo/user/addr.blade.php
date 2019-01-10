@@ -9,7 +9,7 @@
 						<ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails">
                            @foreach ($data as $k=>$v)
 							<li class="user-addresslist defaultAddr">
-								<span class="new-option-r"><i class="am-icon-check-circle"></i></span>
+								<span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
 								<p class="new-tit new-p-re">
 									<span class="new-txt">{{$v->order_name}}</span>
 									<span class="new-txt-rd2">{{$v->tel}}</span>
@@ -19,7 +19,8 @@
 										<span class="title">地址：</span>
 										<span class="province">{{$v->addr}}</span>
 										
-										<span class="street">{{$v->detail}}</span></p>
+										<span class="street">{{$v->detail}}</span>
+									</p>
 								</div>
 								<div class="new-addr-btn">
 									<a href="/home/edit/{{$v->id}}"><i class="am-icon-edit"></i>编辑</a>

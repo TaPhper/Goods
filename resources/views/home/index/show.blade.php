@@ -97,7 +97,7 @@
 							</div>
 							<ul class="select">
 								<p class="title font-normal">
-									<span class="fl">{{$data or $data_name[0]->type_name}}</span>
+									<span class="fl">{{$data or '全部商品'}}</span>
 									<span class="total fl">搜索到<strong class="num">{{$count or $goods_count}}</strong>件相关商品</span>
 								</p> 
 								<div class="clear"></div>
@@ -136,9 +136,15 @@
                         </div>
 							<div class="search-content">
 								<div class="sort">
-									<li class="first">
-										<a href="" title="综合">综合排序</a></li>
-									<li><a href="/home/index/sales" title="销量">销量排序</a></li>
+									<li>
+									<a href="/home/index/sales/0" title="综合">综合排序</a> 
+									 </li>
+									<li>
+									<a href="/home/index/sales/1" title="销量">销量排序</a>
+									</li>
+									<li>
+									<a href="/home/index/sales/2" title="价格">价格升序</a>
+									</li>
 								</div>
 								<div class="clear"></div>
 
@@ -155,7 +161,7 @@
 												<strong>{{$v->market_price}}</strong>
 											</p>
 											<p class="number fl">
-												销量<span></span>
+												销量<span>{{$v->sales}}</span>
 											</p>
 										</div>
 										</a>

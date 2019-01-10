@@ -84,7 +84,7 @@ Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 //商品列表页搜索
 Route::get('home/index/sear','Home\SearchController@search');
 //商品列表按销量搜索
-Route::get('home/index/sales','Home\SearchController@sales');
+Route::get('home/index/sales/{id}','Home\SearchController@sales');
 //主页搜索
 Route::get('home/index/seek','Home\SearchCOntroller@seek');
 //商品品牌页
@@ -106,7 +106,10 @@ Route::post('/home/implement','Home\LoginController@implement');
 Route::get('/home/logout','Home\LoginController@logout');
 // 购物车首页
 Route::get('/home/shopcart','Home\ShopController@shopcart');
-
+Route::get('/home/shopcart/down','Home\ShopController@down');
+Route::get('/home/shopcart/up','Home\ShopController@up');
+// 删除购物车商品
+Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
 
 //个人中心
 Route::get('home/info','Home\InfoController@info');
@@ -125,8 +128,9 @@ Route::get('/home/phone','Home\UserInfoController@phone');
 //前台个人中心 我的交易
 Route::get('/home/order','Home\DealController@order');
 
+//我的小窝收藏
+Route::get('/home/collection','Home\AlveoleController@index');
+//取消收藏
+Route::get('/home/uncollect/{id}','Home\AlveoleController@uncollect');
 
-Route::get('/home/shopcart/down','Home\ShopController@down');
-Route::get('/home/shopcart/up','Home\ShopController@up');
-// 删除购物车商品
-Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
+
