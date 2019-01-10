@@ -110,6 +110,8 @@ Route::get('/home/shopcart/down','Home\ShopController@down');
 Route::get('/home/shopcart/up','Home\ShopController@up');
 // 删除购物车商品
 Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
+// 结算页面
+Route::get('/home/shop/pay','Home\ShopController@pay');
 
 //个人中心
 Route::get('home/info','Home\InfoController@info');
@@ -132,5 +134,7 @@ Route::get('/home/order','Home\DealController@order');
 Route::get('/home/collection','Home\AlveoleController@index');
 //取消收藏
 Route::get('/home/uncollect/{id}','Home\AlveoleController@uncollect');
+
+
 
 

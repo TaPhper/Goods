@@ -14,38 +14,50 @@ class ShopController extends Controller
     {
     	$id = $request->id;
     	$user_id = session()->get('login_user')['user_id'];
-    	if($user_id){
-	    	if($id){
-	    		// 获取商品数据
-		    	$goods = Goods::where('goods_id',$id)->first();
-		    	// 登录用户信息
-		    	// dump($goods);die;
-		    	if(!$shop = Shops::where('good_id','=',$goods['goods_id'])->first()){
-		    		$shop = new Shops;
-			    	$shop->user_id = $user_id;
-			    	$shop->good_id = $goods['goods_id'];
-			    	$shop->gname = $goods['gname'];
-			    	$shop->gnum = 1;
-			    	$shop->sales_grice = $goods['sales_grice'];
-			    	$shop->save();
-		    	}
+    	if($id){
+    		// 获取商品数据
+	    	$goods = Goods::where('goods_id',$id)->first();
+	    	// 登录用户信息
+	    	if(!$shop = Shops::where('good_id','=',$goods['goods_id'])->where('user_id','=',$user_id)->first()){
+	    		$shop = new Shops;
+		    	$shop->user_id = $user_id;
+		    	$shop->good_id = $goods['goods_id'];
+                $shop->gname = $goods['gname'];
+		    	$shop->goods_img = $goods['goods_img'];
+		    	$shop->gnum = 1;
+                $shop->sales_grice = $goods['sales_grice'];
+		    	$shop->grice = $goods['sales_grice'];
+		    	$shop->save();
 	    	}
-	    	$shop = Shops::where('user_id',$user_id)->get();
-    	}else{
-    		// 匿名用户阿斯顿 
     	}
-    	
-    	
-    	
-    	return view('home.shop.index',['shop'=>$shop]);
+        if($user_id != 0){
+            // 登录之后 匿名商品改成登录用户的商品
+            $xshop = Shops::where('user_id','=',0)->get();
+            foreach($xshop as $k=>$v){
+                $xshop = Shops::where('id',$v->id)->first();
+                if(!$shopp = Shops::where('good_id','=',$xshop->good_id)->where('user_id','=',$user_id)->first()){
+                    $v->user_id = $user_id;
+                    $v->save();
+                }else{
+                    $v->delete();
+                }
+                
+            }
+            
+        }
+
+        $shop = Shops::where('user_id',$user_id)->get();
+    	$nshop = Shops::where('user_id',$user_id)->first();
+    	return view('home.shop.index',['shop'=>$shop,'nshop'=>$nshop]);
     }
     // 点击减
     public function down(Request $request)
-    {
+    {  
+        $user_id = $request->user_id;
     	$id = $request->id;
     	$gnum = $request->num;
     	$sales_grice = $request->html;
-    	$shop = Shops::where('good_id','=',$id)->first();
+    	$shop = Shops::where('good_id','=',$id)->where('user_id','=',$user_id)->first();
     	$shop->gnum = $gnum;
     	$shop->sales_grice = $sales_grice*$gnum;
     	$res = $shop->save();
@@ -54,10 +66,11 @@ class ShopController extends Controller
     // 点击加
     public function up(Request $request)
     {
+        $user_id = $request->user_id;
     	$id = $request->id;
     	$gnum = $request->num;
     	$sales_grice = $request->html;
-    	$shop = Shops::where('good_id','=',$id)->first();
+    	$shop = Shops::where('good_id','=',$id)->where('user_id','=',$user_id)->first();
     	$shop->gnum = $gnum;
     	$shop->sales_grice = $sales_grice*$gnum;
     	$res = $shop->save();
@@ -65,10 +78,7 @@ class ShopController extends Controller
     }
 
     public function destroy($id)
-    {
-    	
-
-       return view('home.shop.index');
+    {   
     	$shop = Shops::find($id)->delete();
     	
     	if($shop){
@@ -76,6 +86,15 @@ class ShopController extends Controller
         }else{
             return back()->with('error','删除失败');
        	}
+    }
+
+
+
+    // 结算
+    public function pay()
+    {
+        
+        return view('home.shop.pay');
     }
 
 

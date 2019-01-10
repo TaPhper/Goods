@@ -26,16 +26,16 @@
                 </td>
                 <td>{{ $v->slide_url }}</td>
                 <td>
-                  @if($v->slide_status == 2)
+                  @if($v->slide_status == 1)
                   显示
-                  @elseif($v->slide_status == 1)
+                  @elseif($v->slide_status == 2)
                   隐藏
                   @endif
                 </td>
                 <td>
-                  @if($v->slide_status == 2)
+                  @if($v->slide_status == 1)
                   <a class="btn btn-info" href="/admin/slide/{{ $v->slide_id }}">隐藏</a>
-                  @elseif($v->slide_status == 1)
+                  @elseif($v->slide_status == 2)
                   <a class="btn btn-info" href="/admin/slide/{{ $v->slide_id }}">显示</a>
                   @endif
                   <a class="btn btn-warning" href="/admin/slide/{{ $v->slide_id }}/edit">修改</a>
