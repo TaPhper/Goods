@@ -11,7 +11,7 @@ class Shops extends Model
     // 一对多 商品和购物车
     public function shopgoods()
     {
-        return $this->belongsTo('App\Models\Admin\Goods','good_id');
+        return $this->belongsTo('App\Models\Admin\Goods','goods_id');
     }
     // 一对一  购物车和用户
     public function shopuser()

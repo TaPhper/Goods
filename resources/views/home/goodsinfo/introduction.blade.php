@@ -335,9 +335,6 @@
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-
-								<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="pay.html">加入购物车</a>								</div>
-
 									<a id="LikBasket" title="加入购物车" href="/home/shopcart?id={{$goods_one[0]->goods_id}}"><i></i>加入购物车</a>
 								</div>
 

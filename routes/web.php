@@ -130,3 +130,5 @@ Route::get('/home/shopcart/down','Home\ShopController@down');
 Route::get('/home/shopcart/up','Home\ShopController@up');
 // 删除购物车商品
 Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
+// 结算页面
+Route::get('/home/shop/pay','Home\ShopController@pay');

@@ -26,7 +26,8 @@
 				<ul class="message-l">
 					<div class="topMessage">
 						<div class="menu-hd">
-							@if(!session()->get('login_user'))
+							@if(session()->get('login_user')['user_id'] == '0')
+
 							<a href="/home/login" target="_top" class="h">亲，请登录</a>
 							<a href="/home/register" target="_top">免费注册</a>
 							@else
