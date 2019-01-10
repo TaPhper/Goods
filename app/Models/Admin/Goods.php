@@ -15,4 +15,5 @@ class Goods extends Model
     {
         return $this->belongsTo('App\Models\Admin\Brand','brand_id');
     }
+
 }

@@ -96,7 +96,7 @@ class LoginController extends Controller
              return back()->with('error','验证码不正确');
         }
     }
-
+    // 发送手机短信
     public function sendMobileCode(Request $request)
     {
 

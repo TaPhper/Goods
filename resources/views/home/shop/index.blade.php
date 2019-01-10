@@ -4,15 +4,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<title>购物车页面</title>
-
 		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="css/cartstyle.css" rel="stylesheet" type="text/css" />
 		<link href="css/optstyle.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript" src="js/jquery.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="/admin/css/erweima-style.css" />
 
 	</head>
 
@@ -90,27 +90,41 @@
 						</div>
 					</div>
 					<div class="clear"></div>
-
 					<tr class="item-list">
 						<div class="bundle  bundle-last ">
 							<div class="clear"></div>
 							<div class="bundle-main">
+
 								@foreach($carts as $k=>$v)
 								<ul class="item-content clearfix">
+
+							@foreach($shop as $k=>$v)
+								<ul class="item-content">							
+
 									<li class="td td-chk">
 										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170037950254" name="items[]" value="170037950254" type="checkbox">
+											<input type="checkbox" name="check[]"  checked class="car_check"  />
 											<label for="J_CheckBox_170037950254"></label>
 										</div>
 									</li>
+									
 									<li class="td td-item">
 										<div class="item-pic">
+
 											<a href="#" target="_blank" data-title="{{$v['gname']}}" class="J_MakePoint" data-point="tbcart.8.12">
 												<img src="/uploads/{{$v[goods_img]}}"width="80px" hieght="80px" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
 												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11"></a>
+
+											<a href="#" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
+												<img src="/uploads/{{$v->shopgoods['goods_img']}}" class="itempic J_ItemImg"></a>
+										</div>
+										<div class="item-info">
+											<div class="item-basic-info">
+												<a href="#" title="{{$v->shopgoods['gname']}}" class="item-title J_MakePoint" id="gnames" data-point="tbcart.8.11">{{$v->shopgoods['gname']}}</a>
+
 											</div>
 										</div>
 									</li>
@@ -126,10 +140,14 @@
 										<div class="item-price price-promo-promo">
 											<div class="price-content">
 												<div class="price-line">
-													<em class="price-original">78.00</em>
+													<em class="price-original"></em>
 												</div>
 												<div class="price-line">
+
 													<em class="J_Price price-now" tabindex="0"></em>
+
+													<em class="J_Price price-now" id="sales_grices" tabindex="0">{{$v->shopgoods['sales_grice']}}</em>
+
 												</div>
 											</div>
 										</div>
@@ -137,53 +155,51 @@
 									<li class="td td-amount">
 										<div class="amount-wrapper ">
 											<div class="item-amount ">
-												<div class="sl">
-													<input class="min am-btn" name="" type="button" value="-" />
-													<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-													<input class="add am-btn" name="" type="button" value="+" />
+												<div class="sl" id="">
+													<input class="min" style="width:30px;background:#bbb" money="{{$v->shopgoods['sales_grice']}}" type="button" value="-" />
+													<input class="text_box" ids="{{$v->good_id}}" name="" type="text" value="{{$v->gnum}}" style="width:30px;" />
+													<input class="add" style="width:30px;background:#bbb" money="{{$v->shopgoods['sales_grice']}}"  type="button" value="+" />
 												</div>
 											</div>
 										</div>
 									</li>
 									<li class="td td-sum">
 										<div class="td-inner">
-											<em tabindex="0" class="J_ItemSum number">117.00</em>
+											<em tabindex="0" id="money{{$v->good_id}}" class="J_ItemSum">{{$v->sales_gnum}}</em>
 										</div>
 									</li>
 									<li class="td td-op">
 										<div class="td-inner">
-											<a title="移入收藏夹" class="btn-fav" href="#">移入收藏夹</a>
-											<a href="javascript:;" data-point-url="#" class="delete">删除</a>
+											<a title="移入收藏夹" class="btn-fav" href="">移入收藏夹</a>
+											<a href="/home/shopcart/destroy/{{$v->id}}" data-point-url="#" class="delete">删除</a>
 										</div>
 									</li>
+
 								</ul>
 								@endforeach					
+
+
+								</ul>				
+								@endforeach
+
 				<div class="clear"></div>
 
 				<div class="float-bar-wrapper">
-					<div id="J_SelectAll2" class="select-all J_SelectAll">
+					<!-- <div id="J_SelectAll2" class="select-all">
 						<div class="cart-checkbox">
-							<input class="check-all check" id="J_SelectAllCbx2" name="select-all" value="true" type="checkbox">
+							<input type="checkbox" name=""  checked class="check_all"  />
 							<label for="J_SelectAllCbx2"></label>
 						</div>
-						<span>全选</span>
+						<span >全选</span>
 					</div>
 					<div class="operations">
 						<a href="#" hidefocus="true" class="deleteAll">删除</a>
 						<a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
-					</div>
+					</div> -->
 					<div class="float-bar-right">
-						<div class="amount-sum">
-							<span class="txt">已选商品</span>
-							<em id="J_SelectedItemsCount">0</em><span class="txt">件</span>
-							<div class="arrow-box">
-								<span class="selected-items-arrow"></span>
-								<span class="arrow"></span>
-							</div>
-						</div>
 						<div class="price-sum">
 							<span class="txt">合计:</span>
-							<strong class="price">¥<em id="J_Total">0.00</em></strong>
+							<strong id="" class="price">¥<em id="J_Total">0</em></strong>
 						</div>
 						<div class="btn-area">
 							<a href="pay.html" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
@@ -192,7 +208,80 @@
 					</div>
 
 				</div>
+				<script type="text/javascript">
+					var zsum = 0;
+		            //获取商品的小计
+		          	$('.text_box').each(function(){
+			            var id = $(this).attr('ids');
 
+			            var num = $(this).val();
+			            var html = $(this).next().attr('money');
+			            // var html = $('#sales_grices').val();
+			            var xsum = parseInt(num)*parseInt(html);
+			           
+			          	$('#money'+id).html(xsum);
+			            zsum += xsum;
+		            
+		           	});
+		           	$('#J_Total').html(zsum);
+
+		           	// 选中的商品
+		           	$('.car_check').click(function(){
+		           		var zsum = 0;
+		                if($(this).prop('checked')){
+		                  	$(this).prop('checked',true);
+		                }else{
+		                  	$(this).prop('checked',false);
+		                }
+		                $("input:checked").each(function(){
+		                  	var obj = $(this).parent().parent().parent().find('.text_box');
+		                  	var id = obj.attr('ids');
+				          	var good_num = obj.val(); 
+				          	var good_price = parseInt(obj.next().attr('money'));
+				          	var xsum = parseInt(good_price*good_num);
+				          	
+				          	zsum += xsum;
+		              	})
+		                $('#J_Total').html(zsum);
+		            });
+
+
+		           	// 点击减
+					$('.min').click(function(){
+						var obj = $(this);
+                        var num = obj.next().val()-1;
+		            	var html = $(this).attr('money');
+		            	var id = obj.next().attr('ids');
+		            	if(num <= 0){
+		            		alert('选购的商品最少有1件');
+		            		$(this).obj.next()('value','1');
+		            		return;
+		            	}
+		            	$.get('/home/shopcart/down',{'id':id,'num':num,'html':html},function(data){
+		            		if(data){
+		            			$('#money'+id).html(data);
+		            			var tot = parseInt($('#J_Total').html());
+		            			$('#J_Total').html(tot-parseInt(html));
+		            		}
+		            	});
+					})
+					// 点击加
+					$('.add').click(function(){
+						var obj = $(this);
+                        var num = parseInt(obj.prev().val())+parseInt(1);
+                        // alert(num);
+		            	var html = $(this).attr('money');
+		            	var id = obj.prev().attr('ids');
+		            	$.get('/home/shopcart/up',{'id':id,'num':num,'html':html},function(data){
+		            		if(data){
+		            			$('#money'+id).html(data);
+		            			var tot = parseInt($('#J_Total').html());
+		            			$('#J_Total').html(tot+parseInt(html));
+		            		}
+		            	});
+					})
+				</script>
+					
 				<div class="footer">
 					<div class="footer-hd">
 						<p>
