@@ -22,6 +22,7 @@ class SearchController extends Controller
     public function introduction($id)
     {
     	$goods_one =DB::table('goods')->where('goods_id',$id)->get();
+     
         
     	return view('home.goodsinfo.introduction',['goods_one'=>$goods_one]);
     }
@@ -44,12 +45,14 @@ class SearchController extends Controller
     public function brand($id)
     {
         $goods = DB::table('goods')->where('brand_id',$id)->get();
-        dump($goods);die;
+        // dump($goods);die;
         foreach ($goods as $key => $value) {
             
         }
         return json_decode($goods);
     }
+
+
 
 
 }

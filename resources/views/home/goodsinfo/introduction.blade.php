@@ -158,8 +158,12 @@
 									<div class="tb-pic tb-s40">
 										<a href="#"><img src="/uploads/{{$goods_one[0]->goods_img}}" mid="/uploads/{{$goods_one[0]->goods_img}}" big="/uploads/{{$goods_one[0]->goods_img}}"></a>
 									</div>
+
 								</li>
+                 
+
 							</ul>
+                                  
 						</div>
 
 						<div class="clear"></div>
