@@ -31,7 +31,7 @@ class ShopController extends Controller
 	    	}
 	    	$shop = Shops::where('user_id',$user_id)->get();
     	}else{
-
+    		// 匿名用户
     	}
     	
     	
