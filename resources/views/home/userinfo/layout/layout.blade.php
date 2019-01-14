@@ -11,37 +11,29 @@
 		
 		<link href="/home/css/systyle.css" rel="stylesheet" type="text/css">
 		<link href="/home/css/stepstyle.css" rel="stylesheet" type="text/css">
-
 		<link href="/home/css/infstyle.css" rel="stylesheet" type="text/css">
+		
+		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
+		<link href="/home/css/addstyle.css" rel="stylesheet" type="text/css">
+		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="css/personal.css" rel="stylesheet" type="text/css">
+		<link href="css/colstyle.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="css/personal.css" rel="stylesheet" type="text/css">
+		<link href="css/cmstyle.css" rel="stylesheet" type="text/css">
+		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
 		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script> 
 		<script type="text/javascript" src="/home/js/jquery-1.7.2.min.js"></script>
-
-		
-		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
-
 		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
-		
-		<link href="/home/css/addstyle.css" rel="stylesheet" type="text/css">
-
-
+		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	
-		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
-
-		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
-
-		
-		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-
-		<link href="css/personal.css" rel="stylesheet" type="text/css">
-		<link href="css/colstyle.css" rel="stylesheet" type="text/css">
-
-			
 
 	</head>
 
@@ -186,7 +178,7 @@
 						<a href="#">我的小窝</a>
 						<ul>
 							<li> <a href="/home/collection">收藏</a></li>
-							<li> <a href="comment.html">评价</a></li>
+							<li> <a href="/home/comment">评价</a></li>
 							<li> <a href="news.html">消息</a></li>
 						</ul>
 					</li>

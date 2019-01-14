@@ -136,13 +136,8 @@ Route::get('/home/collection','Home\AlveoleController@index');
 Route::get('/home/uncollect/{id}','Home\AlveoleController@uncollect');
 //购物车加入收藏
 Route::get('/home/edit_collect/{id}','Home\AlveoleController@edit');
-
-
-
-
-
-
-
+//评价
+Route::get('/home/comment','Home\CommentController@index');
 
 // 提交订单
 Route::post('/home/shop/indent','Home\ShopController@indent');
