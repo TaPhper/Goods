@@ -81,6 +81,7 @@
 											</div> -->
 								<div class="am-form-content address">
 											<div>
+												<br><br>
 											<select id="s_province" name="province" ></select>
 										    <select id="s_city" name="city" ></select>
 										    <select id="s_county" name="county"></select>
@@ -100,10 +101,10 @@
 											</div>
 										</div>
 
-										<div class="am-form-group">
+										<div class="am-form-group" style="margin-top: 50px;">
 											<div class="am-u-sm-9 am-u-sm-push-3">
 												<input class="am-btn am-btn-danger" type="submit" value="保存">
-												<a href="javascript: void(0)" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a>
+												
 											</div>
 										</div>
 									</form>

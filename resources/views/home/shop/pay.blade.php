@@ -22,28 +22,40 @@
 
 		<!--顶部导航条 -->
 		<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="login.html" target="_top" class="h">亲，请登录</a>
-									<a href="register.html" target="_top">免费注册</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="index.html" target="_top" class="h">商城首页</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="my.html" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="shopcart.html" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="collection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-						</ul>
-						</div>
+			<ul class="message-l">
+				<div class="topMessage">
+					<div class="menu-hd">
+						@if(session()->get('login_user')['user_id'] == '0')
+
+						<a href="/home/login" target="_top" class="h">亲，请登录</a>
+						<a href="/home/register" target="_top">免费注册</a>
+						@else
+						<a href="#" target="_top" class="h">欢迎
+						@if(session()->get('login_user')['true_name'])
+						  {{session()->get('login_user')['true_name']}}
+						@else
+						会员
+						@endif
+						</a>
+						<a href="/home/logout" target="_top">退出</a>
+						@endif
+					</div>
+				</div>
+			</ul>
+			<ul class="message-r">
+				<div class="topMessage home">
+					<div class="menu-hd"><a href="index.html" target="_top" class="h">商城首页</a></div>
+				</div>
+				<div class="topMessage my-shangcheng">
+					<div class="menu-hd MyShangcheng"><a href="/home/info" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+				</div>
+				<div class="topMessage mini-cart">
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+				</div>
+				<div class="topMessage favorite">
+					<div class="menu-hd"><a href="collection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+			</ul>
+			</div>
 			<!--悬浮搜索框-->
 
 			<div class="nav white">
@@ -72,29 +84,27 @@
 						</div>
 						<div class="clear"></div>
 						<ul>
+							@foreach($addr as $k=>$v)
 							<div class="per-border"></div>
-							<li class="user-addresslist defaultAddr">
+							<li class="user-addresslist {{$v->default==1 ? 'defaultAddr':''}}">
 
 								<div class="address-left">
 									<div class="user DefaultAddr">
 
 										<span class="buy-address-detail">   
-                   <span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15871145629</span>
+                   						<span class="buy-user">{{$v->order_name}}</span>
+										<span class="buy-phone">{{$v->tel}}</span>
 										</span>
 									</div>
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
 										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span>
+								   <span class="province">{{$v->addr}}</span>
 										</span>
 
 										</span>
 									</div>
-									<ins class="deftip">默认地址</ins>
+									<ins class="deftip {{$v->default==0 ? 'hidden':''}}">默认地址</ins>
 								</div>
 								<div class="address-right">
 									<a href="person/address.html">
@@ -103,52 +113,15 @@
 								<div class="clear"></div>
 
 								<div class="new-addr-btn">
-									<a href="#" class="hidden">设为默认</a>
+									<a href="#" class="{{$v->default==1 ? 'hidden':''}}">设为默认</a>
 									<span class="new-addr-bar hidden">|</span>
 									<a href="#">编辑</a>
 									<span class="new-addr-bar">|</span>
 									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
 								</div>
-
 							</li>
-							<div class="per-border"></div>
-							<li class="user-addresslist">
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
-										<span class="buy-address-detail">   
-                   <span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15871145629</span>
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">收货地址：</span>
-										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">武昌</span>区
-										<span class="street">东湖路75号众环大厦2栋9层902</span>
-										</span>
-
-										</span>
-									</div>
-									<ins class="deftip hidden">默认地址</ins>
-								</div>
-								<div class="address-right">
-									<span class="am-icon-angle-right am-icon-lg"></span>
-								</div>
-								<div class="clear"></div>
-
-								<div class="new-addr-btn">
-									<a href="#">设为默认</a>
-									<span class="new-addr-bar">|</span>
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);"  onclick="delClick(this);">删除</a>
-								</div>
-
-							</li>
-
+							
+						@endforeach
 						</ul>
 
 						<div class="clear"></div>
@@ -178,7 +151,10 @@
 					<div class="clear"></div>
 
 					<!--订单 -->
+					
 					<div class="concent">
+					<form action="/home/shop/indent" method="post">
+					{{ csrf_field()}}
 						<div id="payTable">
 							<h3>确认订单信息</h3>
 							<div class="cart-table-th">
@@ -203,21 +179,22 @@
 								</div>
 							</div>
 							<div class="clear"></div>
-
+							
 							<tr class="item-list">
-								<div class="bundle  bundle-last">
 
+								<div class="bundle  bundle-last">
+								@foreach($shop as $k=>$v)
 									<div class="bundle-main">
 										<ul class="item-content clearfix">
 											<div class="pay-phone">
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+															<img src="/uploads/{{$v->goods_img}}" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
-															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+															<a href="#" class="item-title" data-point="tbcart.8.11">{{$v->gname}}</a><input type="hidden" name="goods_id{{$v->good_id}}" value="{{$v->good_id}}"  />
 														</div>
 													</div>
 												</li>
@@ -230,7 +207,7 @@
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now">39.00</em>
+															<em class="J_Price price-now">{{$v->grice}}</em>
 														</div>
 													</div>
 												</li>
@@ -240,23 +217,23 @@
 													<div class="item-amount ">
 														<span class="phone-title">购买数量</span>
 														<div class="sl">
-															<input class="min am-btn" name="" type="button" value="-" />
-															<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-															<input class="add am-btn" name="" type="button" value="+" />
+															<input class="min" style="width:30px;background:#bbb" money="{{$v->grice}}" type="button" value="-" />
+															<input class="text_box" ids="{{$v->good_id}}" name="num" type="text" value="{{$v->gnum}}" style="width:30px;" />
+															<input class="add" style="width:30px;background:#bbb" money="{{$v->grice}}"  type="button" value="+" />
 														</div>
 													</div>
 												</div>
 											</li>
 											<li class="td td-sum">
 												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">117.00</em>
+													<em tabindex="0" id="money{{$v->good_id}}" class="J_ItemSum">{{$v->sales_grice}}</em>
 												</div>
 											</li>
 											<li class="td td-oplist">
 												<div class="td-inner">
 													<span class="phone-title">配送方式</span>
 													<div class="pay-logis">
-														快递<b class="sys_item_freprice">10</b>元
+														<b class="sys_item_freprice">包邮</b>
 													</div>
 												</div>
 											</li>
@@ -265,72 +242,11 @@
 										<div class="clear"></div>
 
 									</div>
+								@endforeach
 							</tr>
 							<div class="clear"></div>
 							</div>
-
-							<tr id="J_BundleList_s_1911116345_1" class="item-list">
-								<div id="J_Bundle_s_1911116345_1_0" class="bundle  bundle-last">
-									<div class="bundle-main">
-										<ul class="item-content clearfix">
-											<div class="pay-phone">
-												<li class="td td-item">
-													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="/home/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
-													</div>
-													<div class="item-info">
-														<div class="item-basic-info">
-															<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-														</div>
-													</div>
-												</li>
-												<li class="td td-info">
-													<div class="item-props">
-														<span class="sku-line">颜色：10#蜜橘色+17#樱花粉</span>
-														<span class="sku-line">包装：两支手袋装（送彩带）</span>
-													</div>
-												</li>
-												<li class="td td-price">
-													<div class="item-price price-promo-promo">
-														<div class="price-content">
-															<em class="J_Price price-now">39.00</em>
-														</div>
-													</div>
-												</li>
-											</div>
-
-											<li class="td td-amount">
-												<div class="amount-wrapper ">
-													<div class="item-amount ">
-														<span class="phone-title">购买数量</span>
-														<div class="sl">
-															<input class="min am-btn" name="" type="button" value="-" />
-															<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-															<input class="add am-btn" name="" type="button" value="+" />
-														</div>
-													</div>
-												</div>
-											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">117.00</em>
-												</div>
-											</li>
-											<li class="td td-oplist">
-												<div class="td-inner">
-													<span class="phone-title">配送方式</span>
-													<div class="pay-logis">
-														包邮
-													</div>
-												</div>
-											</li>
-
-										</ul>
-										<div class="clear"></div>
-
-									</div>
-							</tr>
+							
 							</div>
 							<div class="clear"></div>
 							<div class="pay-total">
@@ -345,56 +261,6 @@
 										</div>
 									</div>
 								</div>
-
-							</div>
-							<!--优惠券 -->
-							<div class="buy-agio">
-								<li class="td td-coupon">
-
-									<span class="coupon-title">优惠券</span>
-									<select data-am-selected>
-										<option value="a">
-											<div class="c-price">
-												<strong>￥8</strong>
-											</div>
-											<div class="c-limit">
-												【消费满95元可用】
-											</div>
-										</option>
-										<option value="b" selected>
-											<div class="c-price">
-												<strong>￥3</strong>
-											</div>
-											<div class="c-limit">
-												【无使用门槛】
-											</div>
-										</option>
-									</select>
-								</li>
-
-								<li class="td td-bonus">
-
-									<span class="bonus-title">红包</span>
-									<select data-am-selected>
-										<option value="a">
-											<div class="item-info">
-												¥50.00<span>元</span>
-											</div>
-											<div class="item-remainderprice">
-												<span>还剩</span>10.40<span>元</span>
-											</div>
-										</option>
-										<option value="b" selected>
-											<div class="item-info">
-												¥50.00<span>元</span>
-											</div>
-											<div class="item-remainderprice">
-												<span>还剩</span>50.00<span>元</span>
-											</div>
-										</option>
-									</select>
-
-								</li>
 
 							</div>
 							<div class="clear"></div>
@@ -440,7 +306,7 @@
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<input style="float:right" class="btn-go" type="submit" tabindex="0" value="提交订单">
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -450,7 +316,120 @@
 
 						<div class="clear"></div>
 					</div>
+					</form>
 				</div>
+				<script type="text/javascript">
+					var zsum = 0;
+		            //获取商品的小计
+		          	$('.text_box').each(function(){
+			            var id = $(this).attr('ids');
+			            // alert(id);
+			            var num = $(this).val();
+			            var html = $(this).next().attr('money');
+			            // var html = $('#sales_grices').val();
+			            var xsum = parseInt(num)*parseInt(html);
+			           
+			          	$('#money'+id).html(xsum);
+			            zsum += xsum;
+		            
+		           	});
+		           	$('.pay-sum').html(zsum);
+		           	$('#J_ActualFee').html(zsum);
+
+
+		           	// 选中的商品
+		           	$('.car_check').click(function(){
+		           		var zsum = 0;
+		                if($(this).prop('checked')){
+		                  	$(this).prop('checked',true);
+		                }else{
+		                  	$(this).prop('checked',false);
+		                }
+		                $("input:checked").each(function(){
+		                  	var obj = $(this).parent().parent().parent().find('.text_box');
+		                  	var id = obj.attr('ids');
+				          	var good_num = obj.val(); 
+				          	var good_price = parseInt(obj.next().attr('money'));
+				          	var xsum = parseInt(good_price*good_num);
+				          	
+				          	zsum += xsum;
+		              	})
+		                $('.pay-sum').html(zsum);
+		           		$('#J_ActualFee').html(zsum);
+
+		            });
+
+		           	// 手动修改
+
+		           	$('.text_box').change(function(){
+		           		var user_id = {{session()->get('login_user')['user_id']}};
+						var obj = $(this);
+                        var num = obj.val();
+		            	var html = obj.next().attr('money');
+		            	var id = obj.attr('ids');
+		            	$.get('/home/shopcart/up',{'id':id,'num':num,'html':html,'user_id':user_id},function(data){
+		            		if(data){
+		            			$('#money'+id).html(data);
+		            			var zsum = 0;
+		            			$('.text_box').each(function(){
+						            var id = $(this).attr('ids');
+						            // alert(id);
+						            var num = $(this).val();
+						            var html = $(this).next().attr('money');
+						            // var html = $('#sales_grices').val();
+						            var xsum = parseInt(num)*parseInt(html);
+						           
+						          	$('#money'+id).html(xsum);
+						            zsum += xsum;
+					            
+					           	});
+				              	$('.pay-sum').html(zsum);
+				                $('#J_ActualFee').html(zsum);
+		            		}
+		            	});
+		           	})
+		           	// 点击减
+					$('.min').click(function(){
+						var user_id = {{session()->get('login_user')['user_id']}};
+						var obj = $(this);
+                        var num = obj.next().val()-1;
+		            	var html = $(this).attr('money');
+		            	var id = obj.next().attr('ids');
+		            	if(num <= 0){
+		            		alert('选购的商品最少有1件');
+		            		$(this).obj.next()('value','1');
+		            		return;
+		            	}
+		            	$.get('/home/shopcart/down',{'id':id,'num':num,'html':html,'user_id':user_id},function(data){
+		            		if(data){
+		            			$('#money'+id).html(data);
+		            			var tot = parseInt($('#J_ActualFee').html());
+		            			$('#J_ActualFee').html(tot-parseInt(html));
+		            			var top = parseInt($('.pay-sum').html());
+		            			$('.pay-sum').html(tot-parseInt(html));
+		            		}
+		            	});
+					})
+					// 点击加
+					$('.add').click(function(){
+						var user_id = {{session()->get('login_user')['user_id']}};
+						var obj = $(this);
+                        var num = parseInt(obj.prev().val())+parseInt(1);
+                        // alert(num);
+		            	var html = $(this).attr('money');
+		            	var id = obj.prev().attr('ids');
+		            	$.get('/home/shopcart/up',{'id':id,'num':num,'html':html,'user_id':user_id},function(data){
+		            		if(data){
+		            			$('#money'+id).html(data);
+		            			var tot = parseInt($('#J_ActualFee').html());
+		            			$('#J_ActualFee').html(tot+parseInt(html));
+		            			var top = parseInt($('.pay-sum').html());
+		            			$('.pay-sum').html(tot+parseInt(html));
+		            		}
+		            	});
+					})
+					
+				</script>
 				<div class="footer">
 					<div class="footer-hd">
 						<p>

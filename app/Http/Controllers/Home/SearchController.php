@@ -13,10 +13,11 @@ class SearchController extends Controller
 
         $brand = DB::table('brand')->get();
 
-    	$goods = DB::table('goods')->where('type_id',$id)->get();
+    	$goods = DB::table('goods')->where('type_id',$id)->paginate(20);
         $data_name = DB::table('type')->where('type_id',$id)->get();
         $goods_count = count($goods);
-    	return view('home.index.show',['goods'=>$goods,'goods_count'=>$goods_count,'data_name'=>$data_name,'brand'=>$brand]);
+        $sales = DB::table('goods')->orderBy('sales','desc')->take(4)->get();
+    	return view('home.index.show',['sales'=>$sales,'goods'=>$goods,'goods_count'=>$goods_count,'data_name'=>$data_name,'brand'=>$brand]);
     } 
     //商品详情页
     public function introduction($id)
@@ -37,9 +38,12 @@ class SearchController extends Controller
         {
             $where[] = ['gname','like','%'.$_GET['search'].'%'];
         }
-        $goods =DB::table('goods')->where($where)->get();
+        $goods =DB::table('goods')->where($where)->paginate(20);
+        
         $count = count($goods);
-        return view('home.index.show',['goods'=>$goods,'data'=>$data,'count'=>$count,'brand'=>$brand]);
+        $sales = DB::table('goods')->orderBy('sales','desc')->take(4)->get();
+
+        return view('home.index.show',['sales'=>$sales,'goods'=>$goods,'data'=>$data,'count'=>$count,'brand'=>$brand]);
     }
     //品牌搜索
     public function brand($id)
@@ -60,22 +64,25 @@ class SearchController extends Controller
         if($id == 0)
         {
             $brand = DB::table('brand')->get();
-            $goods = DB::table('goods')->get();
+            $goods = DB::table('goods')->paginate(20);
             $count = count($goods);
-            return view('home.index.show',['goods'=>$goods,'count'=>$count,'brand'=>$brand]);  
+            $sales = DB::table('goods')->orderBy('sales','desc')->take(4)->get();
+            return view('home.index.show',['sales'=>$sales,'goods'=>$goods,'count'=>$count,'brand'=>$brand]);  
         }
         if($id == 1){
             $brand = DB::table('brand')->get();
-            $goods = DB::table('goods')->orderBy('sales','desc')->get();
+            $goods = DB::table('goods')->orderBy('sales','desc')->paginate(20);
             $count = count($goods);
-            return view('home.index.show',['goods'=>$goods,'count'=>$count,'brand'=>$brand]);
+            $sales = DB::table('goods')->orderBy('sales','desc')->take(4)->get();
+            return view('home.index.show',['sales'=>$sales,'goods'=>$goods,'count'=>$count,'brand'=>$brand]);
         }
         if($id == 2)
         {
             $brand = DB::table('brand')->get();
-            $goods = DB::table('goods')->orderBy('market_price','asc')->get();
+            $goods = DB::table('goods')->orderBy('market_price','asc')->paginate(20);
             $count = count($goods);
-            return view('home.index.show',['goods'=>$goods,'count'=>$count,'brand'=>$brand]); 
+            $sales = DB::table('goods')->orderBy('sales','desc')->take(4)->get();
+            return view('home.index.show',['sales'=>$sales,'goods'=>$goods,'count'=>$count,'brand'=>$brand]); 
         }
     }
 

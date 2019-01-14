@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Goods;
 use App\Models\Home\Shops;
-
+use App\Models\Home\Addr;
+use App\Models\Home\Indents;
 class ShopController extends Controller
 {
 	// 购物车首页
@@ -91,11 +92,47 @@ class ShopController extends Controller
 
 
     // 结算
-    public function pay()
+    public function pay(Request $request)
     {
+        $id = $request->id;
+        $asd = explode(" ", $id);
+        $arr = [];
+        foreach($asd as $k=>$v){
+            $arr[] = $shop = Shops::where('good_id',$v)->first();
+        }
         
-        return view('home.shop.pay');
+        $user_id = session()->get('login_user')['user_id'];
+        $addr = Addr::where('user_id','=',$user_id)->get();
+        // dump($addr);
+        return view('home.shop.pay',['addr'=>$addr,'shop'=>$arr]);
     }
 
+    // 创建订单
+    public function indent(Request $request)
+    {
+        $data = $request->except('_token');
+        dump($data);
+        $user_id = session()->get('login_user')['user_id'];
+        $shop = Shops::where('user_id','=',$user_id)->get();
+        // dump($shop);
+        foreach($shop as $k=>$v){
+            $goods_id = 'goods_id'.$v->good_id;
+            if(isset($data[$goods_id])){
+                $indent = new Indents;
+                $indent->indent_number = mt_rand(1000, 9999).time();
+                $indent->consignee = $data['num'];
+                $indent->indent_money = $v->sales_grice;
+                $indent->indent_state = '1';
+                $indent->goods_id = $v->good_id;
+                $indent->indent_count = $v->gnum;
+                $indent->user_id = $v->user_id;
+                $res = $indent->save();  
+                dump($res);
+            }
+        }
+
+        return view('home.shop.success');
+        
+    }
 
 }

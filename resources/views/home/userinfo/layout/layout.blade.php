@@ -11,37 +11,29 @@
 		
 		<link href="/home/css/systyle.css" rel="stylesheet" type="text/css">
 		<link href="/home/css/stepstyle.css" rel="stylesheet" type="text/css">
-
 		<link href="/home/css/infstyle.css" rel="stylesheet" type="text/css">
+		
+		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
+		<link href="/home/css/addstyle.css" rel="stylesheet" type="text/css">
+		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="css/personal.css" rel="stylesheet" type="text/css">
+		<link href="css/colstyle.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="css/personal.css" rel="stylesheet" type="text/css">
+		<link href="css/cmstyle.css" rel="stylesheet" type="text/css">
+		<script src="AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
 		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script> 
 		<script type="text/javascript" src="/home/js/jquery-1.7.2.min.js"></script>
-
-		
-		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
-
 		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
-		
-		<link href="/home/css/addstyle.css" rel="stylesheet" type="text/css">
-
-
+		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	
-		<link href="/home/css/orstyle.css" rel="stylesheet" type="text/css">
-
-		<script src="/home/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="/home/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
-
-		
-		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-
-		<link href="css/personal.css" rel="stylesheet" type="text/css">
-		<link href="css/colstyle.css" rel="stylesheet" type="text/css">
-
-			
 
 	</head>
 
@@ -55,20 +47,21 @@
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-							@if(!session()->get('login_user'))
-							<a href="/home/login" target="_top" class="h">亲，请登录</a>
-							<a href="/home/register" target="_top">免费注册</a>
-							@else
-							<a href="#" target="_top" class="h">欢迎
-							@if(session()->get('login_user')['true_name'])
-							  {{session()->get('login_user')['true_name']}}
-							@else
-							会员
-							@endif
-							</a>
-							<a href="/home/logout" target="_top">退出</a>
-							@endif
-						</div>
+									@if(session()->get('login_user')['user_id'] == '0')
+
+									<a href="/home/login" target="_top" class="h">亲，请登录</a>
+									<a href="/home/register" target="_top">免费注册</a>
+									@else
+									<a href="#" target="_top" class="h">欢迎
+									@if(session()->get('login_user')['true_name'])
+									  {{session()->get('login_user')['true_name']}}
+									@else
+									会员
+									@endif
+									</a>
+									<a href="/home/logout" target="_top">退出</a>
+									@endif
+								</div>
 							</div>
 						</ul>
 						<ul class="message-r">
@@ -79,10 +72,10 @@
 								<div class="menu-hd MyShangcheng"><a href="/home/info" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 							</div>
 							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="shopcart.html" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+								<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
 							</div>
 							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="collection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+								<div class="menu-hd"><a href="/home/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 						</ul>
 						</div>
 
@@ -111,11 +104,8 @@
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="index.html">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
+								<li class="index"><a href="/">首页</a></li>
+                                
 							</ul>
 						    <div class="nav-extra">
 						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
@@ -188,7 +178,7 @@
 						<a href="#">我的小窝</a>
 						<ul>
 							<li> <a href="/home/collection">收藏</a></li>
-							<li> <a href="comment.html">评价</a></li>
+							<li> <a href="/home/comment">评价</a></li>
 							<li> <a href="news.html">消息</a></li>
 						</ul>
 					</li>
