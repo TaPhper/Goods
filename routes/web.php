@@ -132,3 +132,5 @@ Route::get('/home/shopcart/up','Home\ShopController@up');
 Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
 // 结算页面
 Route::get('/home/shop/pay','Home\ShopController@pay');
+// 提交订单
+Route::post('/home/shop/indent','Home\ShopController@indent');
