@@ -140,3 +140,10 @@ Route::get('/home/edit_collect/{id}','Home\AlveoleController@edit');
 
 
 
+
+
+
+
+// 提交订单
+Route::post('/home/shop/indent','Home\ShopController@indent');
+

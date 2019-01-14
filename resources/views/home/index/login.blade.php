@@ -17,7 +17,7 @@
 	<body>
 
 		<div class="login-boxtitle">
-			<a href="home.html"><img alt="logo" src="images/logobig.png" /></a>
+			<a href="/"><img alt="logo" src="images/logobig.png" /></a>
 		</div>
 
 		<div class="login-banner">
@@ -44,10 +44,7 @@
            </div>
             
             <div class="login-links">
-                <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
-								<a href="#" class="am-fr">忘记密码</a>
-								<a href="/home/register" class="zcnext am-fr am-btn-default">注册</a>
-								<br />
+  				<a href="/home/register" class="zcnext am-fr am-btn-default">注册</a>
             </div>
             @if (session('success'))
 		        <p class="text-danger text-left"><strong>{{ session('success') }}</strong></p>

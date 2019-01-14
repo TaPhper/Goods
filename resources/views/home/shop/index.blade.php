@@ -20,28 +20,42 @@
 
 		<!--顶部导航条 -->
 		<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="login.html" target="_top" class="h">亲，请登录</a>
-									<a href="register.html" target="_top">免费注册</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="/home/info" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="/home/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-						</ul>
-						</div>
+
+			<ul class="message-l">
+				<div class="topMessage">
+					<div class="menu-hd">
+						@if(session()->get('login_user')['user_id'] == '0')
+
+						<a href="/home/login" target="_top" class="h">亲，请登录</a>
+						<a href="/home/register" target="_top">免费注册</a>
+						@else
+						<a href="#" target="_top" class="h">欢迎
+						@if(session()->get('login_user')['true_name'])
+						  {{session()->get('login_user')['true_name']}}
+						@else
+						会员
+						@endif
+						</a>
+						<a href="/home/logout" target="_top">退出</a>
+						@endif
+					</div>
+				</div>
+			</ul>
+			<ul class="message-r">
+				<div class="topMessage home">
+					<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
+				</div>
+				<div class="topMessage my-shangcheng">
+					<div class="menu-hd MyShangcheng"><a href="/home/info" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+				</div>
+				<div class="topMessage mini-cart">
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+				</div>
+				<div class="topMessage favorite">
+					<div class="menu-hd"><a href="collection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+			</ul>
+			</div>
+
 
 			<!--悬浮搜索框-->
 
@@ -165,9 +179,14 @@
 									</li>
 
 								</ul>
+
 							@endforeach					
 					@else
 					<div class="cart-empty">
+
+												
+					
+
 			        <h2 style="float:left">您的购物车还是空的!</h2>
 		          	<div class="btn" style="margin-top:10px;margin-left:10px;">
 						<a href="/"   class="btn btn-info" >
@@ -242,9 +261,35 @@
 				          	zsum += xsum;
 		              	})
 		                $('#J_Total').html(zsum);
+
 		            });
 
-
+		           	// 手动修改
+		           	$('.text_box').change(function(){
+		           		var user_id = {{session()->get('login_user')['user_id']}};
+						var obj = $(this);
+                        var num = obj.val();
+		            	var html = obj.next().attr('money');
+		            	var id = obj.attr('ids');
+		            	$.get('/home/shopcart/up',{'id':id,'num':num,'html':html,'user_id':user_id},function(data){
+		            		if(data){
+		            			$('#money'+id).html(data);
+		            			$('.text_box').each(function(){
+						            var id = $(this).attr('ids');
+						            // alert(id);
+						            var num = $(this).val();
+						            var html = $(this).next().attr('money');
+						            // var html = $('#sales_grices').val();
+						            var xsum = parseInt(num)*parseInt(html);
+						           
+						          	$('#money'+id).html(xsum);
+						            zsum += xsum;
+					            
+					           	});
+				                $('#J_Total').html(zsum);
+		            		}
+		            	});
+		           	})
 		           	// 点击减
 					$('.min').click(function(){
 						var user_id = {{session()->get('login_user')['user_id']}};
@@ -284,8 +329,25 @@
 
 
 					$('#J_Go1').click(function(){
-						alert("如果没有选择宝贝，将无法结算");
+						alert("购物车没有宝贝，将无法结算");
+						var user_id = {{session()->get('login_user')['user_id']}};
 					})
+
+					$('#J_Go').click(function(){
+						if(!$('.car_check').is(':checked')){
+		                	alert("如果没有选择宝贝，将无法结算");
+		                	return false;
+		                }
+		                var num = new Array();
+		                $("input:checked").each(function(){ 
+		                  	var obj = $(this).parent().parent().parent().find('.text_box');
+		                  	var id = obj.attr('ids');	
+		                  	num.push(id);
+		              	})
+		              	var id1 = num.join(" ")
+		                // alert(id1);
+	                  	$('#J_Go').attr('href','/home/shop/pay?id='+id1); 
+					})	
 				</script>
 					
 				<div class="footer">
