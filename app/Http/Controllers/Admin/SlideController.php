@@ -134,7 +134,7 @@ class SlideController extends Controller
     public function destroy($id)
     {
         $slide = Slide::find($id);
-        $res = $slide->delete;
+        $res = $slide->delete();
         if($res){
             return redirect('admin/slide')->with('success','删除成功');
         }else{

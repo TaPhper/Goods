@@ -74,11 +74,17 @@ Route::get('home/addr','Home\InfoController@addr');
 Route::post('home/saveaddr','Home\InfoController@saveaddr');
  //删除收货地址
 Route::get('user_addr/delete/{id}','Home\InfoController@delete');
+//修改收货地址
+Route::get('home/edit/{id}','Home\InfoController@edit');
+//提交修改
+Route::get('home/update/{id}','Home\InfoController@update');
 
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
 //商品列表页搜索
 Route::get('home/index/sear','Home\SearchController@search');
+//商品列表按销量搜索
+Route::get('home/index/sales/{id}','Home\SearchController@sales');
 //主页搜索
 Route::get('home/index/seek','Home\SearchCOntroller@seek');
 //商品品牌页
@@ -91,7 +97,7 @@ Route::post('/home/registering','Home\LoginController@registering');
 Route::get('/home/registering/setstatus/{id}/{token}','Home\LoginController@setstatus');
 // 手机号注册
 Route::post('/home/insert','Home\LoginController@insert');
-//验证码
+// 发送手机短信
 Route::get('/home/insert/sendMobileCode','Home\LoginController@sendMobileCode');
 // 登陆
 Route::get('/home/login','Home\LoginController@login');
@@ -100,6 +106,12 @@ Route::post('/home/implement','Home\LoginController@implement');
 Route::get('/home/logout','Home\LoginController@logout');
 // 购物车首页
 Route::get('/home/shopcart','Home\ShopController@shopcart');
+Route::get('/home/shopcart/down','Home\ShopController@down');
+Route::get('/home/shopcart/up','Home\ShopController@up');
+// 删除购物车商品
+Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
+// 结算页面
+Route::get('/home/shop/pay','Home\ShopController@pay');
 
 //个人中心
 Route::get('home/info','Home\InfoController@info');
@@ -117,4 +129,12 @@ Route::get('/home/phone','Home\UserInfoController@phone');
 
 //前台个人中心 我的交易
 Route::get('/home/order','Home\DealController@order');
+
+//我的小窝收藏
+Route::get('/home/collection','Home\AlveoleController@index');
+//取消收藏
+Route::get('/home/uncollect/{id}','Home\AlveoleController@uncollect');
+
+
+
 
