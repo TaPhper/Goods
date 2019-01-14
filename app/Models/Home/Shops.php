@@ -18,4 +18,5 @@ class Shops extends Model
     {
         return $this->hasOne('App\Models\Users','user_id');
     }
+    
 }

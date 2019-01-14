@@ -54,7 +54,7 @@
 						<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
 					</div>
 					<div class="topMessage favorite">
-						<div class="menu-hd"><a href="collection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+						<div class="menu-hd"><a href="/home/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
 				</ul>
 				</div>
 				<!--悬浮搜索框-->
@@ -93,11 +93,8 @@
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="/home/index.html">首页</a></li>
-                                <li class="qc"><a href="/home/introduction.html">闪购</a></li>
-                                <li class="qc"><a href="/home/introduction.html">限时抢</a></li>
-                                <li class="qc"><a href="/home/introduction.html">团购</a></li>
-                                <li class="qc last"><a href="/home/introduction.html">大包装</a></li>
+								<li class="index"><a href="/">首页</a></li>
+                               
 							</ul>
 						    <div class="nav-extra">
 						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利

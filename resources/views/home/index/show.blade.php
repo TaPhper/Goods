@@ -6,7 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<title>搜索页面</title>
-
+		<link rel="stylesheet" type="text/css" href="/home/css/bootstrap.css">
+		<script type="text/javascript" src="/home/js/bootstrap.js"></script>
 		<link href="/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="/home/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 
@@ -25,7 +26,7 @@
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-									<a href="login.html" target="_top" class="h">亲，请登录</a>
+									<a href="/home/login" target="_top" class="h">亲，请登录</a>
 									<a href="register.html" target="_top">免费注册</a>
 								</div>
 							</div>
@@ -161,7 +162,7 @@
 												<strong>{{$v->market_price}}</strong>
 											</p>
 											<p class="number fl">
-												销量<span>{{$v->sales}}</span>
+												销量<span>{{$v->sales or '暂无'}}</span>
 											</p>
 										</div>
 										</a>
@@ -176,33 +177,27 @@
 								<div class="side-title">
 									经典搭配
 								</div>
-
-								<li>
+								@foreach($sales as $k=>$v)
+								<li><a href="{{url('home/index/introduction',['id'=>$v->goods_id])}}">
 									<div class="i-pic check">
-										<img src="/home/images/cp.jpg" />
-										<p class="check-title">萨拉米 1+1小鸡腿</p>
+										<img src="/uploads/{{$v->goods_img}}"  width="218" height="218" />
+										<p class="check-title">{{$v->gname}}</p>
 										<p class="price fl">
 											<b>¥</b>
-											<strong>29.90</strong>
-										</p>
+											<strong>{{$v->sales_grice}}</strong>
+										</p> 
 										<p class="number fl">
-											销量<span>1110</span>
+											销量&nbsp<span><b style="color: #ccc">{{$v->sales}}</b></span>
 										</p>
-									</div>
+									</div></a>
 								</li>
-								
+								@endforeach
 
 							</div>
 							<div class="clear"></div>
 							<!--分页 -->
-							<ul class="am-pagination am-pagination-right">
-								<li class="am-disabled"><a href="#">&laquo;</a></li>
-								<li class="am-active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&raquo;</a></li>
+							<ul class="am-pagination am-pagination-right" style="float: right;margin-right: 2px;">
+								{{$goods->links()}}
 							</ul>
 
 						</div>

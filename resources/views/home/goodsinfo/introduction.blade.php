@@ -173,8 +173,10 @@
 							<h1>{{$goods_one[0]->gname}}</h1>
 						</div>
 						<div class="tb-detail-list">
+
 							<!--价格-->
 							<div class="tb-detail-price">
+
 								<li class="price iteminfo_price">
 									<dt>促销价</dt>
 									<dd><em>¥</em><b class="sys_item_price">{{$goods_one[0]->sales_grice}}.00</b>  </dd>                                 
@@ -339,6 +341,7 @@
 								</div>
 
 							</li>
+							
 						</div>
 		
 
