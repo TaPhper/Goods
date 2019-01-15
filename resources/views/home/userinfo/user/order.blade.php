@@ -52,38 +52,39 @@
                       @foreach($data as $k=>$v)
                       <div class="order-status5">
                         <div class="order-title">
-                          <div class="dd-num">订单编号：<a href="javascript:;">{{$v->indents_number}}</a></div>
-                          <span>成交时间：{{$v->updated_at}}</span>
+                        
+                          <div class="dd-num">订单编号：<a href="javascript:;">{{$v[0]->indent_number}}</a></div>
+                          <span>成交时间：{{$v[0]->updated_at}}</span>
                           <!--    <em>店铺：小桔灯</em>-->
                         </div>
-                         
+                        @foreach($v as $kk=>$vv)
                         <div class="order-content">
                           <div class="order-left">
-
+                            
                             <ul class="item-list">
                               <li class="td td-item">
                                 <div class="item-pic">
                                   <a href="#" class="J_MakePoint">
-                                    <img src="images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+                                    <img src="/uploads/{{$vv->goods[0]['goods_img']}}" class="itempic J_ItemImg">
                                   </a>
                                 </div>
                                 <div class="item-info" style="width:200px;margin-left: 50px;" >
                                   <div class="item-basic-info">
                                     <a href="#">
                                       <p></p>
-                                      
+                                      {{$vv->goods[0]['gname']}}
                                     </a>
                                   </div>
                                 </div>
                               </li>
                               <li class="td td-price">
                                 <div class="item-price">
-                                  333.00
+                                  
                                 </div>
                               </li>
                               <li class="td td-number">
                                 <div class="item-number">
-                                  <span>×</span>2
+                                  <span>×</span>{{$vv->indent_count}}
                                 </div>
                               </li>
                               <li class="td td-operation">
@@ -96,26 +97,40 @@
                           <div class="order-right">
                             <li class="td td-amount">
                               <div class="item-amount">
-                                合计：676.00
-                                <p>含运费：<span>10.00</span></p>
+                                合计：{{$vv->indent_money}}
+                                <p>含运费：<span>0.00</span></p>
                               </div>
                             </li>
                             <div class="move-right">
                               <li class="td td-status">
                                 <div class="item-status">
+                                  @if($vv->indent_state== 1)
                                   <p class="Mystatus">交易成功</p>
+                                  @elseif($vv->indent_state == 2)
+                                  <p class="Mystatus">卖家已发货</p>
+                                  @elseif($vv->indent_state == 3)
+                                  <p class="Mystatus">未付款</p>
+                                  @endif
                                   <p class="order-info"><a href="orderinfo.html">订单详情</a></p>
                                   <p class="order-info"><a href="logistics.html">查看物流</a></p>
                                 </div>
                               </li>
                               <li class="td td-change">
+                                @if($vv->indent_state== 1)
+                                <div class="am-btn am-btn-danger anniu"><a href="/home/indent/delete?id={{$vv->indent_number}}">删除订单</a></div>
+                                @elseif($vv->indent_state == 2)
                                 <div class="am-btn am-btn-danger anniu">
-                                  删除订单</div>
+                                  <a href="/home/indent/state?id={{$vv->indent_number}}">确认收货</a></div>
+                                @elseif($vv->indent_state == 3)
+                                <div class="am-btn am-btn-danger anniu">
+                                  <a href="/home/indent/state?id={{$vv->indent_number}}">点击付款</a></div>
+                                @endif
                               </li>
                             </div>
+                           
                           </div>
                         </div>
-                         
+                         @endforeach
                       </div>
                       @endforeach
                     

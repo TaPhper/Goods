@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\Admin\Admins;
-class Users
+
+class Comment
 {
     /**
      * Handle an incoming request.
@@ -20,13 +20,13 @@ class Users
             $data = $admin->adminpower['power_usable'];
             $array = explode(",", $data);
             foreach($array as $k=>$v){
-                if($v == '11'){
+                if($v == '12'){
                     return $next($request);
                 }    
             }
             return redirect('/admin/index')->with('error','权限不够');
         }else{
             return redirect('/admin/login')->with('error','请登录');
-        }   
+        }
     }
 }

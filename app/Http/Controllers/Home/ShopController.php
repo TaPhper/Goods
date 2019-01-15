@@ -82,6 +82,7 @@ class ShopController extends Controller
     	echo $shop->sales_grice;
     }
 
+    // 删除商品
     public function destroy($id)
     {   
     	$shop = Shops::find($id)->delete();
@@ -134,10 +135,11 @@ class ShopController extends Controller
                     'indent_number' => $indent_number,
                     // 'consignee' => $data['num'],
                     'indent_money' => $v->sales_grice,
-                    'indent_state' => '1',
+                    'indent_state' => '3',
                     'goods_id' => $v->good_id,
                     'indent_count' => $v->gnum,
                     'user_id' => $v->user_id,
+                    'payway' => $data['payway'],
                     
                     ]);
                 // dump($Indents_id);
@@ -193,5 +195,38 @@ class ShopController extends Controller
         // $default = Addr::where('user_id','=',$user_id)->where('default','=','1')->first();
         return view('home.shop.success',['indent'=>$indent,'money'=>$indent_money]);  
     }
+
+    public function state(Request $request)
+    {
+        $id = $request->id;
+        // dump($id);
+        $indent = Indents::where('indent_number','=',$id)->get();
+        foreach($indent as $k=>$v){
+            if($v->indent_state == '2'){
+                $v->indent_state = '1';
+                $res = $v->save();
+            }else if($v->indent_state == '3'){
+                $v->indent_state = '2';
+                $res = $v->save();
+            }
+           
+            // dump($res);
+        }
+        return back();
+    }
+
+    // 删除订单
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        // dump($id);
+        $indent = Indents::where('indent_number','=',$id)->get();
+        foreach($indent as $k=>$v){
+            $res = $v->delete();
+            // dump($res);
+        }
+        return back();
+    }
+
 
 }

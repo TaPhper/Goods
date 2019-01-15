@@ -20,7 +20,7 @@ class Slide
             $data = $admin->adminpower['power_usable'];
             $array = explode(",", $data);
             foreach($array as $k=>$v){
-                if($v == '1'){
+                if($v == '10'){
                     return $next($request);
                 }    
             }
