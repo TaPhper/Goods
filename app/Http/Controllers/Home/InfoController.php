@@ -35,6 +35,7 @@ class InfoController extends Controller
 	    	$res = $profile->store('images'); //执行上传
 	    	$user->uface = $res;
 	    	$user->save();
+        session()->put('login_user',$user);
 	    	echo $res;
 
 
@@ -56,6 +57,7 @@ class InfoController extends Controller
          $user->user_tel = $data['user_tel'];
          $user->user_sex = $data['sex'];
          $res = $user->save();
+         session()->put('login_user',$user);
          if($res){
           return back()->with('success','修改成功');
          }else{
@@ -76,6 +78,8 @@ class InfoController extends Controller
    public function saveaddr(Request $request)
    {
       $data = $request->except('_token');
+      $user = Addr::where('default','=','1')->first();
+      // dump($user);
         $user_addr = new Addr;
         $user_addr->order_name = $data['order_name'];
         $user_addr->tel = $data['tel'];
@@ -98,6 +102,9 @@ class InfoController extends Controller
                         $user_addr->addr = $data['province'].$data['city'].$data['county'];
                     }
                 }
+            }
+            if(empty($user)){
+              $user_addr->default = "1";
             }
             $res = $user_addr->save();
 

@@ -222,11 +222,11 @@
 						<div class="demo">
 
 							<ul>
-								<li class="title-first"><a target="_blank" href="search.html">
+								<li class="title-first"><a href="#">
 									<img src="/home/images/TJ2.jpg"></img>
 									<span>[特惠]</span>商城爆品1分秒								
 								</a></li>
-								<li class="title-first"><a target="_blank" href="#">
+								<li class="title-first"><a href="#">
 									<span>[公告]</span>商城与广州市签署战略合作协议
 								     <img src="/home/images/TJ.jpg"></img>
 								     <p>XXXXXXXXXXXXXXXXXX</p>
@@ -234,17 +234,37 @@
 							    
 						<div class="mod-vip">
 							<div class="m-baseinfo">
-								<a href="person/index.html">
+								<a href="/home/info">
+								@if(session()->get('login_user')['user_id'] == '0')
 									<img src="/home/images/getAvatar.do.jpg">
+								@else
+									<img src="/uploads/{{session()->get('login_user')['uface']}}"  onerror="this.src='/home/images/getAvatar.do.jpg'">
+								@endif
 								</a>
 								<em>
-									Hi,<span class="s-name">小叮当</span>
-									<a href="#"><p>点击更多优惠活动</p></a>									
+									@if(session()->get('login_user')['user_id'] == '0')
+										Hi,<span class="s-name">小叮当</span>
+										<a href="#"><p>点击更多优惠活动</p></a>	
+									@else
+										@if(empty(session()->get('login_user')['true_name']))
+											Hi,<span class="s-name">小叮当</span>
+											<a href="#"><p>点击更多优惠活动</p></a>	
+										@else
+											Hi,<span class="s-name">{{session()->get('login_user')['true_name']}}</span>
+											<a href="#"><p>点击更多优惠活动</p></a>	
+										@endif
+									@endif
+																	
 								</em>
 							</div>
 							<div class="member-logout">
-								<a class="am-btn-warning btn" href="login.html">登录</a>
-								<a class="am-btn-warning btn" href="register.html">注册</a>
+								@if(session()->get('login_user')['user_id'] == '0')
+								<a class="am-btn-warning btn" href="/home/login">登录</a>
+								<a class="am-btn-warning btn" href="/home/register">注册</a>
+								@else
+								<a class="am-btn-warning btn" href="/home/logout">退出</a>
+								@endif
+								
 							</div>
 							<div class="member-login">
 								<a href="logistics.html"><strong>0</strong>待收货</a>
@@ -255,9 +275,9 @@
 							<div class="clear"></div>	
 						</div>																	    
 							    
-								<li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
-								<li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
-								<li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
+								<li><a href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
+								<li><a href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
+								<li><a href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
 								
 							</ul>
                         <div class="advTip"><img src="/home/images/advTip.jpg"/></div>
@@ -708,6 +728,7 @@
 		</div>
 
 
+
 		<!--菜单 -->
 		<div class=tip>
 			<div id="sidebar">
@@ -847,6 +868,7 @@
 				</div>
 			</div>
 		</div>
+
 
 		<script>
 			window.jQuery || document.write('<script src="basic/js/jquery.min.js "><\/script>');

@@ -145,7 +145,7 @@ class ShopController extends Controller
                 // dump($Indents_id);
                 $indent = Indents::where('indent_id','=',$Indents_id)->first();
                 $indent->consignee = $addr->order_name;
-                $indent->address = $addr->addr;
+                $indent->address = $addr->addr.$addr->detail;
                 $indent->tel = $addr->tel;
                 $res = $indent->save();
                 // dump($indent->updated_at);
