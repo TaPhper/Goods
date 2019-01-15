@@ -9,16 +9,27 @@ use DB;
 class AlveoleController extends Controller
 {
     public function index()
-    {
-    	$data = Alveole::where('is_collect',1)->get();
+    {   $id = session()->get('login_user')['user_id'];
+    	$gid = DB::table('goods_collect')->where('user_id',$id)->select('goods_id')->get();
+        $push_id = [];
+        foreach($gid as $k=>$v)
+        {
+            array_push($push_id,$v->goods_id);
+        }
+        $data = [];
+        foreach($push_id as $k=>$v)
+        {
+            array_push($data,Alveole::where('goods_id',$v)->get());
+        }
+        
+        
     	return view('home.userinfo.alveole.collection',['data'=>$data]);
     }
 
     public function uncollect($id)
     {
-    	$data = Alveole::find($id);
-    	$data['is_collect'] = 0;
-    	$res = $data->save(); 
+    	$uid = session()->get('login_user')['user_id'];
+        $res = DB::table('goods_collect')->where('user_id',$uid)->where('goods_id',$id)->delete();
     	if ($res) {
     		echo '<script language="JavaScript">;location.href="/home/collection";alert("成功");</script>;';
     	}else{
@@ -28,7 +39,8 @@ class AlveoleController extends Controller
 
     public function edit($id)
     {   
-        $data = DB::table('goods')->where('goods_id',$id)->update(['is_collect'=>1]);
+        $uid = session()->get('login_user')['user_id'];
+        $data = DB::table('goods_collect')->insert(['user_id'=>$uid,'goods_id'=>$id]);
         if($data){
             echo '<script language="JavaScript">;location.href="/home/shopcart";alert("收藏成功 ");</script>;';
         }else{
