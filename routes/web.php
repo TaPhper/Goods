@@ -63,21 +63,21 @@ Route::get('home/index/search/{id}','Home\SearchController@sear');
 
 
 //个人中心
-Route::get('home/userinfo','Home\InfoController@userinfo');
+Route::get('home/userinfo','Home\InfoController@userinfo')->middleware('home');
 //ajax头像上传
-Route::post('/home/uploads','Home\InfoController@uploads');
+Route::post('/home/uploads','Home\InfoController@uploads')->middleware('home');
 //个人信息修改
-Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
+Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo')->middleware('home');
 //收货地址
-Route::get('home/addr','Home\InfoController@addr');
+Route::get('home/addr','Home\InfoController@addr')->middleware('home');
 //保存提交收货地址
-Route::post('home/saveaddr','Home\InfoController@saveaddr');
+Route::post('home/saveaddr','Home\InfoController@saveaddr')->middleware('home');
  //删除收货地址
-Route::get('user_addr/delete/{id}','Home\InfoController@delete');
+Route::get('user_addr/delete/{id}','Home\InfoController@delete')->middleware('home');
 //修改收货地址
-Route::get('home/edit/{id}','Home\InfoController@edit');
+Route::get('home/edit/{id}','Home\InfoController@edit')->middleware('home');
 //提交修改
-Route::get('home/update/{id}','Home\InfoController@update');
+Route::get('home/update/{id}','Home\InfoController@update')->middleware('home');
 
 
 Route::get('home/index/introduction/{id}','Home\SearchController@introduction');
@@ -111,34 +111,40 @@ Route::get('/home/shopcart/up','Home\ShopController@up');
 // 删除购物车商品
 Route::get('/home/shopcart/destroy/{id}','Home\ShopController@destroy');
 // 结算页面
-Route::get('/home/shop/pay','Home\ShopController@pay');
+Route::get('/home/shop/pay','Home\ShopController@pay')->middleware('home');
 
 //个人中心
-Route::get('home/info','Home\InfoController@info');
-Route::get('home/userinfo','Home\InfoController@userinfo');
-Route::post('home/uploads','Home\InfoController@uploads');
-Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo');
+Route::get('home/info','Home\InfoController@info')->middleware('home');
+Route::get('home/userinfo','Home\InfoController@userinfo')->middleware('home');
+Route::post('home/uploads','Home\InfoController@uploads')->middleware('home');
+Route::post('home/saveinfo/{id}','Home\InfoController@saveinfo')->middleware('home');
 //个人中心安全设置 
-Route::get('/home/safety','Home\UserInfoController@index');
+Route::get('/home/safety','Home\UserInfoController@index')->middleware('home');
 //修改登录密码
-Route::get('/home/password','Home\UserInfoController@pass');
+Route::get('/home/password','Home\UserInfoController@pass')->middleware('home');
 //绑定邮箱验证
-Route::get('/home/email','Home\UserInfoController@email');
+Route::get('/home/email','Home\UserInfoController@email')->middleware('home');
 //手机号换绑
-Route::get('/home/phone','Home\UserInfoController@phone');
+Route::get('/home/phone','Home\UserInfoController@phone')->middleware('home');
 
 //前台个人中心 我的交易
-Route::get('/home/order','Home\DealController@order');
+Route::get('/home/order','Home\DealController@order')->middleware('home');
 
 //我的小窝收藏
-Route::get('/home/collection','Home\AlveoleController@index');
+Route::get('/home/collection','Home\AlveoleController@index')->middleware('home');
 //取消收藏
-Route::get('/home/uncollect/{id}','Home\AlveoleController@uncollect');
+Route::get('/home/uncollect/{id}','Home\AlveoleController@uncollect')->middleware('home');
 //购物车加入收藏
-Route::get('/home/edit_collect/{id}','Home\AlveoleController@edit');
+
 //评价
 Route::get('/home/comment','Home\CommentController@index');
 
-// 提交订单
-Route::post('/home/shop/indent','Home\ShopController@indent');
+Route::get('/home/edit_collect/{id}','Home\AlveoleController@edit')->middleware('home');
 
+
+// 提交订单
+Route::post('/home/shop/indent','Home\ShopController@indent')->middleware('home');
+// 修改用户默认地址
+Route::get('/home/shop/addr','Home\ShopController@addr')->middleware('home');
+
+Route::get('/home/shop/success','Home\ShopController@success')->middleware('home');

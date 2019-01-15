@@ -44,13 +44,13 @@
 			</ul>
 			<ul class="message-r">
 				<div class="topMessage home">
-					<div class="menu-hd"><a href="index.html" target="_top" class="h">商城首页</a></div>
+					<div class="menu-hd"><a href="/" target="_top" class="h">商城首页</a></div>
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng"><a href="/home/info" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 				</div>
 				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">{{session()->get('shop_count')}}</strong></a></div>
 				</div>
 				<div class="topMessage favorite">
 					<div class="menu-hd"><a href="collection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
@@ -86,25 +86,23 @@
 						<ul>
 							@foreach($addr as $k=>$v)
 							<div class="per-border"></div>
-							<li class="user-addresslist {{$v->default==1 ? 'defaultAddr':''}}">
-
+							<li class="user-addresslist {{$v->default==1 ? 'defaultAddr':''}}" ids="{{$v->id}}" default="{{$v->default}}">
 								<div class="address-left">
-									<div class="user DefaultAddr">
+									<div class="user">
 
 										<span class="buy-address-detail">   
-                   						<span class="buy-user">{{$v->order_name}}</span>
+                   						<span class="buy-users" ids="{{$v->id}}">{{$v->order_name}}</span>
 										<span class="buy-phone">{{$v->tel}}</span>
 										</span>
 									</div>
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
 										<span class="buy--address-detail">
-								   <span class="province">{{$v->addr}}</span>
+								   		<span class="province">{{$v->addr}}</span>
 										</span>
 
 										</span>
 									</div>
-									<ins class="deftip {{$v->default==0 ? 'hidden':''}}">默认地址</ins>
 								</div>
 								<div class="address-right">
 									<a href="person/address.html">
@@ -113,7 +111,6 @@
 								<div class="clear"></div>
 
 								<div class="new-addr-btn">
-									<a href="#" class="{{$v->default==1 ? 'hidden':''}}">设为默认</a>
 									<span class="new-addr-bar hidden">|</span>
 									<a href="#">编辑</a>
 									<span class="new-addr-bar">|</span>
@@ -123,7 +120,6 @@
 							
 						@endforeach
 						</ul>
-
 						<div class="clear"></div>
 					</div>
 					<!--物流 -->
@@ -281,24 +277,19 @@
                                     <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
 											</span>
 										</div>
-
+										
 										<div id="holyshit268" class="pay-address">
-
 											<p class="buy-footer-address">
 												<span class="buy-line-title buy-line-title-type">寄送至：</span>
-												<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-												<span class="city">武汉</span>市
-												<span class="dist">洪山</span>区
-												<span class="street">雄楚大道666号(中南财经政法大学)</span>
+												<span class="street">{{$default->addr}}</span>
 												</span>
 												</span>
 											</p>
 											<p class="buy-footer-address">
 												<span class="buy-line-title">收货人：</span>
 												<span class="buy-address-detail">   
-                                         <span class="buy-user">艾迪 </span>
-												<span class="buy-phone">15871145629</span>
+                                         <span class="buy-user">{{$default->order_name}} </span>
+												<span class="buy-phone">{{$default->tel}}</span>
 												</span>
 											</p>
 										</div>
@@ -367,6 +358,32 @@
                         var num = obj.val();
 		            	var html = obj.next().attr('money');
 		            	var id = obj.attr('ids');
+		            	if(num <= 0){
+		            		$(this).val('1');
+		            		var num = obj.val();
+		            		$.get('/home/shopcart/up',{'id':id,'num':num,'html':html,'user_id':user_id},function(data){
+				            		if(data){
+				            			$('#money'+id).html(data);
+				            			var zsum = 0;
+				            			$('.text_box').each(function(){
+								            var id = $(this).attr('ids');
+								            // alert(id);
+								            var num = $(this).val();
+								            var html = $(this).next().attr('money');
+								            // var html = $('#sales_grices').val();
+								            var xsum = parseInt(num)*parseInt(html);
+								           
+								          	$('#money'+id).html(xsum);
+								            zsum += xsum;
+							            
+							           	});
+						              	$('.pay-sum').html(zsum);
+						                $('#J_ActualFee').html(zsum);
+				            		}
+				            	});
+		            		alert('选购的商品最少有1件');
+		            		return;
+		            	}
 		            	$.get('/home/shopcart/up',{'id':id,'num':num,'html':html,'user_id':user_id},function(data){
 		            		if(data){
 		            			$('#money'+id).html(data);
@@ -428,7 +445,49 @@
 		            		}
 		            	});
 					})
+
+				// 	<div class="user">
+
+				// 		<span class="buy-address-detail">   
+   	// 					<span class="buy-users" ids="{{$v->id}}">{{$v->order_name}}</span>
+				// 		<span class="buy-phone">{{$v->tel}}</span>
+				// 		</span>
+				// 	</div>
+				// 	<div class="default-address DefaultAddr">
+				// 		<span class="buy-line-title buy-line-title-type">收货地址：</span>
+				// 		<span class="buy--address-detail">
+				//    		<span class="province">{{$v->addr}}</span>
+				// 		</span>
+
+				// 		</span>
+				// 	</div>
+				// </div>
+					$('.user-addresslist').click(function(){
+						$.ajaxSetup({
+						    headers: {
+						        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						    }
+						});
+						var user_id = {{session()->get('login_user')['user_id']}};
+				        var id = $(this).attr('ids');
+				        alert(id);
+						$.get('/home/shop/addr',{'id':id,'user_id':user_id},function(msg){
+								var id = $('.defaultAddr').attr('ids');
+								$('.buy-users').each(function(){
+									if($(this).attr('ids') == id){
+										var name = $(this).html();
+										$('.buy-user').html(name);
+									}
+								})
+							
+						})
+					})
+
 					
+					// $('.user-addresslist').attr('class',user_addr);
+					// $('.deftip').attr('class',deftip);
+					// $('.default').attr('class',default1);
+
 				</script>
 				<div class="footer">
 					<div class="footer-hd">
