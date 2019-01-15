@@ -179,7 +179,7 @@
 						<ul>
 							<li> <a href="/home/collection">收藏</a></li>
 							<li> <a href="/home/comment">评价</a></li>
-							<li> <a href="news.html">消息</a></li>
+						
 						</ul>
 					</li>
 
