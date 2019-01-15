@@ -76,6 +76,8 @@
 			<div class="clear"></div>
 			<div class="concent">
 				<!--地址 -->
+				<form action="/home/shop/indent" method="post">
+				{{ csrf_field()}}
 				<div class="paycont">
 					<div class="address">
 						<h3>确认收货地址 </h3>
@@ -126,9 +128,9 @@
 					<div class="logistics">
 						<h3>选择物流方式</h3>
 						<ul class="op_express_delivery_hot">
-							<li data-value="yuantong" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -468px"></i>圆通<span></span></li>
-							<li data-value="shentong" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -1008px"></i>申通<span></span></li>
-							<li data-value="yunda" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -576px"></i>韵达<span></span></li>
+							<li data-value="yuantong" class="OP_LOG_BTN"><i class="c-gap-right" style="background-position:0px -468px"></i>圆通<span></span></li>
+							<li data-value="shentong" class="OP_LOG_BTN"><i class="c-gap-right" style="background-position:0px -1008px"></i>申通<span></span></li>
+							<li data-value="yunda" class="OP_LOG_BTN"><i class="c-gap-right" style="background-position:0px -576px"></i>韵达<span></span></li>
 							<li data-value="zhongtong" class="OP_LOG_BTN op_express_delivery_hot_last "><i class="c-gap-right" style="background-position:0px -324px"></i>中通<span></span></li>
 							<li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom"><i class="c-gap-right" style="background-position:0px -180px"></i>顺丰<span></span></li>
 						</ul>
@@ -139,9 +141,9 @@
 					<div class="logistics">
 						<h3>选择支付方式</h3>
 						<ul class="pay-list">
-							<li class="pay card"><img src="/home/images/wangyin.jpg" />银联<span></span></li>
-							<li class="pay qq"><img src="/home/images/weizhifu.jpg" />微信<span></span></li>
-							<li class="pay taobao"><img src="/home/images/zhifubao.jpg" />支付宝<span></span></li>
+							<li class="pay card" ids="1"><input type="text"  style="display:none;" name="payway" /><img src="/home/images/wangyin.jpg" />银联<span></span></li>
+							<li class="pay qq" ids="2"><input type="text"  style="display:none;" name="payway" /><img src="/home/images/weizhifu.jpg" />微信<span></span></li>
+							<li class="pay taobao" ids="3"><input type="text"  style="display:none;" name="payway" value="1" /><img src="/home/images/zhifubao.jpg" />支付宝<span></span></li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -149,8 +151,7 @@
 					<!--订单 -->
 					
 					<div class="concent">
-					<form action="/home/shop/indent" method="post">
-					{{ csrf_field()}}
+					
 						<div id="payTable">
 							<h3>确认订单信息</h3>
 							<div class="cart-table-th">
@@ -445,23 +446,6 @@
 		            		}
 		            	});
 					})
-
-				// 	<div class="user">
-
-				// 		<span class="buy-address-detail">   
-   	// 					<span class="buy-users" ids="{{$v->id}}">{{$v->order_name}}</span>
-				// 		<span class="buy-phone">{{$v->tel}}</span>
-				// 		</span>
-				// 	</div>
-				// 	<div class="default-address DefaultAddr">
-				// 		<span class="buy-line-title buy-line-title-type">收货地址：</span>
-				// 		<span class="buy--address-detail">
-				//    		<span class="province">{{$v->addr}}</span>
-				// 		</span>
-
-				// 		</span>
-				// 	</div>
-				// </div>
 					$('.user-addresslist').click(function(){
 						$.ajaxSetup({
 						    headers: {
@@ -483,10 +467,18 @@
 						})
 					})
 
-					
-					// $('.user-addresslist').attr('class',user_addr);
-					// $('.deftip').attr('class',deftip);
-					// $('.default').attr('class',default1);
+
+					// $('.OP_LOG_BTN').click(function(){
+					// 	$($this).next().html('<input type="text" name="payway" value="/>')
+					// })
+					// 银联 1  微信 2  支付宝 3 
+					$('.pay').click(function(){
+						var a = $(this).attr('ids');
+						$(this).attr('selected',true);
+						// alert(a);
+						$(this).children().val(a);
+						
+					})
 
 				</script>
 				<div class="footer">

@@ -27,16 +27,19 @@
         		</li>
 		        <li class="power">
 		            <label>拥有权限：</label>
-		            <input type="checkbox" value="0" class="checkbtn" name="power_usable0"> 用户管理
 		            <input type="checkbox" value="1" class="checkbtn" name="power_usable1"> 订单管理
 		            <input type="checkbox" value="2" class="checkbtn" name="power_usable2"> 单据管理
 		            <input type="checkbox" value="3" class="checkbtn" name="power_usable3"> 商品管理 
-		            <input type="checkbox" value="4" class="checkbtn" name="power_usable4"> 品牌管理 <br> 
-		            <input type="checkbox" value="5" class="checkbtn" name="power_usable5"> 分类管理
+		            <input type="checkbox" value="4" class="checkbtn" name="power_usable4"> 品牌管理 
+		            <input type="checkbox" value="5" class="checkbtn" name="power_usable5"> 分类管理 
 		            <input type="checkbox" value="6" class="checkbtn" name="power_usable6"> 员工管理
+		            <br>
 		            <input type="checkbox" value="7" class="checkbtn" name="power_usable7"> 职位管理
 		            <input type="checkbox" value="8" class="checkbtn" name="power_usable8"> 发货管理
 		            <input type="checkbox" value="9" class="checkbtn" name="power_usable9"> 网站管理
+		            <input type="checkbox" value="10" class="checkbtn" name="power_usable10"> 轮播管理
+		            <input type="checkbox" value="11" class="checkbtn" name="power_usable11"> 用户管理
+		            <input type="checkbox" value="12" class="checkbtn" name="power_usable12"> 信息管理
 		        </li>
 		        <li class="text">
 		          <label>职位描述：</label>
@@ -62,7 +65,8 @@
 	function kefu()
 	{
 		$('.power input').prop('checked', false);
-		$('.power input').eq(0).prop('checked', true);
+		$('.power input').eq(10).prop('checked', true);
+		$('.power input').eq(11).prop('checked', true);
 		$('.span').eq(0).html('<input name="power_name" type="hidden" value="客服" />');
 		$('.text textarea').html('管理用户');
 
