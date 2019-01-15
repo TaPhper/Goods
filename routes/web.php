@@ -59,8 +59,8 @@ Route::resource('/admin/comment','Admin\CommentController');
 Route::get('/','Home\IndexController@index');
 // 前台商品列表页
 Route::get('home/index/search/{id}','Home\SearchController@sear');
-
-
+//首页商品跳转
+Route::get('home/index/introduction','Home\SearchController@search');
 
 //个人中心
 Route::get('home/userinfo','Home\InfoController@userinfo')->middleware('home');
