@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'net' => \App\Http\Middleware\Net::class,
         'login' => \App\Http\Middleware\login::class,
         'slide' => \App\Http\Middleware\Slide::class,
+        'home' => \App\Http\Middleware\Homes::class,
     ];
 }

@@ -46,6 +46,10 @@ class ShopController extends Controller
             }
             
         }
+        $user = session()->get('login_user');
+        $shop = Shops::where('user_id','=',$user['user_id'])->count();
+            // dump($shop);
+        session()->put('shop_count',$shop);
 
         $shop = Shops::where('user_id',$user_id)->get();
     	$nshop = Shops::where('user_id',$user_id)->first();
@@ -81,7 +85,10 @@ class ShopController extends Controller
     public function destroy($id)
     {   
     	$shop = Shops::find($id)->delete();
-    	
+        $user = session()->get('login_user');
+        $shop = Shops::where('user_id','=',$user['user_id'])->count();
+            // dump($shop);
+        session()->put('shop_count',$shop);
     	if($shop){
             return redirect('/home/shopcart')->with('success','删除成功');
         }else{
@@ -103,36 +110,88 @@ class ShopController extends Controller
         
         $user_id = session()->get('login_user')['user_id'];
         $addr = Addr::where('user_id','=',$user_id)->get();
-        // dump($addr);
-        return view('home.shop.pay',['addr'=>$addr,'shop'=>$arr]);
+        $default = Addr::where('user_id','=',$user_id)->where('default','=','1')->first();
+        // dump($default);
+        return view('home.shop.pay',['addr'=>$addr,'shop'=>$arr,'default'=>$default]);
     }
 
     // 创建订单
     public function indent(Request $request)
     {
         $data = $request->except('_token');
-        dump($data);
+        // dump($data);
         $user_id = session()->get('login_user')['user_id'];
         $shop = Shops::where('user_id','=',$user_id)->get();
+        $addr = Addr::where('user_id','=',$user_id)->where('default','=','1')->first();
         // dump($shop);
+        $indent_number = mt_rand(1000, 9999).time();
         foreach($shop as $k=>$v){
+            
             $goods_id = 'goods_id'.$v->good_id;
             if(isset($data[$goods_id])){
-                $indent = new Indents;
-                $indent->indent_number = mt_rand(1000, 9999).time();
-                $indent->consignee = $data['num'];
-                $indent->indent_money = $v->sales_grice;
-                $indent->indent_state = '1';
-                $indent->goods_id = $v->good_id;
-                $indent->indent_count = $v->gnum;
-                $indent->user_id = $v->user_id;
-                $res = $indent->save();  
-                dump($res);
+                $Indents_id = Indents::insertGetId(
+                    [
+                    'indent_number' => $indent_number,
+                    // 'consignee' => $data['num'],
+                    'indent_money' => $v->sales_grice,
+                    'indent_state' => '1',
+                    'goods_id' => $v->good_id,
+                    'indent_count' => $v->gnum,
+                    'user_id' => $v->user_id,
+                    
+                    ]);
+                // dump($Indents_id);
+                $indent = Indents::where('indent_id','=',$Indents_id)->first();
+                $indent->consignee = $addr->order_name;
+                $indent->address = $addr->addr;
+                $indent->tel = $addr->tel;
+                $res = $indent->save();
+                // dump($indent->updated_at);
+
+                // dump($v->goods_id)
+                $shop = Shops::where('good_id','=',$v->good_id)->first();
+                $shop->delete();
+
             }
         }
+        $indent = Indents::where('indent_id','=',$Indents_id)->first();
 
-        return view('home.shop.success');
-        
+        return redirect("/home/shop/success?id=$indent->indent_number");
+          
+    }
+
+    // 修改用户默认地址
+    public function addr(Request $request)
+    {
+        $id = $request->id;
+        $user_id = $request->user_id;
+        $addr = Addr::where('user_id','=',$user_id)->where('default','=','1')->first();
+        $addr->default = '0';
+        $addr->save();
+        $addr = Addr::where('user_id','=',$user_id)->where('id','=',$id)->first();
+        $addr->default = '1';
+        $res = $addr->save();
+        echo $addr->default;
+        // echo $user_id
+        // echo 'sd';
+    }
+
+
+    public function success(Request $request)
+    {
+        // 获取订单信息
+        $indent_number = $request->id;
+        $indent = Indents::where('indent_number','=',$indent_number)->get();
+        $indent_money = 0;
+        foreach($indent as $k=>$v){
+            $indent_money += $v->indent_money;
+            // dump($v->indent_money);
+        }
+        // dump($indent_money);
+        // 获取收货人信息
+        // $user_id = session()->get('login_user')['user_id'];
+        // $default = Addr::where('user_id','=',$user_id)->where('default','=','1')->first();
+        return view('home.shop.success',['indent'=>$indent,'money'=>$indent_money]);  
     }
 
 }
