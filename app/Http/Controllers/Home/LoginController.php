@@ -110,7 +110,7 @@ class LoginController extends Controller
         // echo $mobile_code;
         // 短信接口地址
         $target = "http://106.ihuyi.com/webservice/sms.php?method=Submit";
-        $target .= "&account=C23446849&password=f8504711b04107878ce81d4d15a5dd7c&format=json&mobile=".$phone."&content=".rawurlencode("您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
+        $target .= "&account=C80047658&password=b6d4225cf694823d7716e98f60ba4270&format=json&mobile=".$phone."&content=".rawurlencode("您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
         // echo $target;
         // 请求接口
         // CURL 通过代码 模拟浏览器请求
