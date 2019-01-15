@@ -13,7 +13,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        
+        // dump(session()->get('login_user'));   
     	if(!session()->get('login_user')){
     		$user = Users::where('user_id','=','0')->first();
     		session()->put('login_user',$user);

@@ -11,9 +11,21 @@ class OrderController extends Controller
 	// 收货单
     public function take()
     {
-    	$indent = Indents::where('indent_state','=',1)->paginate(5);
-    	$count = Indents::where('indent_state','=',1)->count();
-    	return view('admin.indent.take',['data'=>$indent,'count'=>$count]);
+    	$indent = Indents::paginate(5);
+        $brr = [];
+        foreach($indent as $k=>$v){
+           // dump($v->goods);
+            $brr[] = $v->indent_number;
+            // $in = array_unique($brr);
+        }
+        $in = array_unique($brr);
+        $arr = [];
+        foreach($in as $k=>$v){
+            $arr[] = Indents::where('indent_number','=',$v)->get();
+        }
+        // dump($arr);
+    	$count = Indents::count();
+    	return view('admin.indent.index',['data'=>$arr,'count'=>$count]);
     }
 
     // 退款单

@@ -46,52 +46,42 @@
                 <th>订单状态</th>                            
                 <th>商品id</th>                            
                 <th>收货地址</th>                            
-                <th>订购数量</th>                            
-                <th>用户名</th>                            
+                <th>订购数量</th>                                                      
                 <th>支付方式</th>                            
-                <th>操作</th>
               </tr>
             </thead>
             @foreach($data as $k=>$v)
             <tbody>
-
+              @foreach($v as $kk=>$vv)
               <tr>
-                <td>{{$v->indent_id}}</td>
-                <td>{{$v->indent_number}}</td>
-                <td>{{$v->created_at}}</td>
-                <td>{{$v->consignee}}</td>
-                <td>{{$v->indent_money}}</td>
+                <td>{{$vv->indent_id}}</td>
+                <td>{{$vv->indent_number}}</td>
+                <td>{{$vv->updated_at}}</td>
+                <td>{{$vv->consignee}}</td>
+                <td>{{$vv->indent_money}}</td>
                 <td>
-                  @if($v->indent_state == 1)
+                  @if($vv->indent_state == 1)
                   完成交易
-                  @elseif($v->indent_state == 2)
+                  @elseif($vv->indent_state == 2)
                   确认收货
-                  @elseif($v->indent_state == 3)
+                  @elseif($vv->indent_state == 3)
                   待付款
                   @endif
                 </td>
-                <td>{{$v->goods_id}}</td>
-                <td>{{$v->address}}</td>
-                <td>{{$v->indent_count}}</td>
-                <td>{{$v->indentusers->user_name}}</td>
+                <td>{{$vv->goods_id}}</td>
+                <td>{{$vv->address}}</td>
+                <td>{{$vv->indent_count}}</td>
                 <td>
-                @if($v->payway == 1 )
+                @if($vv->payway == 1 )
                 银联
-                @elseif($v->payway == 2)
+                @elseif($vv->payway == 2)
                 微信
-                @elseif($v->payway == 3)
+                @elseif($vv->payway == 3)
                 支付宝
                 @endif
                 </td>
-                <td class="operation">
-                <form action="/admin/indent/{{ $v->indent_id }}" method="post" style="display: inline-block;">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <button class="btn btn-danger" >删除</button>
-                </form>
-                </td>
               </tr>
-             
+              @endforeach
             </tbody>
             @endforeach
           </table>
@@ -99,7 +89,7 @@
           
           <!--分页 start-->
           <div class="pages ">
-              {{ $data->links() }}                
+              
           </div>
           <!--分页 end-->
       

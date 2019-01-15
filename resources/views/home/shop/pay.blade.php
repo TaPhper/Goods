@@ -82,7 +82,7 @@
 					<div class="address">
 						<h3>确认收货地址 </h3>
 						<div class="control">
-							<div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>
+					
 						</div>
 						<div class="clear"></div>
 						<ul>
@@ -100,7 +100,7 @@
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
 										<span class="buy--address-detail">
-								   		<span class="province">{{$v->addr}}</span>
+								   		<span class="province">{{$v->addr}}{{$v->detail}}</span>
 										</span>
 
 										</span>
@@ -111,13 +111,6 @@
 										<span class="am-icon-angle-right am-icon-lg"></span></a>
 								</div>
 								<div class="clear"></div>
-
-								<div class="new-addr-btn">
-									<span class="new-addr-bar hidden">|</span>
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
-								</div>
 							</li>
 							
 						@endforeach
@@ -187,7 +180,7 @@
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img src="/uploads/{{$v->goods_img}}" class="itempic J_ItemImg"></a>
+															<img width="80" height="80" src="/uploads/{{$v->goods_img}}" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
@@ -454,7 +447,7 @@
 						});
 						var user_id = {{session()->get('login_user')['user_id']}};
 				        var id = $(this).attr('ids');
-				        alert(id);
+				        // alert(id);
 						$.get('/home/shop/addr',{'id':id,'user_id':user_id},function(msg){
 								var id = $('.defaultAddr').attr('ids');
 								$('.buy-users').each(function(){

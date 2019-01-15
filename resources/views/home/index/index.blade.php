@@ -222,11 +222,11 @@
 						<div class="demo">
 
 							<ul>
-								<li class="title-first"><a target="_blank" href="search.html">
+								<li class="title-first"><a href="#">
 									<img src="/home/images/TJ2.jpg"></img>
 									<span>[特惠]</span>商城爆品1分秒								
 								</a></li>
-								<li class="title-first"><a target="_blank" href="#">
+								<li class="title-first"><a href="#">
 									<span>[公告]</span>商城与广州市签署战略合作协议
 								     <img src="/home/images/TJ.jpg"></img>
 								     <p>XXXXXXXXXXXXXXXXXX</p>
@@ -234,17 +234,37 @@
 							    
 						<div class="mod-vip">
 							<div class="m-baseinfo">
-								<a href="person/index.html">
+								<a href="/home/info">
+								@if(session()->get('login_user')['user_id'] == '0')
 									<img src="/home/images/getAvatar.do.jpg">
+								@else
+									<img src="/uploads/{{session()->get('login_user')['uface']}}"  onerror="this.src='/home/images/getAvatar.do.jpg'">
+								@endif
 								</a>
 								<em>
-									Hi,<span class="s-name">小叮当</span>
-									<a href="#"><p>点击更多优惠活动</p></a>									
+									@if(session()->get('login_user')['user_id'] == '0')
+										Hi,<span class="s-name">小叮当</span>
+										<a href="#"><p>点击更多优惠活动</p></a>	
+									@else
+										@if(empty(session()->get('login_user')['true_name']))
+											Hi,<span class="s-name">小叮当</span>
+											<a href="#"><p>点击更多优惠活动</p></a>	
+										@else
+											Hi,<span class="s-name">{{session()->get('login_user')['true_name']}}</span>
+											<a href="#"><p>点击更多优惠活动</p></a>	
+										@endif
+									@endif
+																	
 								</em>
 							</div>
 							<div class="member-logout">
-								<a class="am-btn-warning btn" href="login.html">登录</a>
-								<a class="am-btn-warning btn" href="register.html">注册</a>
+								@if(session()->get('login_user')['user_id'] == '0')
+								<a class="am-btn-warning btn" href="/home/login">登录</a>
+								<a class="am-btn-warning btn" href="/home/register">注册</a>
+								@else
+								<a class="am-btn-warning btn" href="/home/logout">退出</a>
+								@endif
+								
 							</div>
 							<div class="member-login">
 								<a href="logistics.html"><strong>0</strong>待收货</a>
@@ -255,9 +275,9 @@
 							<div class="clear"></div>	
 						</div>																	    
 							    
-								<li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
-								<li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
-								<li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
+								<li><a href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
+								<li><a href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
+								<li><a href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
 								
 							</ul>
                         <div class="advTip"><img src="/home/images/advTip.jpg"/></div>
@@ -705,167 +725,6 @@
 			<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
 			<li><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
 			<li><a href="person/index.html"><i class="am-icon-user"></i>我的</a></li>					
-		</div>
-
-
-		<!--菜单 -->
-		<div class=tip>
-			<div id="sidebar">
-				<div id="wrap">
-					<div id="prof" class="item ">
-						<a href="# ">
-							<span class="setting "></span>
-						</a>
-						<div class="ibar_login_box status_login ">
-							<div class="avatar_box ">
-								<p class="avatar_imgbox "><img src="/home/images/no-img_mid_.jpg " /></p>
-								<ul class="user_info ">
-									<li>用户名sl1903</li>
-									<li>级&nbsp;别普通会员</li>
-								</ul>
-							</div>
-							<div class="login_btnbox ">
-								<a href="# " class="login_order ">我的订单</a>
-								<a href="# " class="login_favorite ">我的收藏</a>
-							</div>
-							<i class="icon_arrow_white "></i>
-						</div>
-
-					</div>
-					<div id="shopCart " class="item ">
-						<a href="# ">
-							<span class="message "></span>
-						</a>
-						<p>
-							购物车
-						</p>
-						<p class="cart_num ">0</p>
-					</div>
-					<div id="asset " class="item ">
-						<a href="# ">
-							<span class="view "></span>
-						</a>
-						<div class="mp_tooltip ">
-							我的资产
-							<i class="icon_arrow_right_black "></i>
-						</div>
-					</div>
-
-					<div id="foot " class="item ">
-						<a href="# ">
-							<span class="zuji "></span>
-						</a>
-						<div class="mp_tooltip ">
-							我的足迹
-							<i class="icon_arrow_right_black "></i>
-						</div>
-					</div>
-
-					<div id="brand " class="item ">
-						<a href="#">
-							<span class="wdsc "><img src="/home/images/wdsc.png " /></span>
-						</a>
-						<div class="mp_tooltip ">
-							我的收藏
-							<i class="icon_arrow_right_black "></i>
-						</div>
-					</div>
-
-					<!--<div id="broadcast " class="item ">-->
-						<!--<a href="# ">-->
-							<!--<span class="chongzhi "><img src="/home/images/chongzhi.png " /></span>-->
-						<!--</a>-->
-						<!--<div class="mp_tooltip ">-->
-							<!--我要充值-->
-							<!--<i class="icon_arrow_right_black "></i>-->
-						<!--</div>-->
-					<!--</div>-->
-
-					<div class="quick_toggle ">
-						<li class="qtitem ">
-							<a href="# "><span class="kfzx "></span></a>
-							<div class="mp_tooltip ">客服中心<i class="icon_arrow_right_black "></i></div>
-						</li>
-						<!--二维码 -->
-						<li class="qtitem ">
-							<a href="#none "><span class="mpbtn_qrcode "></span></a>
-							<div class="mp_qrcode " style="display:none; "><img src="/home/images/weixin_code_145.png " /><i class="icon_arrow_white "></i></div>
-						</li>
-						<li class="qtitem ">
-							<a href="#top " class="return_top "><span class="top "></span></a>
-						</li>
-					</div>
-
-					<!--回到顶部 -->
-					<div id="quick_links_pop " class="quick_links_pop hide "></div>
-
-				</div>
-
-			</div>
-			<div id="prof-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					我
-				</div>
-			</div>
-			<div id="shopCart-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					购物车
-				</div>
-			</div>
-			<div id="asset-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					资产
-				</div>
-
-				<div class="ia-head-list ">
-					<a href="coupon.html " target="_blank " class="pl ">
-						<div class="num ">0</div>
-						<div class="text ">优惠券</div>
-					</a>
-					<a href="bonus.html " target="_blank " class="pl ">
-						<div class="num ">0</div>
-						<div class="text ">红包</div>
-					</a>
-					<a href="billlist.html " target="_blank " class="pl money ">
-						<div class="num ">￥0</div>
-						<div class="text ">余额</div>
-					</a>
-				</div>
-
-			</div>
-			<div id="foot-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					足迹
-				</div>
-			</div>
-			<div id="brand-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					收藏
-				</div>
-			</div>
-			<div id="broadcast-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					充值
-				</div>
-			</div>
 		</div>
 
 		<script>
