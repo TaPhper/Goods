@@ -19,7 +19,7 @@ Route::get('admin/login','Admin\IndexController@login');
 Route::get('admin/loginout','Admin\IndexController@loginout');
 Route::post('admin/logining','Admin\IndexController@logining');
 //后台用户管理   叶尚君25-40
-Route::resource('admin/user','Admin\UsersController');
+Route::resource('admin/user','Admin\UsersController')->middleware('user');
 // 后台订单管理
 Route::resource('admin/indent','Admin\IndentsController')->middleware('indent');
 // 后台单据管理
@@ -39,7 +39,7 @@ Route::resource('/admin/slide','Admin\SlideController')->middleware('slide');
 Route::resource('/admin/goods','Admin\GoodsController')->middleware('goods');
 //网站配置
 Route::resource('/admin/net','Admin\NetController')->middleware('net');
-Route::get('/admin/index/ajax/{id}','Admin\IndexController@config');
+Route::get('/admin/index/ajax/{id}','Admin\IndexController@config')->middleware('net');
 //商品回收站(软删除)
 Route::get('/admin/goods_show','Admin\GoodsController@goods_show')->middleware('goods');
 Route::delete('/admin/goods/delete/{id}','Admin\GoodsController@delete')->middleware('goods');
@@ -51,7 +51,7 @@ Route::resource('/admin/addr','Admin\AddrController')->middleware('addr');
 Route::resource('/admin/cates/index','Admin\CatesController')->middleware('cates');
 Route::get('/admin/cates/index/create/{id}','Admin\CatesController@create')->middleware('cates');
 //信息管理
-Route::resource('/admin/comment','Admin\CommentController');
+Route::resource('/admin/comment','Admin\CommentController')->middleware('comment');
 
 
 
@@ -146,5 +146,9 @@ Route::get('/home/edit_collect/{id}','Home\AlveoleController@edit')->middleware(
 Route::post('/home/shop/indent','Home\ShopController@indent')->middleware('home');
 // 修改用户默认地址
 Route::get('/home/shop/addr','Home\ShopController@addr')->middleware('home');
-
+// 完成订单
 Route::get('/home/shop/success','Home\ShopController@success')->middleware('home');
+// 修改状态
+Route::get('/home/indent/state','Home\ShopController@state')->middleware('home');
+// 删除订单
+Route::get('/home/indent/delete','Home\ShopController@delete')->middleware('home');

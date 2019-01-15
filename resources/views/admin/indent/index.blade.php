@@ -76,8 +76,10 @@
                 <td>{{$v->indentusers->user_name}}</td>
                 <td>
                 @if($v->payway == 1 )
-                微信
+                银联
                 @elseif($v->payway == 2)
+                微信
+                @elseif($v->payway == 3)
                 支付宝
                 @endif
                 </td>

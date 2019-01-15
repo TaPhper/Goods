@@ -40,8 +40,8 @@ class PowerController extends Controller
      */
     public function store(Request $request)
     {
-        // 0 用户管理  1 订单管理  2 单据管理  3 商品管理  4 品牌管理 
-        // 5 分类管理  6 员工管理  7 职位管理  8 发货管理  9 网站管理
+        // 1 订单管理  2 单据管理  3 商品管理  4 品牌管理 5 分类管理 6 员工管理
+        // 7 职位管理  8 发货管理  9 网站管理  10 轮播管理 11 用户管理 12 信息管理
         $this->validate($request, [
         'power_name' => 'required',
         'power_describe' => 'required',
@@ -50,9 +50,8 @@ class PowerController extends Controller
             'power_describe.required' => '职位描述必填',
         ]);
         $data = $request->except('_token');
-
+        // dump($data);
         $arr = array(
-            '0' => empty($data['power_usable0']) ? '' : '0,',
             '1' => empty($data['power_usable1']) ? '' : '1,',
             '2' => empty($data['power_usable2']) ? '' : '2,',
             '3' => empty($data['power_usable3']) ? '' : '3,',
@@ -61,10 +60,14 @@ class PowerController extends Controller
             '6' => empty($data['power_usable6']) ? '' : '6,',
             '7' => empty($data['power_usable7']) ? '' : '7,',
             '8' => empty($data['power_usable8']) ? '' : '8,',
-            '9' => empty($data['power_usable9']) ? '' : '9',
+            '9' => empty($data['power_usable9']) ? '' : '9,',
+            '10' => empty($data['power_usable10']) ? '' : '10,',
+            '11' => empty($data['power_usable11']) ? '' : '11,',
+            '12' => empty($data['power_usable12']) ? '' : '12',
         );
+        // dump($arr);
         $data['power_usable'] = implode("", $arr);
-
+        // dump($data['power_usable']);
         if($data['power_name'] == '经理'){
             $data['power_usable'] = $data['power_usable'];
         }else if($data['power_name'] == '客服'){
