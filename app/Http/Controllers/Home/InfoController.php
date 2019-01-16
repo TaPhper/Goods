@@ -79,7 +79,7 @@ class InfoController extends Controller
    {
       $data = $request->except('_token');
       $user = Addr::where('default','=','1')->first();
-      // dump($user);
+      dump($user);
         $user_addr = new Addr;
         $user_addr->order_name = $data['order_name'];
         $user_addr->tel = $data['tel'];
@@ -106,11 +106,12 @@ class InfoController extends Controller
             if(empty($user)){
               $user_addr->default = "1";
             }
+            $user_addr->default = "0";
             $res = $user_addr->save();
 
-            if($res){
-              return  back()->with('success');
-            }
+            // if($res){
+            //   return  back()->with('success');
+            // }
 
    }
 

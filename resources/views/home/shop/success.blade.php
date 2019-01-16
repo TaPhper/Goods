@@ -76,7 +76,7 @@
 
 <div class="take-delivery">
  <div class="status">
-   <h2>您已成功付款</h2>
+   <h2>您已创建订单,请去付款</h2>
    <div class="successInfo">
      <ul>
        <li>付款金额<em>¥{{$money}}</em></li>

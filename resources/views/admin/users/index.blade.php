@@ -17,9 +17,7 @@
                 <th>邮箱</th>
                 <th>真实姓名</th>
                 <th>联系方式</th>
-                <th>用户性别</th>
-                <th>家庭住址</th>                           
-                <th>邮编</th>                                                  
+                <th>用户性别</th>                                             
                 <th>用户状态</th>                           
                 <th>操作</th>
               </tr>
@@ -33,8 +31,6 @@
                 <td>{{ $v->true_name }}</td>
                 <td>{{ $v->user_tel }}</td>
                 <td>{{ $v->user_sex == 1 ? '女' : '男' }}</td> 
-                <td>{{ $v->user_address }}</td>
-                <td>{{ $v->postcode }}</td>
                 @if($v->user_status == 1)
                 <td>正常</td>
                 @elseif($v->user_status == 2)

@@ -17,13 +17,25 @@ class IndentsController extends Controller
     public function index(Request $request)
     {
         // 获取搜索内容
-        $indent_id = empty($request->input('indent_id'))?"":$request->input('indent_id');
-        $consignee = empty($request->input('consignee'))?"":$request->input('consignee');
-        $indent_state = $request->input('indent_state') == '请选择'?"":$request->input('indent_state');
+        // $indent_id = empty($request->input('indent_id'))?"":$request->input('indent_id');
+        // $consignee = empty($request->input('consignee'))?"":$request->input('consignee');
+        // $indent_state = $request->input('indent_state') == '请选择'?"":$request->input('indent_state');
         // 获取搜索之后得到的信息
-        $indent = Indents::where('indent_id','like','%'.$indent_id.'%')->where('consignee','like','%'.$consignee.'%')->where('indent_state','like','%'.$indent_state.'%')->paginate(3);
+        $indent = Indents::paginate(5);
+        $brr = [];
+        foreach($indent as $k=>$v){
+           // dump($v->goods);
+            $brr[] = $v->indent_number;
+            // $in = array_unique($brr);
+        }
+        $in = array_unique($brr);
+        $arr = [];
+        foreach($in as $k=>$v){
+            $arr[] = Indents::where('indent_number','=',$v)->get();
+        }
+        // dump($arr);
         $count = Indents::count();
-        return view('admin.indent.index',['data'=>$indent,'count'=>$count]);
+        return view('admin.indent.index',['data'=>$arr,'count'=>$count]);
     }
 
     /**

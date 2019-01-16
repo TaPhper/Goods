@@ -15,7 +15,7 @@
 	        		</li>   
 			        <li>
 			          <label>密码：</label>
-			          <input type="text" name="user_pwd" class="w200 name" autocomplete=off value="">
+			          <input type="password" name="user_pwd" class="w200 name" autocomplete=off value="">
 			        </li>
 			        <li>
 			          <label>邮箱：</label>
@@ -33,15 +33,7 @@
 			        <li>
 			          <label>联系电话：</label>
 			          <input type="text" name="user_tel" class="w200 name" autocomplete=off value="">
-			        </li>	
-			        <li>
-			          <label>家庭住址：</label>
-			          <input type="text" name="user_address" class="w200 name" autocomplete=off value="">
-			        </li> 
-			        <li>
-			          <label>邮编：</label>
-			          <input type="text" name="postcode" class="w200 name" autocomplete=off value="">
-			        </li> 
+			        </li>	 
 			        <li>
 			          <label>状态：</label>
 			          <input type="checkbox" value="1" checked class="checkbtn" name="user_status"> 正常  

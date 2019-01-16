@@ -48,8 +48,6 @@ class UsersController extends Controller
         $users->true_name = $data['true_name'];
         $users->user_sex = $data['user_sex'];
         $users->user_tel = $data['user_tel'];
-        $users->user_address = $data['user_address'];
-        $users->postcode = $data['postcode'];
         $users->user_status = $data['user_status'];
         $res = $users->save();
         if($res){
